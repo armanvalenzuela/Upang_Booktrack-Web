@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPang BookTracker</title>
+    <link rel="icon" type="x-icon" href="login\logo_college.png">
+    <link rel="stylesheet" href="style_login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="logo-container">
+            <img src="Images/logo.png" alt="UPang Logo">
+        </div>
+
+        <form id="loginForm">
+            <h1>Sign In</h1>
+            <div class="input-box">
+                <input type="text" id="studentNo" placeholder="Student Number" required>
+                <i class='bx bxs-user'></i>
+            </div>
+        
+            <div class="input-box">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <i class='bx bx-show' id="toggleLoginPassword" onclick="togglePassword('loginPassword', 'toggleLoginPassword')"></i>
+            </div><br>
+        
+            <div class="remember-forgot">
+                <label><input type="checkbox" id="rememberMe"> Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            
+            <div class="button-container">
+                <button type="submit" class="btnSubmit">Sign In <img src="Images/enter.png" alt="icon" class="btn-icon"></button>
+            </div>
+        
+            <p id="errorMessage" style="color: red; text-align: center;"></p>
+        </form>
+        
+        
+    </div>
+
+    <script src="login.js"></script>
+    <script src="show_pw.js"></script>
+</body>
+</html>
