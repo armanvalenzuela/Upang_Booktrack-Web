@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const btnSubmit = document.querySelector(".btnSubmit");
 
+    
+
     btnSubmit.addEventListener("click", function (event) {
         event.preventDefault(); // PREVENTS REFRESH NG SUBMISSION
 
@@ -21,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        if (/\s/.test(newPassword)) {
+        if (newPassword.includes(" ")) {
             showToast("New password cannot contain spaces!", "error");
             return;
         }
