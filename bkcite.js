@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownMenu = document.getElementById("dropdown-user");
     const logoutButton = document.getElementById("logout");
 
-    // Retrieve stored values
+    // KINU KUHA YUNG MGA NAKA STORE NA VAL SA LOCAL STORAGE
     const studentNameElement = document.getElementById("studentName");
     const studentNoElement = document.getElementById("studentNo");
 
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Retrieved studentName:", studentName);
     console.log("Retrieved studentNo:", studentNo);
 
-    // Update UI if elements exist
+    // IF MERON ILALAGAY SA UI YUNG DATA
     if (studentNameElement && studentNoElement) {
         studentNameElement.textContent = studentName ? studentName : "Not Logged In";
         studentNoElement.textContent = studentNo ? studentNo : "N/A";
@@ -21,30 +21,30 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error: Element(s) not found!");
     }
 
-    // Toggle dropdown on click
+    // DROPDOWN TOGGLE
     userIcon.addEventListener("click", function (event) {
         event.stopPropagation();
         dropdownMenu.classList.toggle("show");
     });
 
-    // Close dropdown when clicking outside
+    // CLOSES DROPDOWN IF NAG CLICK KA SA LABAS NG AREA
     document.addEventListener("click", function (event) {
         if (!userIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.classList.remove("show");
         }
     });
 
-    // Logout functionality
+    // LOGOUT FUNCTIONALITY
     logoutButton.addEventListener("click", function () {
-        localStorage.clear(); // Remove user session
-        sessionStorage.clear(); // Extra precaution
-        window.location.href = "login.html"; // Redirect to login page
+        localStorage.clear(); //REMOVE LAHAT NG LAMAN NG LOCAL STORAGE
+        sessionStorage.clear(); // 2X DAW PRA SURE SABI NG TUTORIAL HAHAHAHA
+        window.location.href = "login.html"; // BALIK SA LOGIN
 
-        // Prevent back button from bringing the user back
+        // MAKES SURE NA DI MABABALIK BY CLICKING BACK BUTTON
         history.replaceState(null, null, "login.html");
     });
 
-    // Prevent going back after logout
+    // PREVENTS GOING BACK TO LOGIN
     window.addEventListener("popstate", function () {
         window.location.href = "login.html";
     });

@@ -1,10 +1,11 @@
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault(); //PAGE RELOAD PREVENTION
 
     const studentNo = document.getElementById("studentNo").value;
     const password = document.getElementById("loginPassword").value;
     const errorMessage = document.getElementById("errorMessage");
 
+        //MAKE SURE NA TAMA YUNG PATH
     try {
         const response = await fetch("http://localhost/UPBooktrack/login.php", {
             method: "POST",
@@ -15,15 +16,16 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         const data = await response.json();
 
         if (data.status === "success") {
-            // Store user details in localStorage
+            // I STORE YUNG MGA INPUTS TAS DATA NA KINUHA SA DATABASE INTO LOCAL STORAGE
             localStorage.setItem("userID", data.id);
             localStorage.setItem("studentName", data.studentName);
             localStorage.setItem("studentNo", studentNo);
+            localStorage.setItem("password", password)
 
             console.log("Stored studentName:", localStorage.getItem("studentName"));
             console.log("Stored studentNo:", localStorage.getItem("studentNo"));
 
-            // Redirect to bkcite.html
+            // REDIRECT SA NEXT HTML
             window.location.href = "bkcite.html";
         } else {
             errorMessage.textContent = data.message;
