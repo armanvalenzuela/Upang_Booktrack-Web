@@ -89,6 +89,7 @@ body
     color: darkgreen;
     text-decoration: none;
 }
+
 .remember-forgot a:hover
 {
     text-decoration: underline;
@@ -97,6 +98,11 @@ body
     text-align: center; 
     margin-top: 20px;   
 }
+
+.button-container a{
+    color: darkgreen;
+}
+
 .wrapper .btnSubmit
 {
     display: flex;
