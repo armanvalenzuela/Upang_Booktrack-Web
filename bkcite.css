@@ -152,10 +152,27 @@ h1 {
 .dropdown-user.show {
     display: block;
 }
-
-
 .dropdown-user p {
     margin: 5px 0;
     font-size: 14px;
     color: black;
 }
+#change-pw a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Uses the default text color */
+}
+.change-pw a:focus, 
+.change-pw a:active, 
+.change-pw a:hover {
+    outline: none; /* Removes focus outline */
+    color: inherit; /* Keeps text color the same */
+}
+.change-pw a {
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 5px;
+}
+

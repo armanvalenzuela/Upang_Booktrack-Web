@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="icon" type="x-icon" href="Images/bglogo.png">
+    <link rel="stylesheet" href="style_forgot-pw.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="logo-container">
+            <img src="Images/Icon.png" alt="UPang Logo">
+        </div>
+
+        <h2>Forgot Password?</h2>
+
+        <form action="#" method="POST">
+            <!-- Email Input -->
+            <div class="input-box">
+                <input type="email" id="email" placeholder="Enter your Email" required>
+                <i class='bx bx-envelope'></i>  
+            </div>
+
+            <!-- OTP Input -->
+            <div class="input-box">
+                <input type="text" id="otp" placeholder="Enter OTP" required>
+                <i class='bx bx-key'></i>
+            </div>
+
+            <!-- New Password Input -->
+            <div class="input-box">
+                <input type="password" id="newPassword" placeholder="New Password" required>
+                <i class='bx bx-show' id="toggleNewPassword" onclick="togglePassword('newPassword', 'toggleNewPassword')"></i>
+            </div>
+
+            <!-- Confirm Password Input -->
+            <div class="input-box">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <i class='bx bx-show' id="toggleConfirmPassword" onclick="togglePassword('confirmPassword', 'toggleConfirmPassword')"></i>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="button-container">
+                <button type="submit" class="btnSubmit">Reset Password <img src="Images/enter.png" alt="icon" class="btn-icon"></button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="show_forgotpw.js"></script>
+</body>
+</html>
