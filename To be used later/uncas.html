@@ -3,30 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniform Availability</title>
-    <link rel="stylesheet" href="ccje.css">
+    <title>Uniform Availability Checker</title>
+    <link rel="stylesheet" href="book.css">
     <link rel="icon" type="x-icon" href="Images/logo_college.png">
-    <style>
-        .availability {
-            font-weight: bold;
-        }
-        .available {
-            color: green;
-        }
-        .low-stock {
-            color: orange;
-        }
-        .unavailable {
-            color: red;
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="top-bar">
             <div class="logo">LOGO</div>
             <div class="search-bar">
-                <input type="text" placeholder="Search for...">
+                <input type="text" placeholder="Search for uniforms...">
                 <select>
                     <option>All Categories</option>
                 </select>
@@ -63,53 +49,96 @@
                         <li><a href="bkcma.html">CMA</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Uniforms ▼</a></li>
+                <li><a href="uncas.html">Uniforms ▼</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <h1>Uniform Availability Status</h1>
         <section class="grid">
             <div class="card">
-                <div class="image"></div>
                 <h3>CAHS</h3>
                 <p>College of Allied Health Sciences</p>
-                <p>Sizes: S, M, L, XL</p>
-                <p class="availability available">Uniform Availability: Available</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/cahs_male_uniform.png" alt="CAHS Male Uniform">
+                    <p class="availability available">Availability: Available</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/cahs_female_uniform.png" alt="CAHS Female Uniform">
+                    <p class="availability unavailable">Availability: Out of Stock</p>
+                </div>
             </div>
             <div class="card">
-                <div class="image"></div>
                 <h3>CAS</h3>
                 <p>College of Arts and Sciences</p>
-                <p>Sizes: S, M, L</p>
-                <p class="availability low-stock">Uniform Availability: Low Stock</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/cas_male_uniform.png" alt="CAS Male Uniform">
+                    <p class="availability low-stock">Availability: Low Stock</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/cas_female_uniform.png" alt="CAS Female Uniform">
+                    <p class="availability available">Availability: Available</p>
+                </div>
             </div>
             <div class="card">
-                <div class="image"></div>
                 <h3>CCJE</h3>
                 <p>Department of Science in Criminology</p>
-                <p>Sizes: M, L, XL</p>
-                <p class="availability available">Uniform Availability: Available</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/ccje_male_uniform.png" alt="CCJE Male Uniform">
+                    <p class="availability available">Availability: Available</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/ccje_female_uniform.png" alt="CCJE Female Uniform">
+                    <p class="availability low-stock">Availability: Low Stock</p>
+                </div>
             </div>
             <div class="card">
-                <div class="image"></div>
                 <h3>CEA</h3>
                 <p>College of Engineering and Architecture</p>
-                <p>Sizes: S, M</p>
-                <p class="availability unavailable">Uniform Availability: Unavailable</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/cea_male_uniform.png" alt="CEA Male Uniform">
+                    <p class="availability unavailable">Availability: Out of Stock</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/cea_female_uniform.png" alt="CEA Female Uniform">
+                    <p class="availability available">Availability: Available</p>
+                </div>
             </div>
             <div class="card">
-                <div class="image"></div>
                 <h3>CITE</h3>
                 <p>College of Information Technology Education</p>
-                <p>Sizes: S, M, L, XL</p>
-                <p class="availability available">Uniform Availability: Available</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/cite_male_uniform.png" alt="CITE Male Uniform">
+                    <p class="availability available">Availability: Available</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/cite_female_uniform.png" alt="CITE Female Uniform">
+                    <p class="availability low-stock">Availability: Low Stock</p>
+                </div>
             </div>
             <div class="card">
-                <div class="image"></div>
                 <h3>CMA</h3>
                 <p>College of Management and Accountancy</p>
-                <p>Sizes: M, L</p>
-                <p class="availability low-stock">Uniform Availability: Low Stock</p>
+                <div class="image">
+                    <h4>Male Uniform</h4>
+                    <img src="Images/cma_male_uniform.png" alt="CMA Male Uniform">
+                    <p class="availability low-stock">Availability: Low Stock</p>
+                </div>
+                <div class="image">
+                    <h4>Female Uniform</h4>
+                    <img src="Images/cma_female_uniform.png" alt="CMA Female Uniform">
+                    <p class="availability unavailable">Availability: Out of Stock</p>
+                </div>
             </div>
         </section>
     </main>

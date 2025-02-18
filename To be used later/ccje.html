@@ -3,64 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="ccje.css">
+    <title>Module Availability - CCJE</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="x-icon" href="Images/logo_college.png">
 </head>
 <body>
     <header>
         <div class="top-bar">
-            <div class="logo">LOGO</div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for...">
-                <select>
-                    <option>All Categories</option>
-                </select>
-                <button>Search</button>
+            <div class="logo">
+                <img src="Images/logo_college.png" alt="Logo">
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for...">
+                <i class='bx bx-search'></i>
             </div>
             <div class="icons">
                 <span class="bell">🔔</span>
-                <span class="settings">⚙️</span>
-                <span class="user">👤</span>
+                <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+                <div class="dropdown-user" id="dropdown-user">
+                    <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
+                    <p><strong>Student No:</strong> <span id="studentNo">Loading...</span></p>
+                    <a href="change-pw.html">
+                        <button id="change-pw"><strong>Change Password</strong></button>
+                    </a>
+                    <button id="logout"><strong>Logout</strong></button>
+                </div>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Modules ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cea.html">CEA</a></li>
-                        <li><a href="cas.html">CAS</a></li>
-                        <li><a href="cite.html">CITE</a></li>
-                        <li><a href="cahs.html">CAHS</a></li>
-                        <li><a href="ccje.html">CCJE</a></li>
-                        <li><a href="cma.html">CMA</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Books ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="bkcea.html">CEA</a></li>
-                        <li><a href="bkcas.html">CAS</a></li>
-                        <li><a href="bkcite.html">CITE</a></li>
-                        <li><a href="bkcahs.html">CAHS</a></li>
-                        <li><a href="bkccje.html">CCJE</a></li>
-                        <li><a href="bkcma.html">CMA</a></li>
-                    </ul>
-                </li>
-                <li><a href="uncas.html">Uniforms ▼</a></li>
-            </ul>
-        </nav>
     </header>
-    <main>
-        <section class="grid">
+
+    <aside class="sidebar">
+        <nav>
+            <a href="mainpage.html" class="active"><i class='bx bxs-home'></i> Home</a>
+            <a href="#"><i class='bx bxs-file'></i> Modules</a>
+            <a href="#"><i class='bx bxs-book'></i> Books</a>
+            <a href="#"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="#"><i class='bx bxs-bookmark-star'></i> Saved</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>MODULE AVAILABILITY - CCJE</h1>
+        <div class="cards-container">
             <div class="card">
-                <div class="image"></div>
-                <h3>CCJE</h3>
-                <p>Department of Science in Criminology</p>
+                <div class="image-placeholder"></div>
+                <div class="card-info">
+                    <h3>Module 1</h3>
+                    <p class="description">Description of Module 1</p>
+                    <span class="available">AVAILABLE</span>
+                </div>
             </div>
-        </section>
+            <div class="card">
+                <div class="image-placeholder"></div>
+                <div class="card-info">
+                    <h3>Module 2</h3>
+                    <p class="description">Description of Module 2</p>
+                    <span class="not-available">NOT AVAILABLE</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-placeholder"></div>
+                <div class="card-info">
+                    <h3>Module 3</h3>
+                    <p class="description">Description of Module 3</p>
+                    <span class="available">AVAILABLE</span>
+                </div>
+            </div>
+            <!-- Add more modules as needed -->
+        </div>
     </main>
+
+    <script src="bkcite.js"></script>
 </body>
 </html>

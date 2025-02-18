@@ -43,6 +43,32 @@
                         <i class='bx bx-show' id="toggleConfirmPassword" onclick="togglePassword('confirmPassword', 'toggleConfirmPassword')"></i>
                     </div>
 
+                    <div class="radio-gender">
+                        <p>Gender:</p>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="male" required>
+                                <span class="radio-custom">Male</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="gender" value="female" required>
+                                <span class="radio-custom">Female</span>
+                            </label>                    
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <select name="college" id="college" required>
+                            <option value="" disabled selected>Select College</option>
+                            <option value="college1">CAS</option>
+                            <option value="college2">CMA</option>
+                            <option value="college3">CITE</option>
+                            <option value="college3">CEA</option>
+                            <option value="college3">CCJE</option>
+                            <option value="college3">CAHS</option>
+                        </select>
+                    </div>
+
                     <button type="submit" class="btnSubmit">Sign Up</button>
 
                     <p id="message"></p>

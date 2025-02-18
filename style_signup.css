@@ -163,3 +163,13 @@ body
 {
     text-decoration: underline;
 }
+/* Add styles for the select box */
+.input-box select {
+    width: 100%;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 10px;
+    color: black;
+}

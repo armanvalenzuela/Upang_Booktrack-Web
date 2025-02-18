@@ -9,6 +9,9 @@ document.getElementById("signupForm").addEventListener("submit", async function 
     const confirmPassword = document.getElementById("confirmPassword").value;
     const message = document.getElementById("message");
 
+    const gender = document.querySelector('input[name="gender"]:checked').value; // GET SELECTED GENDER
+    const college = document.getElementById("college").value; // GET SELECTED COLLEGE
+
     // TIGNAN IF MATCH YUNG 2 NA PASS
     if (password !== confirmPassword) {
         message.style.color = "red";
@@ -22,6 +25,8 @@ document.getElementById("signupForm").addEventListener("submit", async function 
     formData.append("last_name", lastName);
     formData.append("email", email);
     formData.append("password", password);
+    formData.append("gender", gender); // ADD GENDER TO FORM DATA
+    formData.append("college", college); // ADD COLLEGE TO FORM DATA
 
     try {
         const response = await fetch("http://localhost/UPBooktrack/signup-web.php", {
