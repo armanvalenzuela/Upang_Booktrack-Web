@@ -26,7 +26,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             console.log("Stored studentNo:", localStorage.getItem("studentNo"));
 
             // REDIRECT SA NEXT HTML
-            window.location.href = "bkcite.html";
+            window.location.href = "mainpage.html";
         } else {
             errorMessage.textContent = data.message;
         }
