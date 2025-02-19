@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css"> <!-- Use the same CSS file -->
+    <link rel="icon" type="x-icon" href="Images/bglogo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="admin.css"> <!-- Link to admin-specific CSS -->
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search for...">
+            <i class='bx bx-search'></i>
+        </div>
+        <div class="icons">
+            <span class="bell">🔔</span>
+            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav>
+            <a href="admin.html" class="active"><i class='bx bxs-cog'></i> Admin Panel</a>
+            <a href="mainpage.html"><i class='bx bxs-home'></i> Home</a>
+            <a href="modules.html"><i class='bx bxs-file'></i> Modules</a>
+            <a href="books.html"><i class='bx bxs-book'></i> Books</a>
+            <a href="uniform.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="saved.html"><i class='bx bxs-bookmark-star'></i> Saved</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+
+    
+    <main class="content">
+        <section>
+            <div>
+                <div class="collegebar">College bar</div>
+            </div>
+        </section>
+        <section>
+            <div>
+                <div class="coursebar">Course bar</div>
+            </div>
+        </section>
+        <h1>Admin Panel</h1>
+        <h2>Manage Items</h2>
+
+        <div class="item-container">
+            <div class="item">
+                <h3>Module</h3>
+                <input class="itemsearch" type="text" placeholder="Module Name">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'module-preview')">
+                <img id="module-preview" class="image-preview" src="#" alt="Module Cover" style="display:none;">
+                <select>
+                    <option value="available">Available</option>
+                    <option value="not-available">Not Available</option>
+                </select>
+            </div>
+
+            <div class="item">
+                <h3>Book</h3>
+                <input class="itemsearch" type="text" placeholder="Book Name">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'book-preview')">
+                <img id="book-preview" class="image-preview" src="#" alt="Book Cover" style="display:none;">
+                <select>
+                    <option value="available">Available</option>
+                    <option value="not-available">Not Available</option>
+                </select>
+            </div>
+
+            <div class="item">
+                <h3>Uniform</h3>
+                <input class="itemsearch" type="text" placeholder="Uniform Name">
+                <input type="file" accept="image/*" onchange="previewImage(event, 'uniform-preview')">
+                <img id="uniform-preview" class="image-preview" src="#" alt="Uniform Cover" style="display:none;">
+                <select>
+                    <option value="available">Available</option>
+                    <option value="not-available">Not Available</option>
+                </select>
+            </div>
+
+            <button id="save-button">Save Changes</button>
+
+        </div>
+
+    </main>
+
+    <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
+    <script src="bkcite.js"></script>
+</body>
+</html>
