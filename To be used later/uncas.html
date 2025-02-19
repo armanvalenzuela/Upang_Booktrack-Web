@@ -4,143 +4,300 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uniform Availability Checker</title>
-    <link rel="stylesheet" href="book.css">
+    <link rel="stylesheet" href="uniform.css">
     <link rel="icon" type="x-icon" href="Images/logo_college.png">
 </head>
 <body>
     <header>
         <div class="top-bar">
-            <div class="logo">LOGO</div>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for uniforms...">
-                <select>
-                    <option>All Categories</option>
-                </select>
-                <button>Search</button>
+            <div class="logo">
+                <img src="Images/logo_college.png" alt="Logo">
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for uniforms...">
+                <i class='bx bx-search'></i>
             </div>
             <div class="icons">
                 <span class="bell">🔔</span>
-                <span class="settings">⚙️</span>
-                <span class="user">👤</span>
+                <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+                <div class="dropdown-user" id="dropdown-user">
+                    <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
+                    <p><strong>Student No:</strong> <span id="studentNo">Loading...</span></p>
+                    <a href="change-pw.html">
+                        <button id="change-pw"><strong>Change Password</strong></button>
+                    </a>
+                    <button id="logout"><strong>Logout</strong></button>
+                </div>
             </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Modules ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="cea.html">CEA</a></li>
-                        <li><a href="cas.html">CAS</a></li>
-                        <li><a href="cite.html">CITE</a></li>
-                        <li><a href="cahs.html">CAHS</a></li>
-                        <li><a href="ccje.html">CCJE</a></li>
-                        <li><a href="cma.html">CMA</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Books ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="bkcea.html">CEA</a></li>
-                        <li><a href="bkcas.html">CAS</a></li>
-                        <li><a href="bkcite.html">CITE</a></li>
-                        <li><a href="bkcahs.html">CAHS</a></li>
-                        <li><a href="bkccje.html">CCJE</a></li>
-                        <li><a href="bkcma.html">CMA</a></li>
-                    </ul>
-                </li>
-                <li><a href="uncas.html">Uniforms ▼</a></li>
-            </ul>
-        </nav>
     </header>
-    <main>
-        <h1>Uniform Availability Status</h1>
-        <section class="grid">
-            <div class="card">
-                <h3>CAHS</h3>
-                <p>College of Allied Health Sciences</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/cahs_male_uniform.png" alt="CAHS Male Uniform">
-                    <p class="availability available">Availability: Available</p>
+
+    <aside class="sidebar">
+        <nav>
+            <a href="mainpage.html" class="active"><i class='bx bxs-home'></i> Home</a>
+            <a href="#"><i class='bx bxs-file'></i> Modules</a>
+            <a href="#"><i class='bx bxs-book'></i> Books</a>
+            <a href="#"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="#"><i class='bx bxs-bookmark-star'></i> Saved</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        <h1>UNIFORM AVAILABILITY STATUS</h1>
+
+        <section>
+            <h2>CMA (College of Management and Accountancy)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Formal Shirt</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
                 </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/cahs_female_uniform.png" alt="CAHS Female Uniform">
-                    <p class="availability unavailable">Availability: Out of Stock</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3>CAS</h3>
-                <p>College of Arts and Sciences</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/cas_male_uniform.png" alt="CAS Male Uniform">
-                    <p class="availability low-stock">Availability: Low Stock</p>
-                </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/cas_female_uniform.png" alt="CAS Female Uniform">
-                    <p class="availability available">Availability: Available</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3>CCJE</h3>
-                <p>Department of Science in Criminology</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/ccje_male_uniform.png" alt="CCJE Male Uniform">
-                    <p class="availability available">Availability: Available</p>
-                </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/ccje_female_uniform.png" alt="CCJE Female Uniform">
-                    <p class="availability low-stock">Availability: Low Stock</p>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Trousers</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <h3>CEA</h3>
-                <p>College of Engineering and Architecture</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/cea_male_uniform.png" alt="CEA Male Uniform">
-                    <p class="availability unavailable">Availability: Out of Stock</p>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Formal Blouse</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
                 </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/cea_female_uniform.png" alt="CEA Female Uniform">
-                    <p class="availability available">Availability: Available</p>
-                </div>
-            </div>
-            <div class="card">
-                <h3>CITE</h3>
-                <p>College of Information Technology Education</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/cite_male_uniform.png" alt="CITE Male Uniform">
-                    <p class="availability available">Availability: Available</p>
-                </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/cite_female_uniform.png" alt="CITE Female Uniform">
-                    <p class="availability low-stock">Availability: Low Stock</p>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Skirt</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <h3>CMA</h3>
-                <p>College of Management and Accountancy</p>
-                <div class="image">
-                    <h4>Male Uniform</h4>
-                    <img src="Images/cma_male_uniform.png" alt="CMA Male Uniform">
-                    <p class="availability low-stock">Availability: Low Stock</p>
+        </section>
+
+        <section>
+            <h2>CITE (College of Information Technology and Engineering)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male IT Polo</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
                 </div>
-                <div class="image">
-                    <h4>Female Uniform</h4>
-                    <img src="Images/cma_female_uniform.png" alt="CMA Female Uniform">
-                    <p class="availability unavailable">Availability: Out of Stock</p>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Cargo Pants</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female IT Blouse</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Slacks</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CEA (College of Engineering and Architecture)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Engineering Shirt</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Work Pants</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Engineering Blouse</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Work Skirt</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CCJE (College of Criminal Justice Education)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Police Uniform</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Tactical Pants</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Police Blouse</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Tactical Skirt</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CAS (College of Arts and Sciences)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Arts Shirt</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Casual Pants</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Arts Blouse</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Casual Skirt</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CAHS (College of Allied Health Sciences)</h2>
+            <h3>Male Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Scrubs</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Male Lab Coat</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
+                </div>
+            </div>
+            <h3>Female Uniforms</h3>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Scrubs</h3>
+                        <p class="description">Available Sizes: S, M, L</p>
+                        <span class="available">Available</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="image-placeholder"></div>
+                    <div class="card-info">
+                        <h3>Female Lab Coat</h3>
+                        <p class="description">Available Sizes: M, L</p>
+                        <span class="not-available">Not Available</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <script src="bkcite.js"></script>
 </body>
 </html>
