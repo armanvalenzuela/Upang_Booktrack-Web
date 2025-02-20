@@ -5,6 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const password = document.getElementById("loginPassword").value;
     const errorMessage = document.getElementById("errorMessage");
 
+    //LOGGING FOR DEBUG
     console.log("Identifier:", identifier);
     console.log("Password:", password);
 
@@ -14,13 +15,12 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         return;
     }
 
+    //SEND POST
     try {
-        // Use FormData to send data properly
         const formData = new FormData();
         formData.append("identifier", identifier);
         formData.append("password", password);
 
-        // Send the request
         const response = await fetch("http://localhost/UPBooktrack/login.php", {
             method: "POST",
             body: formData
@@ -32,7 +32,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (data.status === "success") {
             console.log("Login successful! Storing user info...");
 
-            // Store user details in localStorage
+            // STORES DETAILS ON LOCALSTORAGE
             localStorage.setItem("userID", data.id);
             localStorage.setItem("studentNo", data.studentNo);
             localStorage.setItem("studentName", data.studentName);
@@ -41,10 +41,10 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             console.log("Stored studentName:", localStorage.getItem("studentName"));
             console.log("Stored studentNo:", localStorage.getItem("studentNo"));
 
-            // Redirect to main page
+            // GOES TO MAINPAGE AFTER
             window.location.href = "mainpage.html";
         } else {
-            errorMessage.textContent = data.message; // Display error message
+            errorMessage.textContent = data.message; // ERROR MESSAGE
             console.error("Login failed:", data.message);
         }
     } catch (error) {
