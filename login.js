@@ -1,36 +1,54 @@
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); //PAGE RELOAD PREVENTION
+    event.preventDefault();
 
-    const studentNo = document.getElementById("studentNo").value;
+    const identifier = document.getElementById("studentNo").value;
     const password = document.getElementById("loginPassword").value;
     const errorMessage = document.getElementById("errorMessage");
 
-        //MAKE SURE NA TAMA YUNG PATH
+    console.log("Identifier:", identifier);
+    console.log("Password:", password);
+
+    if (!identifier || !password) {
+        errorMessage.textContent = "Please fill in all fields.";
+        console.error("Identifier or password is missing!");
+        return;
+    }
+
     try {
+        // Use FormData to send data properly
+        const formData = new FormData();
+        formData.append("identifier", identifier);
+        formData.append("password", password);
+
+        // Send the request
         const response = await fetch("http://localhost/UPBooktrack/login.php", {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({ studentNo, password })
+            body: formData
         });
 
         const data = await response.json();
+        console.log("Server Response:", data);
 
         if (data.status === "success") {
-            // I STORE YUNG MGA INPUTS TAS DATA NA KINUHA SA DATABASE INTO LOCAL STORAGE
+            console.log("Login successful! Storing user info...");
+
+            // Store user details in localStorage
             localStorage.setItem("userID", data.id);
+            localStorage.setItem("studentNo", data.studentNo);
             localStorage.setItem("studentName", data.studentName);
-            localStorage.setItem("studentNo", studentNo);
-            localStorage.setItem("password", password)
+            localStorage.setItem("email", data.email);
 
             console.log("Stored studentName:", localStorage.getItem("studentName"));
             console.log("Stored studentNo:", localStorage.getItem("studentNo"));
 
-            // REDIRECT SA NEXT HTML
+            // Redirect to main page
             window.location.href = "mainpage.html";
         } else {
-            errorMessage.textContent = data.message;
+            errorMessage.textContent = data.message; // Display error message
+            console.error("Login failed:", data.message);
         }
     } catch (error) {
         errorMessage.textContent = "An error occurred. Please try again.";
+        console.error("Fetch error:", error);
     }
 });
