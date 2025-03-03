@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css"> <!-- Use the same CSS file -->
+    <link rel="icon" type="x-icon" href="Images/bglogo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="newadmin.css"> <!-- Link to admin-specific CSS -->
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
+        <div class="icons">
+            <span class="bell">🔔</span>
+            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav>
+            <a href="admin.html" class="active"><i class='bx bxs-cog'></i> Admin Panel</a>
+            <a href="mainpage.html"><i class='bx bxs-home'></i> Home</a>
+            <a href="modules.html"><i class='bx bxs-file'></i> Modules</a>
+            <a href="books.html"><i class='bx bxs-book'></i> Books</a>
+            <a href="uniform.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="saved.html"><i class='bx bxs-bookmark-star'></i> Saved</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+
+    
+    <main class="content">
+        <h2>Dashboard</h2>
+
+        <div class="bookavailability">
+            <p id="textbooksavail">Books Available</p>
+            <img class="bookicon" src="Images/bookicon.png">
+        </div>
+
+        <div class="uniformavailability">
+            Uniforms Available
+        </div>
+        <div class="recentstock">
+            <p>Recently Restocked Items</p>
+            <br>
+            <p>Book</p>
+            <br>
+            <p>Uniform</p>
+            <br>
+            <p>Module</p>
+        </div>
+        <div class="lowstock">
+            <p id="textlowstock">Low Stock Alert</p>
+        </div>
+        <div class="highdemand">
+            <p id="texthighdemand">High Demands</p>
+        </div>
+        <div class="popularitems">
+            <p>Popular Items</p>
+        </div>
+        <div class="frequentlychecked">
+            <p>Frequently Checked</p>
+            <br>
+            <p>Book</p>
+            <br>
+            <p>Uniform</p>
+            <br>
+            <p>Module</p>
+        </div>
+        </main>
+
+    <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
+    <script src="bkcite.js"></script>
+</body>
+</html>
