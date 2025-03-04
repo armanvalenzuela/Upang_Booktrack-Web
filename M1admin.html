@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="admin.css"> <!-- Use the same CSS file -->
+    <title>Uniform Admin Panel</title>
+    <link rel="stylesheet" href="Uadmin.css"> <!-- Use the same CSS file -->
     <link rel="icon" type="x-icon" href="Images/bglogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="admin.css"> <!-- Link to admin-specific CSS -->
 </head>
 <body>
 
@@ -41,23 +40,27 @@
     <!-- Main Content -->
     <main class="content">
         <h1>Inventory System</h1>
-        <h2>Manage Books</h2>
+        <h2>Manage Uniforms</h2>
 
         <table class="inventory-table">
             <thead>
                 <tr>
-                    <th>Book Name</th>
+                    <th>Uniform Name</th>
                     <th>Image</th>
+                    <th>Size</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><input class="itemsearch" type="text" placeholder="Book Name"></td>
+                    <td><input class="itemsearch" type="text" placeholder="Uniform Name"></td>
                     <td>
-                        <input type="file" accept="image/*" onchange="previewImage(event, 'book-preview')">
-                        <img id="book-preview" class="image-preview" src="#" alt="Book Cover" style="display:none;">
+                        <input type="file" accept="image/*" onchange="previewImage(event, 'uniform-preview')">
+                        <img id="uniform-preview" class="image-preview" src="#" alt="Uniform Cover" style="display:none;">
+                    </td>
+                    <td>
+                        <input class="itemsearch" type="text" placeholder="Size (e.g., S, M, L)">
                     </td>
                     <td>
                         <select>
@@ -67,30 +70,31 @@
                     </td>
                     <td><button class="edit-button">Edit</button></td>
                 </tr>
-                <!-- You can add more rows for additional books as needed -->
+                <!-- You can add more rows for additional uniforms as needed -->
             </tbody>
         </table>
 
         <button id="save-button">Save Changes</button>
 
-        <!-- Added Books Table -->
-        <h2>Added Books</h2>
-        <table class="added-books-table">
+        <!-- Added Uniforms Table -->
+        <h2>Added Uniforms</h2>
+        <table class="added-uniforms-table">
             <thead>
                 <tr>
-                    <th>Book Name</th>
+                    <th>Uniform Name</th>
                     <th>Image</th>
+                    <th>Size</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="books-list">
-                <!-- Dynamically added books will appear here -->
+            <tbody id="uniforms-list">
+                <!-- Dynamically added uniforms will appear here -->
             </tbody>
         </table>
     </main>
 
-    <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
+    <script src="Uadmin.js"></script> <!-- Link to admin-specific JavaScript -->
     <script src="bkcite.js"></script>
 </body>
 </html>

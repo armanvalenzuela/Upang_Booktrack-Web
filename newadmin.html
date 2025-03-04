@@ -25,12 +25,12 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <nav>
-            <a href="admin.html" class="active"><i class='bx bxs-cog'></i> Admin Panel</a>
-            <a href="mainpage.html"><i class='bx bxs-home'></i> Home</a>
-            <a href="modules.html"><i class='bx bxs-file'></i> Modules</a>
-            <a href="books.html"><i class='bx bxs-book'></i> Books</a>
-            <a href="uniform.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
-            <a href="saved.html"><i class='bx bxs-bookmark-star'></i> Saved</a>
+            <a href="newadmin.html" class="active"><i class='bx bxs-cog'></i> Dashboard</a>
+            <a href="mainpage.html" class="active"><i class='bx bxs-home'></i> Home</a>
+            <a href="M1admin.html"><i class='bx bxs-file'></i> Modules</a>
+            <a href="admin.html"><i class='bx bxs-book'></i> Books</a>
+            <a href="Uadmin.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="#"><i class='bx bxs-bookmark-star'></i> Saved</a>
         </nav>
     </aside>
 
@@ -47,6 +47,7 @@
 
         <div class="uniformavailability">
             Uniforms Available
+            <img class="uniformicon" src="Images/uniformlogo.png">
         </div>
         <div class="recentstock">
             <p>Recently Restocked Items</p>
@@ -58,13 +59,51 @@
             <p>Module</p>
         </div>
         <div class="lowstock">
-            <p id="textlowstock">Low Stock Alert</p>
+            <img class="lowstockicon" src="Images/lowstocks.png">
+            <div class="lowstock-text">
+                <p id="textlowstock">Low Stock Alert</p>
+            </div>
         </div>
         <div class="highdemand">
-            <p id="texthighdemand">High Demands</p>
+            <img class="highdemandicon" src="Images/highdemand.png">
+            <div class="highdemand-text">
+                <p id="texthighdemand">High Demands</p>
+            </div>
         </div>
         <div class="popularitems">
             <p>Popular Items</p>
+            <table class="popular-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Popularity</th>
+                        <th>Bookmarked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>University Uniform</td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                        </td>
+                        <td>45%</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>PE Uniform</td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 20%"></div>
+                            </div>
+                        </td>
+                        <td>20%</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <div class="frequentlychecked">
             <p>Frequently Checked</p>
@@ -76,8 +115,5 @@
             <p>Module</p>
         </div>
         </main>
-
-    <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
-    <script src="bkcite.js"></script>
 </body>
 </html>
