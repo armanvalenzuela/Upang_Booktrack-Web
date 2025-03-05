@@ -411,3 +411,16 @@ button.edit-button:hover, button.delete-button:hover {
 .notification.error {
     background-color: #f44336; /* Red */
 }
+
+.edit-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    background-color: #eae9e9;
+    text-align: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}

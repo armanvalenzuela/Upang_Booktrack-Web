@@ -1,7 +1,7 @@
 document.getElementById("loginForm").addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const identifier = document.getElementById("studentNo").value;
+    const identifier = document.getElementById("employeeNo").value;
     const password = document.getElementById("loginPassword").value;
     const errorMessage = document.getElementById("errorMessage");
 
@@ -21,7 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         formData.append("identifier", identifier);
         formData.append("password", password);
 
-        const response = await fetch("http://localhost/UPBooktrack/login.php", {
+        const response = await fetch("http://localhost/UPBooktrack/admin_login.php", {
             method: "POST",
             body: formData
         });
@@ -34,12 +34,12 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
             // STORES DETAILS ON LOCALSTORAGE
             localStorage.setItem("userID", data.id);
-            localStorage.setItem("studentNo", data.studentNo);
-            localStorage.setItem("studentName", data.studentName);
-            localStorage.setItem("email", data.email);
+            localStorage.setItem("employeeNo", data.employeeNo);
+            localStorage.setItem("employeeName", data.employeeName);
+            localStorage.setItem("employeeEmail", data.employeeEmail);
 
-            console.log("Stored studentName:", localStorage.getItem("studentName"));
-            console.log("Stored studentNo:", localStorage.getItem("studentNo"));
+            console.log("Stored employeeName:", localStorage.getItem("employeeName"));
+            console.log("Stored employeeNo:", localStorage.getItem("employeeNo"));
 
             // GOES TO MAINPAGE AFTER
             window.location.href = "mainpage.html";
