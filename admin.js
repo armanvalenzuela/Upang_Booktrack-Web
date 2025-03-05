@@ -1,42 +1,149 @@
-function previewImage(event, previewId) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    
-    reader.onload = function(e) {
-        const img = document.getElementById(previewId);
-        img.src = e.target.result;
-        img.style.display = 'block'; // Show the image
+document.addEventListener("DOMContentLoaded", async function () {
+    const bookStatSelect = document.getElementById("bookstat");
+    updateStatusColor(); // Apply initial color
+
+    // ✅ Change dropdown background color based on selection
+    bookStatSelect.addEventListener("change", updateStatusColor);
+
+    function updateStatusColor() {
+        if (bookStatSelect.value === "available") {
+            bookStatSelect.style.backgroundColor = "darkgreen";
+            bookStatSelect.style.color = "white";
+        } else {
+            bookStatSelect.style.backgroundColor = "darkred";
+            bookStatSelect.style.color = "white";
+        }
     }
-    
-    if (file) {
-        reader.readAsDataURL(file);
+
+    // ✅ Fetch and display books from database
+    async function loadBooks() {
+        try {
+            const response = await fetch("http://localhost/UPBooktrack/fetch_books.php");
+            const books = await response.json();
+
+            const booksList = document.getElementById("books-list");
+            booksList.innerHTML = ""; // Clear existing content
+
+            books.forEach(book => {
+                const newRow = document.createElement("tr");
+
+                newRow.innerHTML = `
+                    <td>${book.bookname}</td>
+                    <td><img src="http://localhost/UPBooktrack/uploads/${book.bookimage}" alt="Book Cover" style="width: 50px; height: auto;"></td>
+                    <td>
+                        <select class="book-status">
+                            <option value="available" ${book.bookstat === "available" ? "selected" : ""}>Available</option>
+                            <option value="not-available" ${book.bookstat === "not-available" ? "selected" : ""}>Not Available</option>
+                        </select>
+                    </td>
+                    <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
+                `;
+
+                booksList.appendChild(newRow);
+            });
+
+            // ✅ Apply color changes to status dropdowns
+            document.querySelectorAll(".book-status").forEach(select => {
+                updateDropdownColor(select);
+                select.addEventListener("change", function () {
+                    updateDropdownColor(this);
+                });
+            });
+
+        } catch (error) {
+            console.error("Error fetching books:", error);
+        }
     }
-}
 
-document.getElementById('save-button').addEventListener('click', function() {
-    alert('Changes saved successfully!'); // Placeholder for save functionality
-    // Here you can add code to actually save the changes, e.g., sending data to a server
-});
+    // ✅ Function to update dropdown color for dynamically added rows
+    function updateDropdownColor(selectElement) {
+        if (selectElement.value === "available") {
+            selectElement.style.backgroundColor = "darkgreen";
+            selectElement.style.color = "white";
+        } else {
+            selectElement.style.backgroundColor = "darkred";
+            selectElement.style.color = "white";
+        }
+    }
 
-document.getElementById('save-button').addEventListener('click', function() {
-    const bookName = document.querySelector('.itemsearch').value;
-    const bookImage = document.getElementById('book-preview').src;
-    const bookStatus = document.querySelector('select').value;
+    // ✅ Load books on page load
+    loadBooks();
 
-    if (bookName && bookImage) {
-        const booksList = document.getElementById('books-list');
-        const newRow = document.createElement('tr');
+    // ✅ Handle book uploads
+    document.getElementById("book-form").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent default form submission
 
-        newRow.innerHTML = `
-            <td>${bookName}</td>
-            <td><img src="${bookImage}" alt="Book Cover" style="width: 50px; height: auto;"></td>
-            <td>${bookStatus}</td>
-            <td><button class="edit-button">Edit</button> <button class="delete-button">Delete</button></td>
-        `;
+        // 🔹 Get input values
+        const bookName = document.getElementById("bookname").value.trim();
+        const bookImageInput = document.getElementById("bookimage");
+        const bookStatus = document.getElementById("bookstat").value;
 
-        booksList.appendChild(newRow);
-        alert('Book added successfully!'); // Feedback for the user
-    } else {
-        alert('Please fill in all fields before saving.'); // Validation
+        // 🔹 Validate Inputs
+        if (!bookName) {
+            showNotification("Please enter a book name!", "error");
+            return;
+        }
+
+        if (!bookImageInput.files.length) {
+            showNotification("Please select a book image!", "error");
+            return;
+        }
+
+        const file = bookImageInput.files[0];
+        const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+        if (!allowedTypes.includes(file.type)) {
+            showNotification("Invalid file type! Upload an image (JPG, PNG).", "error");
+            return;
+        }
+
+        // 🔹 Prepare Form Data
+        const formData = new FormData();
+        formData.append("bookname", bookName);
+        formData.append("bookimage", file);
+        formData.append("bookstat", bookStatus);
+
+        try {
+            // 🔹 Send Data to PHP Backend
+            const response = await fetch("http://localhost/UPBooktrack/upload_books.php", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.text(); // Get response from PHP
+
+            console.log("Server Response:", result); // Log response for debugging
+
+            // ✅ Show notification based on PHP response
+            if (result.includes("success")) {
+                showNotification("Book uploaded successfully!", "success");
+
+                // ✅ Reload books list after upload
+                loadBooks();
+
+                document.getElementById("book-form").reset(); // Reset form
+                document.getElementById("book-preview").style.display = "none"; // Hide preview
+
+                updateStatusColor(); // ✅ Reset dropdown color
+            } else {
+                showNotification(result, "error"); // Show error message from PHP
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            showNotification("Upload failed. Please try again!", "error");
+        }
+    });
+
+    // ✅ Notification Function
+    function showNotification(message, type) {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerText = message;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
     }
 });

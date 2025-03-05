@@ -43,6 +43,7 @@
         <h1>Inventory System</h1>
         <h2>Manage Books</h2>
 
+    <form id="book-form" action="upload-books.php" method="POST" enctype="multipart/form-data">
         <table class="inventory-table">
             <thead>
                 <tr>
@@ -54,24 +55,24 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input class="itemsearch" type="text" placeholder="Book Name"></td>
+                    <td><input id="bookname" name="bookname" class="itemsearch" type="text" placeholder="Book Name"></td>
                     <td>
-                        <input type="file" accept="image/*" onchange="previewImage(event, 'book-preview')">
+                        <input id="bookimage" name="bookimage" type="file" accept="image/*" onchange="previewImage(event, 'book-preview')">
                         <img id="book-preview" class="image-preview" src="#" alt="Book Cover" style="display:none;">
                     </td>
                     <td>
-                        <select>
+                        <select id="bookstat" name="bookstat">
                             <option value="available">Available</option>
                             <option value="not-available">Not Available</option>
                         </select>
                     </td>
-                    <td><button class="edit-button">Edit</button></td>
+                    <td><button id="save-button">Save Changes</button></td>
                 </tr>
                 <!-- You can add more rows for additional books as needed -->
             </tbody>
         </table>
 
-        <button id="save-button">Save Changes</button>
+    </form>
 
         <!-- Added Books Table -->
         <h2>Added Books</h2>
@@ -92,5 +93,6 @@
 
     <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
     <script src="bkcite.js"></script>
+
 </body>
 </html>
