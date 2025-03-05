@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    const bookStatSelect = document.getElementById("bookstat");
-    updateStatusColor(); // Apply initial color
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("JS loaded!"); // Debugging
 
-    // ✅ Change dropdown background color based on selection
-    bookStatSelect.addEventListener("change", updateStatusColor);
+    loadBooks(); // I run agad yung function na kunin books
+
+    const bookStatSelect = document.getElementById("bookstat");
+    updateStatusColor(); // Dito yung pag lagay ng color sa selected
+
+    if (bookStatSelect) {
+        bookStatSelect.addEventListener("change", updateStatusColor);
+    }
 
     function updateStatusColor() {
         if (bookStatSelect.value === "available") {
@@ -15,21 +20,28 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // ✅ Fetch and display books from database
+    // Dito yung pag fetch nya ng books
     async function loadBooks() {
         try {
             const response = await fetch("http://localhost/UPBooktrack/fetch_books.php");
             const books = await response.json();
 
+            console.log("Fetched Books:", books);
+
             const booksList = document.getElementById("books-list");
-            booksList.innerHTML = ""; // Clear existing content
+            booksList.innerHTML = "";
+
+            if (books.length === 0) {
+                booksList.innerHTML = "<tr><td colspan='4'>No books found</td></tr>";
+                return;
+            }
 
             books.forEach(book => {
                 const newRow = document.createElement("tr");
 
                 newRow.innerHTML = `
                     <td>${book.bookname}</td>
-                    <td><img src="http://localhost/UPBooktrack/uploads/${book.bookimage}" alt="Book Cover" style="width: 50px; height: auto;"></td>
+                    <td><img src="${book.bookimage}" alt="Book Cover" style="width: 50px; height: auto;"></td>
                     <td>
                         <select class="book-status">
                             <option value="available" ${book.bookstat === "available" ? "selected" : ""}>Available</option>
@@ -42,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 booksList.appendChild(newRow);
             });
 
-            // ✅ Apply color changes to status dropdowns
+            // Colorchange sa dropdown
             document.querySelectorAll(".book-status").forEach(select => {
                 updateDropdownColor(select);
                 select.addEventListener("change", function () {
@@ -55,30 +67,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    // ✅ Function to update dropdown color for dynamically added rows
-    function updateDropdownColor(selectElement) {
-        if (selectElement.value === "available") {
-            selectElement.style.backgroundColor = "darkgreen";
-            selectElement.style.color = "white";
+    function updateDropdownColor(select) {
+        if (select.value === "available") {
+            select.style.backgroundColor = "darkgreen";
+            select.style.color = "white";
         } else {
-            selectElement.style.backgroundColor = "darkred";
-            selectElement.style.color = "white";
+            select.style.backgroundColor = "darkred";
+            select.style.color = "white";
         }
     }
 
-    // ✅ Load books on page load
-    loadBooks();
-
-    // ✅ Handle book uploads
+    // Book uploading
     document.getElementById("book-form").addEventListener("submit", async function (event) {
         event.preventDefault(); // Prevent default form submission
 
-        // 🔹 Get input values
+        // Getting ng values
         const bookName = document.getElementById("bookname").value.trim();
         const bookImageInput = document.getElementById("bookimage");
         const bookStatus = document.getElementById("bookstat").value;
 
-        // 🔹 Validate Inputs
+        // Validations syempre
         if (!bookName) {
             showNotification("Please enter a book name!", "error");
             return;
@@ -96,36 +104,36 @@ document.addEventListener("DOMContentLoaded", async function () {
             return;
         }
 
-        // 🔹 Prepare Form Data
+        // Preparing form data (yung kung ano ibibigay sa POST natin)
         const formData = new FormData();
         formData.append("bookname", bookName);
         formData.append("bookimage", file);
         formData.append("bookstat", bookStatus);
 
         try {
-            // 🔹 Send Data to PHP Backend
+            // Dito yung pag sesendang ng data
             const response = await fetch("http://localhost/UPBooktrack/upload_books.php", {
                 method: "POST",
                 body: formData,
             });
 
-            const result = await response.text(); // Get response from PHP
+            const result = await response.text(); // Antayin yung response ng php
 
-            console.log("Server Response:", result); // Log response for debugging
+            console.log("Server Response:", result); // Log response
 
-            // ✅ Show notification based on PHP response
+            // Yung notification ng response
             if (result.includes("success")) {
                 showNotification("Book uploaded successfully!", "success");
 
-                // ✅ Reload books list after upload
+                // And after upload mag re refresh yung list
                 loadBooks();
 
-                document.getElementById("book-form").reset(); // Reset form
-                document.getElementById("book-preview").style.display = "none"; // Hide preview
+                document.getElementById("book-form").reset();
+                document.getElementById("book-preview").style.display = "none";
 
-                updateStatusColor(); // ✅ Reset dropdown color
+                updateStatusColor();
             } else {
-                showNotification(result, "error"); // Show error message from PHP
+                showNotification(result, "error"); //Show the error messages (sa php naka set mga error messages)
             }
         } catch (error) {
             console.error("Error:", error);
@@ -133,7 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    // ✅ Notification Function
+    // Notification message
     function showNotification(message, type) {
         const notification = document.createElement("div");
         notification.className = `notification ${type}`;
