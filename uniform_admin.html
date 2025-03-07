@@ -39,7 +39,7 @@
         <nav>
             <a href="dashboard.html"><i class='bx bxs-home'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book' ></i> Books</a>
-            <a href="uniform_admin.html"><i class='bx bxs-t-shirt' ></i>Uniform</a>
+            <a href="uniform_admin.html" class="active"><i class='bx bxs-t-shirt' ></i>Uniform</a>
             <a href="#"><i class='bx bxs-bookmark-star' ></i> Bookmark</a>
         </nav>
     </aside>
@@ -49,48 +49,79 @@
         <h1>Inventory System</h1>
         <h2>Manage Uniforms</h2>
 
-        <table class="inventory-table">
-            <thead>
-                <tr>
-                    <th>Uniform Name</th>
-                    <th>Image</th>
-                    <th>Size</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input class="itemsearch" type="text" placeholder="Uniform Name"></td>
-                    <td>
-                        <input type="file" accept="image/*" onchange="previewImage(event, 'uniform-preview')">
-                        <img id="uniform-preview" class="image-preview" src="#" alt="Uniform Cover" style="display:none;">
-                    </td>
-                    <td>
-                        <input class="itemsearch" type="text" placeholder="Size (e.g., S, M, L)">
-                    </td>
-                    <td>
-                        <select>
-                            <option value="available">Available</option>
-                            <option value="not-available">Not Available</option>
-                        </select>
-                    </td>
-                    <td><button class="edit-button">Edit</button></td>
-                </tr>
-                <!-- You can add more rows for additional uniforms as needed -->
-            </tbody>
-        </table>
-
-        <button id="save-button">Save Changes</button>
+        <form id="uniform-form" action="upload-uniforms.php" method="POST" enctype="multipart/form-data">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>College</th>
+                        <th>Uniform Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Gender</th>
+                        <th>Size</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select id="uniformcollege" name="uniformcollege">
+                                <option value="CITE"><strong>CITE</strong></option>
+                                <option value="CMA"><strong>CMA</strong></option>
+                                <option value="CAHS"><strong>CAHS</strong></option>
+                                <option value="CEA"><strong>CEA</strong></option>
+                            </select>
+                        </td>
+                        <td><input id="uniformname" name="uniformname" class="itemsearch" type="text" placeholder="Uniform Name"></td>
+                        <td><input id="uniformdesc" name="uniformdesc" class="itemsearch" type="text" placeholder="Uniform Description"></td>
+                        <td>
+                            <input id="uniformimage" name="uniformimage" type="file" accept="image/*" onchange="previewImage(event, 'uniform-preview')">
+                            <img id="uniform-preview" class="image-preview" src="#" alt="Uniform Image" style="display:none;">
+                        </td>
+                        <td>
+                            <select id="uniformgender" name="uniformgender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="uniformsize" name="uniformsize">
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input id="uniformstock" name="uniformstock" class="uniformstock" type="number" min="0" placeholder="Stock Quantity">
+                        </td>
+                        <td>
+                            <select id="uniformstat" name="uniformstat">
+                                <option value="available">Available</option>
+                                <option value="not-available">Not Available</option>
+                            </select>
+                        </td>
+                        <td><button id="save-button">Save Changes</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
 
         <!-- Added Uniforms Table -->
-        <h2>Added Uniforms</h2>
+        <br/><h2>Added Uniforms</h2>
         <table class="added-uniforms-table">
             <thead>
                 <tr>
+                    <th>College</th>
                     <th>Uniform Name</th>
+                    <th>Description</th>
                     <th>Image</th>
                     <th>Size</th>
+                    <th>Stock Amount</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
