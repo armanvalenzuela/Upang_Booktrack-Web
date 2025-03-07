@@ -191,6 +191,48 @@ h1 {
   box-sizing: border-box;
 }
 
+textarea.itemsearch {
+    min-height: 20px;
+    resize: none;
+    overflow: hidden; /* Set an initial minimum height */
+}
+
+.bookdesc {
+    width: 100%; /* Make it stretch to the full width of its container */
+    min-height: 200px; /* Set a minimum height */
+    max-height: 300px; /* Prevent it from getting too large */
+    overflow-y: auto; /* Show scrollbar if needed */
+    resize: vertical; /* Allow user to resize if they want */
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+.bookstock {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none; 
+    transition: border-color 0.3s ease;
+}
+
+.bookstock::-webkit-outer-spin-button,
+.bookstock::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bookstock:focus {
+    border-color: #000000;
+    background-color: #fff;
+}
+
 select {
 width: 150px;
 height: 40px;  
