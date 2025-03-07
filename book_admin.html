@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="admin.css"> <!-- Use the same CSS file -->
+    <link rel="stylesheet" href="style_book.css"> <!-- Use the same CSS file -->
     <link rel="icon" type="x-icon" href="Images/bglogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="admin.css"> <!-- Link to admin-specific CSS -->
+    <link rel="stylesheet" href="style_book.css"> <!-- Link to admin-specific CSS -->
 </head>
 <body>
 
@@ -21,20 +21,27 @@
             <i class='bx bx-search'></i>
         </div>
         <div class="icons">
-            <span class="bell">🔔</span>
-            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i>
+            </span>
+            <div class="dropdown-user" id="dropdown-user">
+                <p><strong>Name:</strong> <span id="employeeName">Loading...</span></p>
+                <p><strong>Employee No:</strong> <span id="employeeNo">Loading...</span></p></br>
+                <a href="change-pw.html">
+                    <button id="change-pw"><strong>Change Password</strong></button>
+                </a></br></br>                    
+                <a href="login.html">
+                    <button id="login"><strong>Logout</strong></button>
+                </a>
+            </div>
         </div>
     </header>
-
     <!-- Sidebar -->
     <aside class="sidebar">
         <nav>
-            <a href="newadmin.html" class="active"><i class='bx bxs-cog'></i> Dashboard</a>
-            <a href="mainpage.html" class="active"><i class='bx bxs-home'></i> Home</a>
-            <a href="M1admin.html"><i class='bx bxs-file'></i> Modules</a>
-            <a href="admin.html"><i class='bx bxs-book' ></i> Books</a>
-            <a href="Uadmin.html"><i class='bx bxs-t-shirt' ></i>Uniform</a>
-            <a href="#"><i class='bx bxs-bookmark-star' ></i> Saved</a>
+            <a href="dashboard.html"><i class='bx bxs-home'></i>Dashboard</a>
+            <a href="book_admin.html"><i class='bx bxs-book' ></i> Books</a>
+            <a href="uniform_admin.html"><i class='bx bxs-t-shirt' ></i>Uniform</a>
+            <a href="#"><i class='bx bxs-bookmark-star' ></i> Bookmark</a>
         </nav>
     </aside>
 
@@ -47,18 +54,33 @@
         <table class="inventory-table">
             <thead>
                 <tr>
+                    <th>College</th>
                     <th>Book Name</th>
+                    <th>Description</th>
                     <th>Image</th>
+                    <th>Amount</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
+                    <td>
+                        <select id="bookcollege" name="bookcollege">
+                            <option value="CITE"><strong>CITE</strong></option>
+                            <option value="CMA"><strong>CMA</strong></option>
+                            <option value="CAHS"><strong>CAHS</strong></option>
+                            <option value="CEA"><strong>CEA</strong></option>
+                        </select>
+                    </td>
                     <td><input id="bookname" name="bookname" class="itemsearch" type="text" placeholder="Book Name"></td>
+                    <td><textarea id="bookdesc" name="bookdesc" class="itemsearch" type="text" placeholder="Book Description"></textarea></td>
                     <td>
                         <input id="bookimage" name="bookimage" type="file" accept="image/*" onchange="previewImage(event, 'book-preview')">
                         <img id="book-preview" class="image-preview" src="#" alt="Book Cover" style="display:none;">
+                    </td>
+                    <td>
+                        <input id="bookstock" name="bookstock" class="bookstock" type="number" min="0" placeholder="Stock Quantity">
                     </td>
                     <td>
                         <select id="bookstat" name="bookstat">
@@ -79,8 +101,11 @@
         <table class="added-books-table">
             <thead>
                 <tr>
+                    <th>College</th>
                     <th>Book Name</th>
+                    <th>Description</th>
                     <th>Image</th>
+                    <th>Stock Amount</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -92,7 +117,7 @@
     </main>
 
     <script src="admin.js"></script> <!-- Link to admin-specific JavaScript -->
-    <script src="bkcite.js"></script>
+    <script src="details_dropdown.js"></script>
 
 </body>
 </html>

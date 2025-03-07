@@ -41,8 +41,8 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             console.log("Stored employeeName:", localStorage.getItem("employeeName"));
             console.log("Stored employeeNo:", localStorage.getItem("employeeNo"));
 
-            // GOES TO MAINPAGE AFTER
-            window.location.href = "mainpage.html";
+            // GOES TO DASHBOARD AFTER
+            window.location.href = "dashboard.html";
         } else {
             errorMessage.textContent = data.message; // ERROR MESSAGE
             console.error("Login failed:", data.message);

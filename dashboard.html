@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style_dashboard.css"> <!-- Use the same CSS file -->
+    <link rel="icon" type="x-icon" href="Images/bglogo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style_dashboard.css"> <!-- Link to admin-specific CSS -->
+</head>
+<body>
+
+    <!-- Top Bar -->    
+    <header class="top-bar">
+        <div class="logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
+        <div class="icons">
+            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+        </div>
+        <div class="dropdown-user" id="dropdown-user">
+            <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
+            <p><strong>Student No:</strong> <span id="studentNo">Loading...</span></p></br>
+            <a href="change-pw.html">
+                <button id="change-pw"><strong>Change Password</strong></button>
+            </a></br></br>                    
+            <a href="login.html">
+                <button id="login"><strong>Logout</strong></button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <nav>
+            <a href="dashboard.html"><i class='bx bxs-home'></i> Dashboard</a>
+            <a href="book_admin.html"><i class='bx bxs-book'></i> Books</a>
+            <a href="uniform_admin.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="#"><i class='bx bxs-bookmark-star'></i> Bookmark</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+
+    
+    <main class="content">
+        <h2>Dashboard</h2>
+
+        <div class="bookavailability">
+            <p id="textbooksavail">Books Available</p>
+            <img class="bookicon" src="Images/bookicon.png">
+        </div>
+
+        <div class="uniformavailability">
+            Uniforms Available
+            <img class="uniformicon" src="Images/uniformlogo.png">
+        </div>
+        <div class="recentstock">
+            <p>Recently Restocked Items</p>
+            <br>
+            <p>Book</p>
+            <br>
+            <p>Uniform</p>
+            <br>
+            <p>Module</p>
+        </div>
+        <div class="lowstock">
+            <img class="lowstockicon" src="Images/lowstocks.png">
+            <div class="lowstock-text">
+                <p id="textlowstock">Low Stock Alert</p>
+            </div>
+        </div>
+        <div class="highdemand">
+            <img class="highdemandicon" src="Images/highdemand.png">
+            <div class="highdemand-text">
+                <p id="texthighdemand">High Demands</p>
+            </div>
+        </div>
+        <div class="popularitems">
+            <p>Popular Items</p>
+            <table class="popular-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Popularity</th>
+                        <th>Bookmarked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>University Uniform</td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%"></div>
+                            </div>
+                        </td>
+                        <td>45%</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>PE Uniform</td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 20%"></div>
+                            </div>
+                        </td>
+                        <td>20%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="frequentlychecked">
+            <p>Frequently Checked</p>
+            <br>
+            <p>Book</p>
+            <br>
+            <p>Uniform</p>
+            <br>
+            <p>Module</p>
+        </div>
+        </main>
+    <script src="details_dropdown.js"></script>
+</body>
+</html>

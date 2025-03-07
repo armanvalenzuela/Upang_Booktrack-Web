@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             booksList.innerHTML = "";
 
             if (books.length === 0) {
-                booksList.innerHTML = "<tr><td colspan='4'>No books found</td></tr>";
+                booksList.innerHTML = "<tr><td colspan='7'>No books found</td></tr>";
                 return;
             }
 
@@ -41,9 +41,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 newRow.innerHTML = `
                     <td>
+                        <select class="edit-college" disabled>
+                        <option value="CITE" ${book.bookcollege === "CITE" ? "selected" : ""}>CITE</option>
+                        <option value="CMA" ${book.bookcollege === "CMA" ? "selected" : ""}>CMA</option>
+                        <option value="CAHS" ${book.bookcollege === "CAHS" ? "selected" : ""}>CAHS</option>
+                        <option value="CEA" ${book.bookcollege === "CEA" ? "selected" : ""}>CEA</option>
+                        </select>
+                    </td>
+                    <td>
                         <input type="text" class="edit-name" value="${book.bookname}" disabled>
                     </td>
+                    <td>
+                        <textarea class="edit-desc" disabled>${book.bookdesc}</textarea>
+                    </td>
                     <td><img src="${book.bookimage}" alt="Book Cover" style="width: 150px; height: auto;"></td>
+                    <td>
+                        <input type="number" class="edit-stock" value="${book.bookstock}" disabled>
+                    </td>
                     <td>
                         <select class="book-status" disabled>
                             <option value="available" ${book.bookstat === "available" ? "selected" : ""}>Available</option>
@@ -60,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 booksList.appendChild(newRow);
             });
 
-            // Color change in dropdowns
             document.querySelectorAll(".book-status").forEach(select => {
                 updateDropdownColor(select);
                 select.addEventListener("change", function () {
@@ -68,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
 
-            // Attach event listeners after loading books
             attachEventListeners();
         } catch (error) {
             console.error("Error fetching books:", error);
@@ -86,28 +98,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function attachEventListeners() {
-        // Edit book details
         document.querySelectorAll(".edit-button").forEach(button => {
             button.addEventListener("click", function () {
                 const row = this.closest("tr");
+                row.querySelector(".edit-college").disabled = false;
                 row.querySelector(".edit-name").disabled = false;
+                row.querySelector(".edit-desc").disabled = false;
+                row.querySelector(".edit-stock").disabled = false;
                 row.querySelector(".book-status").disabled = false;
                 this.style.display = "none";
                 row.querySelector(".save-button").style.display = "inline-block";
             });
         });
 
-        // Save edited book details
         document.querySelectorAll(".save-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const row = this.closest("tr");
                 const id = this.getAttribute("data-id");
+                const bookcollege = row.querySelector(".edit-college").value;
                 const bookname = row.querySelector(".edit-name").value;
+                const bookdesc = row.querySelector(".edit-desc").value;
+                const bookstock = row.querySelector(".edit-stock").value;
                 const bookstat = row.querySelector(".book-status").value;
 
                 const formData = new FormData();
                 formData.append("id", id);
+                formData.append("bookcollege", bookcollege);
                 formData.append("bookname", bookname);
+                formData.append("bookdesc", bookdesc);
+                formData.append("bookstock", bookstock);
                 formData.append("bookstat", bookstat);
 
                 const response = await fetch("http://localhost/UPBooktrack/update_book.php", {
@@ -118,14 +137,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const result = await response.text();
                 if (result.includes("success")) {
                     showNotification("Book updated successfully!", "success");
-                    loadBooks(); // Refresh the list
+                    loadBooks();
                 } else {
                     showNotification("Failed to update book.", "error");
                 }
             });
         });
 
-        // Delete book
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const id = this.getAttribute("data-id");
@@ -153,51 +171,55 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Upload book
     document.getElementById("book-form").addEventListener("submit", async function (event) {
         event.preventDefault();
-
+    
+        const bookCollege = document.getElementById("bookcollege").value.trim();
         const bookName = document.getElementById("bookname").value.trim();
+        const bookDesc = document.getElementById("bookdesc").value.trim();
+        const bookStock = document.getElementById("bookstock").value.trim();
         const bookImageInput = document.getElementById("bookimage");
         const bookStatus = document.getElementById("bookstat").value;
-
-        if (!bookName) {
-            showNotification("Please enter a book name!", "error");
+    
+        if (!bookCollege || !bookName || !bookDesc || !bookStock) {
+            showNotification("Please fill in all fields!", "error");
             return;
         }
-
+    
         if (!bookImageInput.files.length) {
             showNotification("Please select a book image!", "error");
             return;
         }
-
+    
         const file = bookImageInput.files[0];
         const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
         if (!allowedTypes.includes(file.type)) {
             showNotification("Invalid file type! Upload an image (JPG, PNG).", "error");
             return;
         }
-
+    
         const formData = new FormData();
+        formData.append("bookcollege", bookCollege);
         formData.append("bookname", bookName);
+        formData.append("bookdesc", bookDesc);
+        formData.append("bookstock", bookStock);
         formData.append("bookimage", file);
         formData.append("bookstat", bookStatus);
-
+    
         try {
             const response = await fetch("http://localhost/UPBooktrack/upload_books.php", {
                 method: "POST",
                 body: formData,
             });
-
+    
             const result = await response.text();
             console.log("Server Response:", result);
-
+    
             if (result.includes("success")) {
                 showNotification("Book uploaded successfully!", "success");
                 loadBooks();
                 document.getElementById("book-form").reset();
                 document.getElementById("book-preview").style.display = "none";
-                updateStatusColor();
             } else {
                 showNotification(result, "error");
             }
@@ -207,7 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Show notifications
     function showNotification(message, type) {
         const notification = document.createElement("div");
         notification.className = `notification ${type}`;

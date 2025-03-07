@@ -3,20 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const dropdownMenu = document.getElementById("dropdown-user");
     const logoutButton = document.getElementById("logout");
 
-    // KINU KUHA YUNG MGA NAKA STORE NA VAL SA LOCAL STORAGE
-    const studentNameElement = document.getElementById("studentName");
-    const studentNoElement = document.getElementById("studentNo");
+    // KINUHA YUNG MGA NAKA STORE NA VAL SA LOCAL STORAGE
+    const employeeNameElement = document.getElementById("employeeName");
+    const employeeNoElement = document.getElementById("employeeNo");
 
-    const studentName = localStorage.getItem("studentName");
-    const studentNo = localStorage.getItem("studentNo");
+    const employeeName = localStorage.getItem("employeeName");
+    const employeeNo = localStorage.getItem("employeeNo");
 
-    console.log("Retrieved studentName:", studentName);
-    console.log("Retrieved studentNo:", studentNo);
+    console.log("Retrieved employeeName:", employeeName);
+    console.log("Retrieved employeeNo:", employeeNo);
 
-    // IF MERON ILALAGAY SA UI YUNG DATA
-    if (studentNameElement && studentNoElement) {
-        studentNameElement.textContent = studentName ? studentName : "Not Logged In";
-        studentNoElement.textContent = studentNo ? studentNo : "N/A";
+    // IF MERON, ILALAGAY SA UI YUNG DATA
+    if (employeeNameElement && employeeNoElement) {
+        employeeNameElement.textContent = employeeName ? employeeName : "Not Logged In";
+        employeeNoElement.textContent = employeeNo ? employeeNo : "N/A";
     } else {
         console.error("Error: Element(s) not found!");
     }
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // LOGOUT FUNCTIONALITY
     logoutButton.addEventListener("click", function () {
-        localStorage.clear(); //REMOVE LAHAT NG LAMAN NG LOCAL STORAGE
+        localStorage.clear(); // REMOVE LAHAT NG LAMAN NG LOCAL STORAGE
         sessionStorage.clear(); // 2X DAW PRA SURE SABI NG TUTORIAL HAHAHAHA
         window.location.href = "login.html"; // BALIK SA LOGIN
 

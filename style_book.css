@@ -161,6 +161,95 @@ h1 {
     margin-bottom: 20px;
 }
 
+.item-container {
+    width: 95%;
+    height: 50%;
+    border: 2px solid black;
+}
+
+#save-button {
+  background-color: green;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.itemsearch {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea.itemsearch {
+    min-height: 20px;
+    resize: none;
+    overflow: hidden; /* Set an initial minimum height */
+}
+
+.bookdesc {
+    width: 100%; /* Make it stretch to the full width of its container */
+    min-height: 200px; /* Set a minimum height */
+    max-height: 300px; /* Prevent it from getting too large */
+    overflow-y: auto; /* Show scrollbar if needed */
+    resize: vertical; /* Allow user to resize if they want */
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+
+.bookstock {
+    width: 150px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+    outline: none; 
+    transition: border-color 0.3s ease;
+}
+
+.bookstock::-webkit-outer-spin-button,
+.bookstock::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bookstock:focus {
+    border-color: #000000;
+    background-color: #fff;
+}
+
+select {
+width: 150px;
+height: 40px;  
+font-size: 16px;
+padding: 5px;  
+border-radius: 5px;
+border: 1px solid #ccc; 
+background-color: #fff;
+}
+
+
+.coursebar, .collegebar {
+    background-color: #e6e6e6;
+    border: 1px solid black;
+    height: 50px;
+}
+
 /* GRID FOR CARDS */
 .cards-container {
     display: grid;
@@ -268,4 +357,112 @@ h1 {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+/* Add this to Upang_Booktrack-Web-master/admin.css */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: #8BC34A;
+    color: white;
+}
+/* Table Styles */
+.inventory-table, .added-books-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .added-books-table th,
+.inventory-table td, .added-books-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.inventory-table th, .added-books-table th {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+}
+
+.inventory-table tr:nth-child(even), .added-books-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+.inventory-table tr:hover, .added-books-table tr:hover {
+    background-color: #e0e0e0; /* Darker gray on hover */
+}
+
+.image-preview {
+    width: 50px; /* Set a fixed width for image previews */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
+}
+
+button.edit-button, button.delete-button {
+    background-color: #4CAF50; /* Green background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.edit-button:hover, button.delete-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.itemsearch {
+    width: 100%; /* Full width for input fields */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+/* ✅ Toast Notification Styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.notification.success {
+    background-color: #4CAF50; /* Green */
+}
+
+.notification.error {
+    background-color: #f44336; /* Red */
+}
+
+.edit-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    background-color: #eae9e9;
+    text-align: center;
+    padding: 5px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
