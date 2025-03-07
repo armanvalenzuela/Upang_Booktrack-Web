@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
             booksList.innerHTML = "";
 
             if (books.length === 0) {
-                booksList.innerHTML = "<tr><td colspan='6'>No books found</td></tr>";
+                booksList.innerHTML = "<tr><td colspan='7'>No books found</td></tr>";
                 return;
             }
 
@@ -40,19 +40,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 const newRow = document.createElement("tr");
 
                 newRow.innerHTML = `
-                    <td class="bookcollege">${book.bookcollege}</td>
+                    <td>
+                        <select class="edit-college" disabled>
+                        <option value="CITE" ${book.bookcollege === "CITE" ? "selected" : ""}>CITE</option>
+                        <option value="CMA" ${book.bookcollege === "CMA" ? "selected" : ""}>CMA</option>
+                        <option value="CAHS" ${book.bookcollege === "CAHS" ? "selected" : ""}>CAHS</option>
+                        <option value="CEA" ${book.bookcollege === "CEA" ? "selected" : ""}>CEA</option>
+                        </select>
+                    </td>
                     <td>
                         <input type="text" class="edit-name" value="${book.bookname}" disabled>
                     </td>
                     <td>
-                        <textarea class="bookdesc" disabled>${book.bookdesc}</textarea>
+                        <textarea class="edit-desc" disabled>${book.bookdesc}</textarea>
                     </td>
                     <td><img src="${book.bookimage}" alt="Book Cover" style="width: 150px; height: auto;"></td>
-
                     <td>
                         <input type="number" class="edit-stock" value="${book.bookstock}" disabled>
                     </td>
-
                     <td>
                         <select class="book-status" disabled>
                             <option value="available" ${book.bookstat === "available" ? "selected" : ""}>Available</option>
@@ -96,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".edit-button").forEach(button => {
             button.addEventListener("click", function () {
                 const row = this.closest("tr");
+                row.querySelector(".edit-college").disabled = false;
                 row.querySelector(".edit-name").disabled = false;
                 row.querySelector(".edit-desc").disabled = false;
                 row.querySelector(".edit-stock").disabled = false;
@@ -109,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", async function () {
                 const row = this.closest("tr");
                 const id = this.getAttribute("data-id");
+                const bookcollege = row.querySelector(".edit-college").value;
                 const bookname = row.querySelector(".edit-name").value;
                 const bookdesc = row.querySelector(".edit-desc").value;
                 const bookstock = row.querySelector(".edit-stock").value;
@@ -116,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const formData = new FormData();
                 formData.append("id", id);
+                formData.append("bookcollege", bookcollege);
                 formData.append("bookname", bookname);
                 formData.append("bookdesc", bookdesc);
                 formData.append("bookstock", bookstock);
@@ -166,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("book-form").addEventListener("submit", async function (event) {
         event.preventDefault();
     
-        const bookCollege = document.getElementById("bookcollege").value.trim(); // Make sure this ID exists
+        const bookCollege = document.getElementById("bookcollege").value.trim();
         const bookName = document.getElementById("bookname").value.trim();
         const bookDesc = document.getElementById("bookdesc").value.trim();
         const bookStock = document.getElementById("bookstock").value.trim();
@@ -191,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     
         const formData = new FormData();
-        formData.append("bookcollege", bookCollege);  // Make sure this key matches PHP
+        formData.append("bookcollege", bookCollege);
         formData.append("bookname", bookName);
         formData.append("bookdesc", bookDesc);
         formData.append("bookstock", bookStock);
@@ -220,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
             showNotification("Upload failed. Please try again!", "error");
         }
     });
-    
 
     function showNotification(message, type) {
         const notification = document.createElement("div");
@@ -234,9 +241,4 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => notification.remove(), 500);
         }, 3000);
     }
-
-    document.getElementById('bookdesc').addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-    });
 });
