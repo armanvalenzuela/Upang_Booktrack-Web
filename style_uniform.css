@@ -500,6 +500,33 @@ select {
     max-width: 200px;
 }
 
+.edit-desc{
+    width: 100%; /* Make it stretch to the full width of its container */
+    min-height: 200px; /* Set a minimum height */
+    max-height: 300px; /* Prevent it from getting too large */
+    overflow-y: auto; /* Show scrollbar if needed */
+    resize: vertical; /* Allow user to resize if they want */
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.edit-stock{
+    width: 50px;
+}
+
+.edit-size{
+    width: 60px;
+}
+
+.edit-gender{
+    width: 80px;
+}
+
+.uniform-status{
+    width: 100px;
+}
+
 /* Add specific styling for the description input */
 #uniformdesc {
     width: 100%;
