@@ -56,26 +56,67 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
-    uniformForm.addEventListener("submit", function (event) {
+    uniformForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (!validateForm()) {
             return;
         }
+    
         const formData = new FormData(uniformForm);
-        fetch("http://localhost/UPBooktrack/upload_uniforms.php", {
-            method: "POST",
-            body: formData,
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-            uniformForm.reset();
-            previewImage.style.display = "none";
-            updateStatusColor();
-            loadUniforms();
-        })
-        .catch(error => console.error("Error:", error));
+    
+        try {
+            const response = await fetch("http://localhost/UPBooktrack/upload_uniforms.php", {
+                method: "POST",
+                body: formData,
+            });
+    
+            const result = await response.text();
+            console.log("Server Response:", result);
+    
+            if (result.includes("success")) {
+                showNotification("Uniform uploaded successfully!", "success");
+                loadUniforms();
+                uniformForm.reset();
+                previewImage.style.display = "none";
+                updateStatusColor();
+            } else {
+                showNotification(result, "error");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            showNotification("Upload failed. Please try again!", "error");
+        }
     });
+    
+    // Notification function
+    function showNotification(message, type) {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerText = message;
+    
+        document.body.appendChild(notification);
+    
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+    
+    
+    // Notification function
+    function showNotification(message, type) {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerText = message;
+    
+        document.body.appendChild(notification);
+    
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+        }, 3000);
+    }
+    
 
     async function loadUniforms() {
         try {
@@ -199,10 +240,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const result = await response.text();
                 if (result.includes("success")) {
-                    alert("Uniform updated successfully!");
-                    loadUniforms();
+                    showNotification("Uniform updated successfully!", "success");
+                    loadBooks();
                 } else {
-                    alert("Failed to update uniform.");
+                    showNotification("Failed to update book.", "error");
                 }
             });
         });
@@ -227,10 +268,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     const result = await response.json();
         
                     if (result.status === "success") {
-                        showNotification("uniform deleted successfully!", "success");
-                        
-                        // Call loadBooks immediately to refresh the table
-                        loadBooks();
+                        showNotification("Uniform deleted successfully!", "success");
+        
+                        // Refresh the uniform list
+                        loadUniforms();
                     } else {
                         showNotification("Failed to delete uniform: " + result.message, "error");
                     }
@@ -240,5 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         });
+        
     }
 });
