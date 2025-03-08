@@ -183,7 +183,7 @@ h1 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
 }
@@ -194,6 +194,11 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+textarea.itemsearch {
+    min-height: 20px;
+    resize: none;
 }
 
 /* Remove or comment out the general select styling that might be conflicting */
@@ -209,7 +214,7 @@ h1 {
 
 /* Status dropdown styling - make it more specific */
 select#uniformstat {
-    width: 150px;
+    width: 100px;
     height: 40px;
     font-size: 16px;
     padding: 5px;
@@ -427,7 +432,7 @@ button.edit-button:hover, button.delete-button:hover {
 }
 
 select {
-    width: 100%;
+    width: 70px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -435,7 +440,7 @@ select {
 }
 
 .uniformstock {
-    width: 150px;
+    width: 130px;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -515,7 +520,7 @@ select {
 
 /* Gender dropdown styling */
 select#uniformgender {
-    width: 150px;
+    width: 90px;
     height: 40px;
     font-size: 16px;
     padding: 5px;

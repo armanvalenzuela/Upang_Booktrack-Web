@@ -201,7 +201,6 @@ h1 {
 textarea.itemsearch {
     min-height: 20px;
     resize: none;
-    overflow: hidden; /* Set an initial minimum height */
 }
 
 .bookdesc {
