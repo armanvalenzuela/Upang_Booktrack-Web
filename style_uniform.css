@@ -14,12 +14,15 @@ body {
 
 /* TOP BAR */
 .top-bar {
+    position: fixed;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     background-color: #8BC34A;
     padding: 10px 20px;
     height: 60px;
+    width: 100%;
+    z-index: 1;
 }
 
 /* LOGO */
@@ -34,9 +37,11 @@ body {
     background: white;
     padding: 5px;
     border-radius: 5px;
-    width: 40%;
+    width: 30%;
+    position: absolute;
+    left: 65%;
+    transform: translateX(-50%);
 }
-
 .search-box {
     border: none;
     outline: none;
@@ -119,15 +124,29 @@ body {
 
 /* SIDEBAR */
 .sidebar {
-    width: 250px;
+    width: 270px;
     background-color: #e6e6e6;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: calc(100vh - 60px); /* Adjusted for top bar */
+    height: 835px; /* Adjusted for top bar */
     position: fixed;
-    top: 60px;
+    top: 0px;
     left: 0;
+    z-index: 1;
+}
+
+.sidebar-logo{
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.sidebar-logo img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 nav a {
@@ -136,6 +155,8 @@ nav a {
     padding: 10px;
     font-size: 18px;
     color: black;
+    margin-bottom: 10px;
+    margin-top: 20px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -466,9 +487,9 @@ select {
 /* Toast Notification Styling */
 .notification {
     position: fixed;
-    top: 20px;
+    top: 65px;
     right: 20px;
-    background-color: #333;
+    background-color: darkgoldenrod;
     color: white;
     padding: 15px;
     border-radius: 5px;

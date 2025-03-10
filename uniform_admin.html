@@ -1,3 +1,6 @@
+<!-- TO DO: FIX THE SIDEBAR (DESIGN, SPACING ETC), ADJUST THE TOPBAR (SEARCH CONTAINER, PROFILE ICON ETC) -->
+<!-- TO DO: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,15 +15,18 @@
 
     <!-- Top Bar -->
     <header class="top-bar">
-        <div class="logo">
-            <img src="Images/bglogo.png" alt="UPang Logo">
-        </div>
         <div class="search-container">
             <input type="text" class="search-box" placeholder="Search for...">
             <i class='bx bx-search'></i>
         </div>
         <div class="icons">
-            <span class="user" id="user-icon"><i class='bx bx-user-circle'></i></span>
+            <span class="notification">
+                <i class='bx bx-bell'></i>
+                <span class="notification-badge"></span>
+            </span>
+            <span class="user" id="user-icon">
+                <i class='bx bx-user-circle'></i>
+            </span>        
         </div>
         <div class="dropdown-user" id="dropdown-user">
             <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
@@ -36,6 +42,9 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
         <nav>
             <a href="dashboard.html"><i class='bx bxs-home'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book' ></i> Books</a>
