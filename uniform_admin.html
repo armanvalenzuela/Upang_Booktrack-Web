@@ -16,8 +16,7 @@
     <!-- Top Bar -->
     <header class="top-bar">
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search for...">
-            <i class='bx bx-search'></i>
+            
         </div>
         <div class="icons">
             <span class="notification">
@@ -49,7 +48,6 @@
             <a href="dashboard.html"><i class='bx bxs-home'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book' ></i> Books</a>
             <a href="uniform_admin.html" class="active"><i class='bx bxs-t-shirt' ></i>Uniform</a>
-            <a href="#"><i class='bx bxs-bookmark-star' ></i> Bookmark</a>
         </nav>
     </aside>
 
@@ -62,7 +60,7 @@
             <table class="inventory-table">
                 <thead>
                     <tr>
-                        <th>College</th>
+                        <th>Department</th>
                         <th>Uniform Name</th>
                         <th>Description</th>
                         <th>Image</th>
@@ -81,6 +79,9 @@
                                 <option value="CMA"><strong>CMA</strong></option>
                                 <option value="CAHS"><strong>CAHS</strong></option>
                                 <option value="CEA"><strong>CEA</strong></option>
+                                <option value="CCJE"><strong>CCJE</strong></option>
+                                <option value="CAS"><strong>CAS</strong></option>
+                                <option value="SHS"><strong>SHS</strong></option>
                             </select>
                         </td>
                         <td><input id="uniformname" name="uniformname" class="itemsearch" type="text" placeholder="Uniform Name"></td>
@@ -121,11 +122,18 @@
         </form>
 
         <!-- Added Uniforms Table -->
-        <br/><h2>Added Uniforms</h2>
+        <br/><h2></h2>
+        <div class="added-uniforms-header">
+            <h2>Added Uniforms</h2>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for...">
+                <i class='bx bx-search'></i>
+            </div>
+        </div>
         <table class="added-uniforms-table">
             <thead>
                 <tr>
-                    <th>College</th>
+                    <th>Department</th>
                     <th>Uniform Name</th>
                     <th>Description</th>
                     <th>Image</th>

@@ -102,7 +102,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 835px; /* Adjusted for top bar */
+    height: 910px; /* Adjusted for top bar */
     position: fixed;
     top: 0px;
     left: 0;
@@ -153,18 +153,125 @@ nav a.active i, nav a:hover i {
 .content {
     flex: 1;
     padding: 20px;
-    margin-left: 270px; /* Adjusted for sidebar width */
-    margin-top: 20px;
+    margin-left: 270px;
     position: relative;
     height: calc(100vh - 80px);
+    overflow-x: auto;
     overflow-y: auto;
+    min-width: 1350px;
+}
+
+/* Adjust h2 positioning and margin */
+.content h2 {
+    margin-bottom: 100px; /* Add space below the Dashboard text */
+}
+
+/* Adjust stats container position */
+.stats-container {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    top: 80px; /* Keep this the same */
+    left: 20px;
+    width: auto;
+}
+
+/* Table Styles */
+.tables-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+}
+
+/* Adjust table containers position */
+.lowstock-container {
+    width: 600px;
+    min-width: 600px;
+    margin: 0;
+    position: absolute;
+    top: 200px; /* Reduced from 240px to move tables even closer */
+    left: 20px;
+}
+
+.outstock-container {
+    width: 600px;
+    min-width: 600px;
+    margin: 0;
+    position: absolute;
+    top: 200px; /* Match lowstock container position */
+    left: 700px;
+}
+
+#lowstock, #outstock, #requests {
+    width: 600px;
+    min-width: 600px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    table-layout: fixed;
+}
+
+#lowstock th, #lowstock td,
+#outstock th, #outstock td,
+#requests th, #requests td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#lowstock th, #outstock th {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+}
+
+#lowstock td:nth-child(1),
+#outstock td:nth-child(1),
+#requests td:nth-child(1) {
+    width: 50px;
+}
+
+#lowstock td:nth-child(2),
+#outstock td:nth-child(2),
+#requests td:nth-child(2) {
+    width: 100px;
+}
+
+#lowstock td:nth-child(3),
+#outstock td:nth-child(3),
+#requests td:nth-child(3) {
+    width: 150px;
+}
+
+#lowstock td:nth-child(4),
+#outstock td:nth-child(4),
+#requests td:nth-child(4) {
+    width: 100px;
+}
+
+#lowstock td:nth-child(5),
+#outstock td:nth-child(5),
+#requests td:nth-child(5) {
+    width: 100px;
+}
+
+#lowstock td:nth-child(6),
+#outstock td:nth-child(6),
+#requests td:nth-child(6) {
+    width: 100px;
 }
 
 /* CSS FOR DIVS */
 .bookavailability {
     background-color: white;
-    width: 250px;
-    height: 175px;
+    width: 200px;
+    height: 150px;
     padding: 20px;
     border-radius: 10px;
     position: absolute;
@@ -182,13 +289,13 @@ nav a.active i, nav a:hover i {
 
 .uniformavailability {
     background-color: white;
-    width: 250px;
-    height: 175px;
+    width: 218px;
+    height: 150px;
     padding: 20px;
     border-radius: 10px;
     position: absolute;
     top: 20px;
-    left: 290px;
+    left: 230px;
 }
 
 .uniformicon {
@@ -199,84 +306,23 @@ nav a.active i, nav a:hover i {
     top: 10px;
 }
 
-.lowstock {
+.profile-user {
     background-color: white;
-    width: 250px;
-    height: 100px;
-    padding: 20px;
-    border-radius: 10px;
-    position: absolute;
-    top: 215px;
-    left: 20px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.lowstockicon {
-    height: 40px;
-    width: 40px;
-}
-
-.lowstock-text {
-    flex: 1;
-}
-
-.highdemand {
-    background-color: white;
-    width: 250px;
-    height: 100px;
-    padding: 20px;
-    border-radius: 10px;
-    position: absolute;
-    top: 215px;
-    left: 290px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.highdemandicon {
-    height: 40px;
-    width: 40px;
-}
-
-.highdemand-text {
-    flex: 1;
-}
-
-.recentstock {
-    background-color: white;
-    width: 650px;
-    height: 300px;
+    width: 218px;
+    height: 150px;
     padding: 20px;
     border-radius: 10px;
     position: absolute;
     top: 20px;
-    left: 560px;
+    left: 460px;
 }
 
-.popularitems {
-    background-color: white;
-    width: 870px;
-    min-height: 300px;
-    height: fit-content;
-    padding: 20px;
-    border-radius: 10px;
+.usericon {
     position: absolute;
-    top: 340px;
-    left: 20px;
-}
-
-.frequentlychecked {
-    background-color: white;
-    width: 400px;
-    height: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    position: absolute;
-    top: 340px;
-    left: 900px;
+    height: 40px;
+    width: 40px;
+    right: 10px;
+    top: 10px;
 }
 
 h1 {
@@ -432,41 +478,36 @@ select {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-/* Add these styles to your existing CSS */
 
-.popular-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.popular-table th,
-.popular-table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.popular-table th {
-    background-color: #f5f5f5;
-    font-weight: bold;
-}
-
-.popular-table tr:hover {
+#requests tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    overflow: hidden;
+#requests tr:hover {
+    background-color: #f5f5f5;
 }
 
-.progress {
-    height: 100%;
+#requests tr:first-child th {
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
     background-color: #8BC34A;
-    border-radius: 10px;
-    transition: width 0.3s ease;
 }
+
+#requests th {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+}
+
+/* Remove the requests-container CSS */
+.requests-container {
+    display: none;
+}
+
+/* Adjust content area width since we removed one table */
+.content {
+    min-width: 1350px;
+}
+
+  

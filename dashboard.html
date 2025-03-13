@@ -46,89 +46,87 @@
             <a href="dashboard.html" class="active"><i class='bx bxs-home'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book'></i> Books</a>
             <a href="uniform_admin.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
-            <a href="#"><i class='bx bxs-bookmark-star'></i> Bookmark</a>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="content">
         <h2>Dashboard</h2>
+        <div class="stats-container">
+            <div class="bookavailability">
+                <p id="textbooksavail">Books Available</p>
+                <img class="bookicon" src="Images/bookicon.png">
+            </div>
 
-        <div class="bookavailability">
-            <p id="textbooksavail">Books Available</p>
-            <img class="bookicon" src="Images/bookicon.png">
-        </div>
+            <div class="uniformavailability">
+                Uniforms Available
+                <img class="uniformicon" src="Images/uniformlogo.png">
+            </div>
 
-        <div class="uniformavailability">
-            Uniforms Available
-            <img class="uniformicon" src="Images/uniformlogo.png">
-        </div>
-        <div class="recentstock">
-            <p>Recently Restocked Items</p>
-            <br>
-            <p>Book</p>
-            <br>
-            <p>Uniform</p>
-            <br>
-            <p>Module</p>
-        </div>
-        <div class="lowstock">
-            <img class="lowstockicon" src="Images/lowstocks.png">
-            <div class="lowstock-text">
-                <p id="textlowstock">Low Stock Alert</p>
+            <div class="profile-user">
+                Total User
+                <img class="usericon" src="Images/profile-user.png">
             </div>
         </div>
-        <div class="highdemand">
-            <img class="highdemandicon" src="Images/highdemand.png">
-            <div class="highdemand-text">
-                <p id="texthighdemand">High Demands</p>
-            </div>
-        </div>
-        <div class="popularitems">
-            <p>Popular Items</p>
-            <table class="popular-table">
-                <thead>
+
+        <div class="tables-container">
+            <div class="lowstock-container">
+                <table id="lowstock">
                     <tr>
-                        <th>#</th>
+                        <th colspan="6" bgcolor="white">Low Stock</th>
+                    </tr>
+                    <tr>
+                        <th>No</th>
+                        <th>Department</th>
                         <th>Name</th>
-                        <th>Popularity</th>
-                        <th>Bookmarked</th>
+                        <th>Type</th>
+                        <th>Stock</th>
+                        <th>Size</th>
                     </tr>
-                </thead>
-                <tbody>
+                    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
+            
+            <div class="outstock-container">
+                <table id="outstock">
                     <tr>
-                        <td>01</td>
-                        <td>University Uniform</td>
-                        <td>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 45%"></div>
-                            </div>
-                        </td>
-                        <td>45%</td>
+                        <th colspan="6" bgcolor="white">Out of Stock</th>
                     </tr>
                     <tr>
-                        <td>02</td>
-                        <td>PE Uniform</td>
-                        <td>
-                            <div class="progress-bar">
-                                <div class="progress" style="width: 20%"></div>
-                            </div>
-                        </td>
-                        <td>20%</td>
+                        <th>No</th>
+                        <th>Department</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Stock</th>
+                        <th>Size</th>
                     </tr>
-                </tbody>
-            </table>
+                    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
         </div>
-        <div class="frequentlychecked">
-            <p>Frequently Checked</p>
-            <br>
-            <p>Book</p>
-            <br>
-            <p>Uniform</p>
-            <br>
-            <p>Module</p>
-        </div>
-        </main>
+    </main>
     <script src="details_dropdown.js"></script>
 </body>
 </html>

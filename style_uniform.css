@@ -14,7 +14,6 @@ body {
 
 /* TOP BAR */
 .top-bar {
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -31,17 +30,7 @@ body {
 }
 
 /* SEARCH BAR */
-.search-container {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 5px;
-    border-radius: 5px;
-    width: 30%;
-    position: absolute;
-    left: 65%;
-    transform: translateX(-50%);
-}
+
 .search-box {
     border: none;
     outline: none;
@@ -129,7 +118,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 835px; /* Adjusted for top bar */
+    height: 910px; /* Adjusted for top bar */
     position: fixed;
     top: 0px;
     left: 0;
@@ -485,20 +474,7 @@ select {
 }
 
 /* Toast Notification Styling */
-.notification {
-    position: fixed;
-    top: 65px;
-    right: 20px;
-    background-color: darkgoldenrod;
-    color: white;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1000;
-}
+
 
 .notification.success {
     background-color: #4CAF50; /* Green */
@@ -594,4 +570,23 @@ select#uniformgender:focus {
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Added styles for the search bar in the Added Uniforms section */
+.added-uniforms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* Space between header and table */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    border: 1px solid #ccc; /* Added border for visibility */
+    padding: 5px;
+    margin-left: 10px; /* Space between input and icon */
 }
