@@ -101,7 +101,18 @@
             <div class="outstock-container">
                 <table id="outstock">
                     <tr>
-                        <th colspan="6" bgcolor="white">Out of Stock</th>
+                        <th colspan="6" bgcolor="white">Out of Stock
+                            <div class="filter-container">
+                                <select id="typeFilter">
+                                    <option value="">All Types</option>
+                                    <option value="book">Book</option>
+                                    <option value="uniform">Uniform</option>
+                                </select>
+                                <select id="departmentFilter">
+                                    <option value="">All Departments</option>
+                                </select>
+                            </div>
+                        </th>
                     </tr>
                     <tr>
                         <th>No</th>
@@ -116,13 +127,53 @@
                     <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
                     <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
+
+            <div class="requests-container">
+                <table id="requests">
+                    <tr>
+                        <th colspan="6" bgcolor="white">Requests
+                            <div class="filter-container">
+                                <select id="typeFilterRequests">
+                                    <option value="">All Types</option>
+                                    <option value="book">Book</option>
+                                    <option value="uniform">Uniform</option>
+                                </select>
+                                <select id="departmentFilterRequests">
+                                    <option value="">All Departments</option>
+                                </select>
+                                <select id="sortFilter">
+                                    <option value="">Sort By</option>
+                                    <option value="asc">Ascending</option>
+                                    <option value="desc">Descending</option>
+                                </select>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>No</th>
+                        <th>Department</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Requests</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>CITE</td>
+                        <td>RSO</td>
+                        <td>2XL</td>
+                        <td>5</td>
+                        <td>
+                            <button class="action-btn approve">✓</button>
+                            <button class="action-btn deny">✕</button>
+                        </td>
+                    </tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
                 </table>
             </div>
         </div>
