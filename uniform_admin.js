@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         </select>
                     </td>
                     <td>
-                        <button class="edit-button" data-id="${uniform.id}">Edit</button>
-                        <button class="save-button" data-id="${uniform.id}" style="display:none;">Save</button>
-                        <button class="delete-button" data-id="${uniform.id}">Delete</button>
+                        <button class="edit-button" data-id="${uniform.uniform_id}">Edit</button>
+                        <button class="save-button" data-id="${uniform.uniform_id}" style="display:none;">Save</button>
+                        <button class="delete-button" data-id="${uniform.uniform_id}">Delete</button>
                     </td>
                 `;
                 uniformsList.appendChild(newRow);
@@ -214,17 +214,22 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".save-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const row = this.closest("tr");
-                const id = this.getAttribute("data-id");
+                const uniform_id = this.getAttribute("data-id"); // Updated
                 const uniformcollege = row.querySelector(".edit-college").value;
                 const uniformname = row.querySelector(".edit-name").value;
                 const uniformdesc = row.querySelector(".edit-desc").value;
                 const uniformsize = row.querySelector(".edit-size").value;
                 const uniformgender = row.querySelector(".edit-gender").value;
-                const uniformstock = row.querySelector(".edit-stock").value;
+                const uniformstock = row.querySelector(".edit-stock").value.trim();
                 const uniformstat = row.querySelector(".uniform-status").value;
-
+        
+                if (uniformstock === "") {
+                    showNotification("Stock cannot be empty!", "error");
+                    return;
+                }
+        
                 const formData = new FormData();
-                formData.append("id", id);
+                formData.append("uniform_id", uniform_id); // Updated
                 formData.append("uniformcollege", uniformcollege);
                 formData.append("uniformname", uniformname);
                 formData.append("uniformdesc", uniformdesc);
@@ -232,18 +237,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 formData.append("uniformgender", uniformgender);
                 formData.append("uniformstock", uniformstock);
                 formData.append("uniformstat", uniformstat);
-
+        
                 const response = await fetch("http://localhost/UPBooktrack/update_uniform.php", {
                     method: "POST",
                     body: formData
                 });
-
+        
                 const result = await response.text();
                 if (result.includes("success")) {
                     showNotification("Uniform updated successfully!", "success");
-                    loadBooks();
+                    loadUniforms();
                 } else {
-                    showNotification("Failed to update book.", "error");
+                    showNotification("Failed to update uniform.", "error");
                 }
             });
         });

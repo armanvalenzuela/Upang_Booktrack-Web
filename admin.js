@@ -42,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 newRow.innerHTML = `
                     <td>
                         <select class="edit-college" disabled>
-                        <option value="CITE" ${book.bookcollege === "CITE" ? "selected" : ""}>CITE</option>
-                        <option value="CMA" ${book.bookcollege === "CMA" ? "selected" : ""}>CMA</option>
-                        <option value="CAHS" ${book.bookcollege === "CAHS" ? "selected" : ""}>CAHS</option>
-                        <option value="CEA" ${book.bookcollege === "CEA" ? "selected" : ""}>CEA</option>
+                            <option value="CITE" ${book.bookcollege === "CITE" ? "selected" : ""}>CITE</option>
+                            <option value="CMA" ${book.bookcollege === "CMA" ? "selected" : ""}>CMA</option>
+                            <option value="CAHS" ${book.bookcollege === "CAHS" ? "selected" : ""}>CAHS</option>
+                            <option value="CEA" ${book.bookcollege === "CEA" ? "selected" : ""}>CEA</option>
                         </select>
                     </td>
                     <td>
@@ -65,9 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         </select>
                     </td>
                     <td>
-                        <button class="edit-button" data-id="${book.id}">Edit</button>
-                        <button class="save-button" data-id="${book.id}" style="display:none;">Save</button>
-                        <button class="delete-button" data-id="${book.id}">Delete</button>
+                        <button class="edit-button" data-book-id="${book.book_id}">Edit</button>
+                        <button class="save-button" data-book-id="${book.book_id}" style="display:none;">Save</button>
+                        <button class="delete-button" data-book-id="${book.book_id}">Delete</button>
                     </td>
                 `;
 
@@ -114,15 +114,21 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".save-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const row = this.closest("tr");
-                const id = this.getAttribute("data-id");
+                const book_id = this.getAttribute("data-book-id");
                 const bookcollege = row.querySelector(".edit-college").value;
                 const bookname = row.querySelector(".edit-name").value;
                 const bookdesc = row.querySelector(".edit-desc").value;
-                const bookstock = row.querySelector(".edit-stock").value;
+                const bookstock = row.querySelector(".edit-stock").value.trim();
                 const bookstat = row.querySelector(".book-status").value;
 
+                // Ensure stock is allowed to be 0 but not empty
+                if (bookstock === "") {
+                    showNotification("Stock cannot be empty!", "error");
+                    return;
+                }
+
                 const formData = new FormData();
-                formData.append("id", id);
+                formData.append("book_id", book_id);
                 formData.append("bookcollege", bookcollege);
                 formData.append("bookname", bookname);
                 formData.append("bookdesc", bookdesc);
@@ -146,14 +152,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
-                const id = this.getAttribute("data-id");
+                const book_id = this.getAttribute("data-book-id");
 
                 if (!confirm("Are you sure you want to delete this book?")) {
                     return;
                 }
 
                 const formData = new FormData();
-                formData.append("id", id);
+                formData.append("book_id", book_id);
 
                 const response = await fetch("http://localhost/UPBooktrack/delete_book.php", {
                     method: "POST",
@@ -170,64 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
-    document.getElementById("book-form").addEventListener("submit", async function (event) {
-        event.preventDefault();
-    
-        const bookCollege = document.getElementById("bookcollege").value.trim();
-        const bookName = document.getElementById("bookname").value.trim();
-        const bookDesc = document.getElementById("bookdesc").value.trim();
-        const bookStock = document.getElementById("bookstock").value.trim();
-        const bookImageInput = document.getElementById("bookimage");
-        const bookStatus = document.getElementById("bookstat").value;
-    
-        if (!bookCollege || !bookName || !bookDesc || !bookStock) {
-            showNotification("Please fill in all fields!", "error");
-            return;
-        }
-    
-        if (!bookImageInput.files.length) {
-            showNotification("Please select a book image!", "error");
-            return;
-        }
-    
-        const file = bookImageInput.files[0];
-        const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-        if (!allowedTypes.includes(file.type)) {
-            showNotification("Invalid file type! Upload an image (JPG, PNG).", "error");
-            return;
-        }
-    
-        const formData = new FormData();
-        formData.append("bookcollege", bookCollege);
-        formData.append("bookname", bookName);
-        formData.append("bookdesc", bookDesc);
-        formData.append("bookstock", bookStock);
-        formData.append("bookimage", file);
-        formData.append("bookstat", bookStatus);
-    
-        try {
-            const response = await fetch("http://localhost/UPBooktrack/upload_books.php", {
-                method: "POST",
-                body: formData,
-            });
-    
-            const result = await response.text();
-            console.log("Server Response:", result);
-    
-            if (result.includes("success")) {
-                showNotification("Book uploaded successfully!", "success");
-                loadBooks();
-                document.getElementById("book-form").reset();
-                document.getElementById("book-preview").style.display = "none";
-            } else {
-                showNotification(result, "error");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            showNotification("Upload failed. Please try again!", "error");
-        }
-    });
 
     function showNotification(message, type) {
         const notification = document.createElement("div");

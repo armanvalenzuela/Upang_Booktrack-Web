@@ -58,3 +58,43 @@ fetch('http://localhost/UPBooktrack/admin_get_lowstock.php')
         });
     })
     .catch(error => console.error('Error fetching low stock data:', error));
+
+// FOR FETCHING OUT OF STOCK ITEMS
+
+// FOR FETCHING ALL OF THE OUT OF STOCK ITEMS (STOCK = 0)
+fetch('http://localhost/UPBooktrack/admin_get_outOfstock.php')
+    .then(response => response.json())
+    .then(data => {
+        const table = document.getElementById('outstock');
+
+        // CLEAR ROWS EXCEPT HEADERS
+        table.innerHTML = `
+            <tr>
+                <th colspan="6" bgcolor="white">Out of Stock</th>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <th>Department</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Size</th>
+                <th>Stock</th>
+            </tr>
+        `;
+
+        // LOOP THROUGH THE RESPONSE AND ADD THEM AS TABLE ROWS
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.type}</td>
+                <td>${item.department}</td>
+                <td>${item.name}</td>
+                <td>${item.gender}</td>
+                <td>${item.size}</td>
+                <td>${item.stock}</td>
+            `;
+            table.appendChild(row);
+        });
+    })
+    .catch(error => console.error('Error fetching out-of-stock data:', error));
+
