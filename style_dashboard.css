@@ -224,7 +224,7 @@ nav a.active i, nav a:hover i {
 }
 
 #outstock th, #outstock td {
-    border: 1px solid #ddd;
+    border: none;
     padding: 12px;
     text-align: left;
     font-size: 14px;
@@ -237,6 +237,7 @@ nav a.active i, nav a:hover i {
     background-color: #8BC34A;
     color: white;
     font-weight: bold;
+    border: none;
     padding: 12px;
 }
 
@@ -251,13 +252,13 @@ nav a.active i, nav a:hover i {
     padding: 8px;
 }
 
-#requests {
+/*#requests {
     
-}
+}*/
 
 #lowstock th, #lowstock td,
 #requests th, #requests td {
-    border: 1px solid #ddd;
+    border: none;
     padding: 12px;
     text-align: left;
     font-size: 14px;
@@ -604,7 +605,7 @@ select {
 }
 
 #requests th, #requests td {
-    border: 1px solid #ddd;
+    border: none;
     padding: 12px;
     text-align: left;
     font-size: 14px;

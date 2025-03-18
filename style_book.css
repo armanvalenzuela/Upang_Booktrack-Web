@@ -388,7 +388,7 @@ background-color: #fff;
 }
 
 .inventory-table th, .inventory-table td {
-    border: 1px solid #ccc;
+    border: none; /* Remove borders */
     padding: 10px;
     text-align: left;
 }
@@ -406,7 +406,7 @@ background-color: #fff;
 
 .inventory-table th, .added-books-table th,
 .inventory-table td, .added-books-table td {
-    border: 1px solid #ccc;
+    border: none;
     padding: 10px;
     text-align: left;
 }
@@ -431,7 +431,7 @@ background-color: #fff;
     border-radius: 5px; /* Rounded corners for images */
 }
 
-button.edit-button, button.delete-button {
+button.edit-button {
     background-color: #4CAF50; /* Green background for buttons */
     color: white;
     border: none;
@@ -440,8 +440,30 @@ button.edit-button, button.delete-button {
     cursor: pointer;
 }
 
-button.edit-button:hover, button.delete-button:hover {
+button.save-button {
+    background-color: #4CAF50; /* Green background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.delete-button {
+    background-color: red; /* Green background for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button.edit-button:hover {
     background-color: #45a049; /* Darker green on hover */
+}
+
+button.delete-button:hover {
+    background-color: red; /* Darker green on hover */
 }
 
 .itemsearch {
