@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPang BookTracker</title>
+    <title>UPang BookTrack</title>
     <link rel="icon" type="x-icon" href="Images/bglogo.png">
     <link rel="stylesheet" href="style_login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="left">
+        <div class="header">
+        <div class="top-margin">    
+            <p class="large-text">An app dedicated to providing</p>
+            <p class="large-text">up-to-date stock of the college resources.</p>
+            <br><br><br><br>
+            <p class="large-text">Check the availability of uniforms, and books.</p>
+        </div>
+        </div>
+    </div>
 
+    <div class="right">
         <div class="logo-container">
-            <img src="Images/Icon.png" alt="UPang Logo">
+            <img src="Images/logo_transparent.png" alt="UPang Logo">
         </div>
 
         <form id="loginForm" action="">
@@ -34,15 +44,13 @@
             </div>
             
             <div class="button-container">
-                <button type="submit" class="btnSubmit">Sign In <img src="Images/enter.png" alt="icon" class="btn-icon"></button>
+                <button type="submit" class="login-button">Login <img src="Images/enter.png" alt="icon" class="btn-icon"></button>
                 </br>
             </div>
 
         
             <p id="errorMessage" style="color: red; text-align: center;"></p>
         </form>
-        
-        
     </div>
 
     <script src="To be used later/show_pw.js"></script>

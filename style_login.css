@@ -1,20 +1,59 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Trebuchet MS', sans-serif;
 }
-body
-{
+body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('Images/white_bg.jpg') no-repeat;
+    height: 100vh;
+    background: url('Images/login_bg.png') no-repeat;
     background-size: cover;
-    background-position: center;
+    margin: 0;
 }
+
+.header {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.left {
+    align-items: flex-start;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.top-margin {
+    margin-bottom: 40px;
+    margin-top: 215px;
+    text-align: center;
+    width: 100%;
+}
+
+.large-text {
+    color: white;
+    font-size: 54px;
+    margin: 0;
+}
+
+.right {
+    align-items: center;
+    background-image: url('Images/white_bg.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    border-radius: 15px;
+}
+
+
 .logo-container {
     display: flex;
     justify-content: center;
@@ -24,33 +63,22 @@ body
     width: 120px; 
     height: auto;
 }
-.wrapper
-{
-    width: 425px;
-    background-color: white;
-    border: 2px solid;
-    color: black;
-    border-radius: 10px;
-    padding: 30px 40px;
-    text-align: center;
-}
-.wrapper h1
+
+h1
 {
     font-size: 35px;
     text-align: center;
 }
-.wrapper .input-box
+.input-box
 {
     position: relative;
-    width: 100%;
+    width: 500px;
     height: 50px;
-    margin: 30px 0;
+    margin: 30px auto;
 }
-.input-box input
-{
+.input-box input {
     width: 100%;
     height: 100%;
-    background: transparent;
     border: none;
     outline: none;
     border: 2px solid;
@@ -72,8 +100,7 @@ body
     font-size: 20px;
     cursor: pointer;
 }
-.wrapper .remember-forgot
-{
+.remember-forgot {
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
@@ -90,8 +117,7 @@ body
     text-decoration: none;
 }
 
-.remember-forgot a:hover
-{
+.remember-forgot a:hover {
     text-decoration: underline;
 }
 .button-container {
@@ -103,35 +129,35 @@ body
     color: darkgreen;
 }
 
-.wrapper .btnSubmit
-{
-    display: flex;
+.login-button {
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
     background: darkgreen; 
     border: none;
-    outline: none;
     border-radius: 25px;
-    text-align: center;
     cursor: pointer;
-    font-size: 18px;
     color: white;
+    display: flex;
+    font-size: 18px;
     font-weight: 600;
-    margin: 0 auto;
-    margin-top: 10px;
+    height: 50px;
+    justify-content: center;
+    margin: 10px auto;
+    margin-top: 20px;
+    width: 50%;
+    outline: none;
+    text-align: center;
     transition: background-color 0.3s;
 }
 .btn-icon {
     width: 25px; 
     height: 25px;
+    right: 25px;
 }
-.wrapper .btnSubmit:hover
+.login-button:hover
 {
     background: #4CAF50;
 }
-.wrapper .signup-link
+.signup-link
 {
     font-size: 14.5px;
     text-align: center;

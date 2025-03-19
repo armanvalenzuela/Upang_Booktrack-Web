@@ -7,12 +7,50 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('Images/white_bg.jpg') no-repeat;
+    height: 100vh;
+    background: url('Images/login_bg.png') no-repeat;
     background-size: cover;
-    background-position: center;
+}
+
+.header {
+    align-items: center;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.left {
+    align-items: flex-start;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.top-margin {
+    margin-bottom: 40px;
+    margin-top: 215px;
+    text-align: center;
+    width: 100%;
+}
+
+.large-text {
+    color: white;
+    font-size: 54px;
+    margin: 0;
+}
+
+.right {
+    align-items: center;
+    background-image: url('Images/white_bg.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
 }
 
 .logo-container {
@@ -26,17 +64,7 @@ body {
     height: auto;
 }
 
-.wrapper {
-    width: 425px;
-    background-color: white;
-    border: 2px solid;
-    color: black;
-    border-radius: 10px;
-    padding: 30px 40px;
-    text-align: center;
-}
-
-.wrapper h2 {
+h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -101,7 +129,7 @@ body {
 
 .button-container {
     text-align: center; 
-    margin-top: 20px;   
+    margin-top: 20px;
 }
 
 .btnSubmit {
@@ -121,6 +149,7 @@ body {
     font-weight: 600;
     margin: 0 auto;
     margin-top: 10px;
+    text-decoration: none;
     transition: background-color 0.3s;
 }
 
@@ -131,4 +160,11 @@ body {
 .btn-icon {
     width: 25px; 
     height: 25px;
+}
+
+.line {
+    background-color: black; /* Makes the line visible */
+    height: 2px; /* Increase thickness */
+    width: 100%; /* Adjust width to match the form */
+    margin: 15px auto; /* Center and add spacing */
 }
