@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("JS loaded!"); // Debugging
 
-    loadBooks(); // Load books when the page loads
+    loadBooks(); //RUN FUNCT WHEN PAGE LOADS
 
     const bookStatSelect = document.getElementById("bookstat");
-    updateStatusColor(); // Apply color to status dropdown
+    updateStatusColor();
 
     if (bookStatSelect) {
         bookStatSelect.addEventListener("change", updateStatusColor);
     }
 
+    //UPDATE STAT COLOR FOR UPLOADING
     function updateStatusColor() {
         if (bookStatSelect.value === "available") {
             bookStatSelect.style.backgroundColor = "darkgreen";
@@ -20,7 +21,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Fetch books from the database
+    // SEARCH FUNCTIONALITY
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+
+            document.querySelectorAll("#books-list tr").forEach(row => {
+                const rowText = Array.from(row.querySelectorAll("td"))
+                    .map(td => {
+                        const input = td.querySelector("input, select, textarea");
+                        return input ? (input.value || input.options?.[input.selectedIndex]?.text || '') : td.textContent;
+                    })
+                    .join(" ")
+                    .toLowerCase();
+
+                row.style.display = rowText.includes(searchTerm) ? "" : "none";
+            });
+        });
+    }
+
+    // FETCH BOOKS FROM DATABASE AND SORT THEM INTO TABLES
     async function loadBooks() {
         try {
             const response = await fetch("http://localhost/UPBooktrack/fetch_books.php");
@@ -87,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //UPDATE DROPDOWN COLOR BASED ON OPTION SELECTED
     function updateDropdownColor(select) {
         if (select.value === "available") {
             select.style.backgroundColor = "darkgreen";
@@ -97,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //MODIFICATION FUNCTIONS
     function attachEventListeners() {
         document.querySelectorAll(".edit-button").forEach(button => {
             button.addEventListener("click", function () {
@@ -111,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        //UPDATE FUNCT
         document.querySelectorAll(".save-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const row = this.closest("tr");
@@ -121,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const bookstock = row.querySelector(".edit-stock").value.trim();
                 const bookstat = row.querySelector(".book-status").value;
 
-                // Ensure stock is allowed to be 0 but not empty
                 if (bookstock === "") {
                     showNotification("Stock cannot be empty!", "error");
                     return;
@@ -150,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        //DELETE FUNCT
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const book_id = this.getAttribute("data-book-id");
@@ -177,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //NOTIFICATION FUNCT
     function showNotification(message, type) {
         const notification = document.createElement("div");
         notification.className = `notification ${type}`;

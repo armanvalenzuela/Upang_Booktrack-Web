@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const previewImage = document.getElementById("uniform-preview");
     const uniformsList = document.getElementById("uniforms-list");
     
-    loadUniforms(); // Load uniforms when the page loads
+    loadUniforms(); // RUN FUNCT AS PAGE LOADS
 
     function updateStatusColor() {
         if (uniformStatSelect.value === "available") {
@@ -22,9 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (uniformStatSelect) {
         uniformStatSelect.addEventListener("change", updateStatusColor);
-        updateStatusColor(); // Run initially
+        updateStatusColor();
     }
 
+    //PREVIEW IMAGE FILE WHEN UPLOADING
     function previewImageFile(event) {
         const file = event.target.files[0];
         if (file) {
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
+    //UNIFORM UPLOAD
     uniformForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (!validateForm()) {
@@ -88,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
     
-    // Notification function
+    // NOTIFICATION FUNCT
     function showNotification(message, type) {
         const notification = document.createElement("div");
         notification.className = `notification ${type}`;
@@ -101,23 +103,28 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(() => notification.remove(), 500);
         }, 3000);
     }
-    
-    
-    // Notification function
-    function showNotification(message, type) {
-        const notification = document.createElement("div");
-        notification.className = `notification ${type}`;
-        notification.innerText = message;
-    
-        document.body.appendChild(notification);
-    
-        setTimeout(() => {
-            notification.style.opacity = "0";
-            setTimeout(() => notification.remove(), 500);
-        }, 3000);
-    }
-    
 
+    //SEARCH FUNCTIONALITY
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+
+            document.querySelectorAll("#uniforms-list tr").forEach(row => {
+                const rowText = Array.from(row.querySelectorAll("td"))
+                    .map(td => {
+                        const input = td.querySelector("input, select, textarea");
+                        return input ? (input.value || input.options?.[input.selectedIndex]?.text || '') : td.textContent;
+                    })
+                    .join(" ")
+                    .toLowerCase();
+
+                row.style.display = rowText.includes(searchTerm) ? "" : "none";
+            });
+        });
+    }
+
+    //FETCH ALL UNIFORM DATA FROM DB AND SORT THEM INTO TABLE
     async function loadUniforms() {
         try {
             const response = await fetch("http://localhost/UPBooktrack/fetch_uniforms.php");
@@ -188,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //UPDATE DROPDOWN COLOR BASED ON SELECTED OPTION
     function updateDropdownColor(select) {
         if (select.value === "available") {
             select.style.backgroundColor = "darkgreen";
@@ -198,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //EDIT FUNCTION
     function attachEventListeners() {
         document.querySelectorAll(".edit-button").forEach(button => {
             button.addEventListener("click", function () {
@@ -253,6 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        //DELETE FUNCTION
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const id = this.getAttribute("data-id");
@@ -275,7 +285,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (result.status === "success") {
                         showNotification("Uniform deleted successfully!", "success");
         
-                        // Refresh the uniform list
                         loadUniforms();
                     } else {
                         showNotification("Failed to delete uniform: " + result.message, "error");

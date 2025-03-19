@@ -474,6 +474,29 @@ button.delete-button:hover {
     box-sizing: border-box; /* Include padding and border in element's total width */
 }
 
+.search-container {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.search-container .search-box {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px;
+    width: 250px;
+    font-size: 14px;
+}
+
+.search-container i {
+    color: #8BC34A;
+    font-size: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 /* Notification Styling */
 
 .notification {
