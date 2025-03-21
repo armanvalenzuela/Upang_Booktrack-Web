@@ -177,28 +177,40 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
                 const book_id = this.getAttribute("data-book-id");
-
+        
+                if (!book_id) {
+                    showNotification("Error: Missing book ID.", "error");
+                    return;
+                }
+        
                 if (!confirm("Are you sure you want to delete this book?")) {
                     return;
                 }
-
+        
                 const formData = new FormData();
                 formData.append("book_id", book_id);
-
-                const response = await fetch("http://localhost/UPBooktrack/delete_book.php", {
-                    method: "POST",
-                    body: formData
-                });
-
-                const result = await response.text();
-                if (result.includes("success")) {
-                    showNotification("Book deleted successfully!", "success");
-                    loadBooks();
-                } else {
-                    showNotification("Failed to delete book.", "error");
+        
+                try {
+                    const response = await fetch("http://localhost/UPBooktrack/delete_book.php", {
+                        method: "POST",
+                        body: formData
+                    });
+        
+                    const result = await response.json();
+        
+                    if (result.status === "success") {
+                        showNotification("Book deleted successfully!", "success");
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        showNotification("Failed to delete book: " + result.message, "error");
+                    }
+                } catch (error) {
+                    console.error("Error deleting book:", error);
+                    showNotification("Error deleting book.", "error");
                 }
             });
         });
+        
     }
 
     //NOTIFICATION FUNCT
