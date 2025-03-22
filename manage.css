@@ -124,7 +124,6 @@ nav a.active i, nav a:hover i {
     margin-top: 20px;
 }
 
-/* Header Container with Search */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -155,7 +154,6 @@ nav a.active i, nav a:hover i {
     cursor: pointer;
 }
 
-/* Update existing h1 style to remove margin-bottom */
 h1 {
     font-size: 28px;
     margin-bottom: 0;

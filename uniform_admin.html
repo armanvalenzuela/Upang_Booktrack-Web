@@ -19,9 +19,6 @@
             
         </div>
         <div class="icons">
-            <span class="notification">
-                <i class='bx bx-bell'></i>
-                <span class="notification-badge"></span>
             </span>
             <span class="user" id="user-icon">
                 <i class='bx bx-user-circle'></i>
@@ -63,7 +60,6 @@
                     <tr>
                         <th>Department</th>
                         <th>Uniform Name</th>
-                        <th>Description</th>
                         <th>Image</th>
                         <th>Gender</th>
                         <th>Size</th>
@@ -86,7 +82,6 @@
                             </select>
                         </td>
                         <td><input id="uniformname" name="uniformname" class="itemsearch" type="text" placeholder="Uniform Name"></td>
-                        <td><textarea id="uniformdesc" name="uniformdesc" class="itemsearch" type="text" placeholder="Uniform Description"></textarea></td>
                         <td>
                             <input id="uniformimage" name="uniformimage" type="file" accept="image/*" onchange="previewImage(event, 'uniform-preview')">
                             <img id="uniform-preview" class="image-preview" src="#" alt="Uniform Image" style="display:none;">
@@ -136,7 +131,6 @@
                 <tr>
                     <th>Department</th>
                     <th>Uniform Name</th>
-                    <th>Description</th>
                     <th>Image</th>
                     <th>Size</th>
                     <th>Gender</th>

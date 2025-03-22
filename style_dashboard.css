@@ -43,7 +43,7 @@ body {
 .dropdown-user {
     display: none;
     position: absolute;
-    top: 50px; /* Adjust if needed */
+    top: 50px;
     right: 0;
     background: white;
     border: 1px solid gray;
@@ -64,14 +64,14 @@ body {
     color: black;
 }
 #change-pw a {
-    text-decoration: none; /* Removes underline */
-    color: inherit; /* Uses the default text color */
+    text-decoration: none;
+    color: inherit;
 }
 .change-pw a:focus, 
 .change-pw a:active, 
 .change-pw a:hover {
-    outline: none; /* Removes focus outline */
-    color: inherit; /* Keeps text color the same */
+    outline: none;
+    color: inherit;
 }
 .change-pw a {
     text-decoration: none;
@@ -102,7 +102,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 910px; /* Adjusted for top bar */
+    height: 910px;
     position: fixed;
     top: 0px;
     left: 0;
@@ -161,7 +161,6 @@ nav a.active i, nav a:hover i {
     min-width: 1350px;
 }
 
-/* Adjust h2 positioning and margin */
 .content h2 {
     margin-bottom: 100px; /* Add space below the Dashboard text */
 }
@@ -464,7 +463,7 @@ select {
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #8BC34A; /* Same as top bar */
+    background-color: #8BC34A;
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -488,7 +487,7 @@ select {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    animation: fadeIn 0.3s; /* Animation for dropdown */
+    animation: fadeIn 0.3s;
 }
 
 /* Links inside the dropdown */
