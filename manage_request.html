@@ -1,0 +1,183 @@
+<!-- TO DO: FIX THE SIDEBAR (DESIGN, SPACING ETC), ADJUST THE TOPBAR (SEARCH CONTAINER, PROFILE ICON ETC) -->
+<!-- TO DO: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Admin Panel</title>
+    <link rel="stylesheet" href="manage_request.css"> <!-- Use the same CSS file -->
+    <link rel="icon" type="x-icon" href="Images/bglogo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="manage_request.css"> <!-- Link to admin-specific CSS -->
+</head>
+<body>
+
+    <!-- Top Bar -->    
+    <header class="top-bar">
+        <div class="icons">
+            <span class="user" id="user-icon">
+                <i class='bx bx-user-circle'></i>
+            </span>
+        </div>
+        <div class="dropdown-user" id="dropdown-user">
+            <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
+            <p><strong>Employee No:</strong> <span id="studentNo">Loading...</span></p></br>
+            <a href="change-pw.html">
+                <button id="change-pw"><strong>Change Password</strong></button>
+            </a></br></br>                    
+            <a href="login.html">
+                <button id="login"><strong>Logout</strong></button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
+        <nav>
+            <a href="dashboard.html"><i class='bx bxs-dashboard'></i> Dashboard</a>
+            <a href="book_admin.html"><i class='bx bxs-book'></i> Books</a>
+            <a href="uniform_admin.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
+            <a href="manage.html"><i class='bx bxs-user-pin' ></i>Manage Users</a>
+            <a href="manage_request.html" class="active"><i class='bx bxs-user-pin' ></i>Manage Request</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <div class="requests-book">
+            <table id="requests">
+                <tr>
+                    <th colspan="5" bgcolor="white">Requests
+                        <div class="filter-container">
+                            <select id="typeFilterRequests">
+                                <option value="">All Types</option>
+                                <option value="book">Book</option>
+                                <option value="uniform">Uniform</option>
+                            </select>
+                            <select id="departmentFilterRequests">
+                                <option value="">All Departments</option>
+                                <option value="">CITE</option>
+                                <option value="">CMA</option>
+                                <option value="">CAHS</option>
+                                <option value="">CEA</option>
+                                <option value="">CCJE</option>
+                                <option value="">CAS</option>
+                                <option value="">SHS</option>
+                            </select>
+                            <select id="sortFilter">
+                                <option value="">Sort By</option>
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>No</th>
+                    <th>Department</th>
+                    <th>Name</th>
+                    <th>Requests</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>CITE</td>
+                    <td>RSO</td>
+                    <td>5</td>
+                    <td>
+                        <button class="action-btn approve">✓</button>
+                        <button class="action-btn deny">✕</button>
+                    </td>
+                </tr>
+                <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>11</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>12</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>13</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>14</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>15</td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="requests-uniform">
+        <table id="requests">
+            <tr>
+                <th colspan="6" bgcolor="white">Requests
+                    <div class="filter-container">
+                        <select id="typeFilterRequests">
+                            <option value="">All Types</option>
+                            <option value="book">Book</option>
+                            <option value="uniform">Uniform</option>
+                        </select>
+                        <select id="departmentFilterRequests">
+                            <option value="">All Departments</option>
+                            <option value="">CITE</option>
+                            <option value="">CMA</option>
+                            <option value="">CAHS</option>
+                            <option value="">CEA</option>
+                            <option value="">CCJE</option>
+                            <option value="">CAS</option>
+                            <option value="">SHS</option>
+                        </select>
+                        <select id="sortFilter">
+                            <option value="">Sort By</option>
+                            <option value="asc">Ascending</option>
+                            <option value="desc">Descending</option>
+                        </select>
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th>No</th>
+                <th>Department</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Requests</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>CITE</td>
+                <td>RSO</td>
+                <td>2XL</td>
+                <td>5</td>
+                <td>
+                    <button class="action-btn approve">✓</button>
+                    <button class="action-btn deny">✕</button>
+                </td>
+            </tr>
+            <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>13</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>14</td><td></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td>15</td><td></td><td></td><td></td><td></td><td></td></tr>
+        </table>
+    </div>
+</div>
+    </main>
+    <script src="dashboard.js"></script>
+    <script src="details_dropdown.js"></script>
+</body>
+</html>

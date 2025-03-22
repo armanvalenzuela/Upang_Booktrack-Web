@@ -194,11 +194,11 @@ nav a.active i, nav a:hover i {
 }
 
 .outstock-container {
-    width: 800px;
-    min-width: 650px;
+    width: 650px;
+    min-width: 600px;
     margin: 0;
     position: absolute;
-    top: -50px;
+    top: 130px;
     left: 720px;
 }
 
@@ -213,8 +213,8 @@ nav a.active i, nav a:hover i {
 }
 
 #outstock {
-    width: 800px;
-    min-width: 650px;
+    width: 650px;
+    min-width: 600px;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -659,6 +659,20 @@ select {
 
 #requests td:last-child {
     text-align: center;
+}
+
+#lowstock th, #outstock th {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 15px 12px;
+    line-height: 1.2;
+}
+
+#lowstock th[colspan="6"], #outstock th[colspan="6"] {
+    padding: 15px 12px;
+    line-height: 1.2;
 }
 
   
