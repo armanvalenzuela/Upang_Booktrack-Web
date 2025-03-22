@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadBooks(); //RUN FUNCT WHEN PAGE LOADS
 
+    const bookForm = document.getElementById("book-form");
+    const saveButton = document.getElementById("save-button");
+
     const bookStatSelect = document.getElementById("bookstat");
     updateStatusColor();
 
@@ -40,6 +43,33 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+    bookForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(bookForm);
+
+        try {
+            const response = await fetch("http://localhost/UPBooktrack/upload_books.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.text();
+
+            if (result.includes("success")) {
+                showNotification("Book added successfully!", "success");
+                bookForm.reset(); // Reset form
+                loadBooks(); // Refresh book list
+            } else {
+                showNotification(result, "error"); // Show error message from PHP
+            }
+        } catch (error) {
+            console.error("Error uploading book:", error);
+            showNotification("Failed to upload book.", "error");
+        }
+    });
+
 
     // FETCH BOOKS FROM DATABASE AND SORT THEM INTO TABLES
     async function loadBooks() {
