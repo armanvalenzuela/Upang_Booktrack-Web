@@ -44,7 +44,7 @@ body {
 
 .right {
     align-items: center;
-    background-image: url('Images/white_bg.jpg');
+    background-color: white;
     background-size: cover;
     border-radius: 10px;
     display: flex;
