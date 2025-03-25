@@ -675,4 +675,33 @@ select {
     line-height: 1.2;
 }
 
+.header-select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: left;
+}
+
+.header-select option {
+    background-color: white;
+    color: #424242;
+    padding: 8px;
+}
+
+.header-select:focus {
+    outline: none;
+}
+
+#lowstock th, #outstock th {
+    padding: 0;  /* Remove padding to align dropdowns */
+}
+
   

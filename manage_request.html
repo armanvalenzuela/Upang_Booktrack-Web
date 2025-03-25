@@ -52,36 +52,42 @@
         <div class="requests-book">
             <table id="requests">
                 <tr>
-                    <th colspan="5" bgcolor="white">Requests
-                        <div class="filter-container">
-                            <select id="typeFilterRequests">
-                                <option value="">All Types</option>
-                                <option value="book">Book</option>
-                                <option value="uniform">Uniform</option>
-                            </select>
-                            <select id="departmentFilterRequests">
-                                <option value="">All Departments</option>
-                                <option value="">CITE</option>
-                                <option value="">CMA</option>
-                                <option value="">CAHS</option>
-                                <option value="">CEA</option>
-                                <option value="">CCJE</option>
-                                <option value="">CAS</option>
-                                <option value="">SHS</option>
-                            </select>
-                            <select id="sortFilter">
-                                <option value="">Sort By</option>
-                                <option value="asc">Ascending</option>
-                                <option value="desc">Descending</option>
-                            </select>
-                        </div>
-                    </th>
+                    <th colspan="5" bgcolor="white">Requests Book</th>
                 </tr>
                 <tr>
-                    <th>No</th>
-                    <th>Department</th>
-                    <th>Name</th>
-                    <th>Requests</th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">No ▼</option>
+                            <option value="asc">1-15</option>
+                            <option value="desc">15-1</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Department ▼</option>
+                            <option value="CITE">CITE</option>
+                            <option value="CMA">CMA</option>
+                            <option value="CAHS">CAHS</option>
+                            <option value="CEA">CEA</option>
+                            <option value="CCJE">CCJE</option>
+                            <option value="CAS">CAS</option>
+                            <option value="SHS">SHS</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Name ▼</option>
+                            <option value="asc">A to Z</option>
+                            <option value="desc">Z to A</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Requests ▼</option>
+                            <option value="asc">Low to High</option>
+                            <option value="desc">High to Low</option>
+                        </select>
+                    </th>
                     <th>Actions</th>
                 </tr>
                 <tr>
@@ -91,7 +97,6 @@
                     <td>5</td>
                     <td>
                         <button class="action-btn approve">✓</button>
-                        <button class="action-btn deny">✕</button>
                     </td>
                 </tr>
                 <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
@@ -110,72 +115,93 @@
                 <tr><td>15</td><td></td><td></td><td></td><td></td></tr>
             </table>
         </div>
-    </div>
 
-    <div class="requests-uniform">
-        <table id="requests">
-            <tr>
-                <th colspan="6" bgcolor="white">Requests
-                    <div class="filter-container">
-                        <select id="typeFilterRequests">
-                            <option value="">All Types</option>
-                            <option value="book">Book</option>
-                            <option value="uniform">Uniform</option>
+        <div class="requests-uniform">
+            <table id="requests">
+                <tr>
+                    <th colspan="7" bgcolor="white">Requests Uniform</th>
+                </tr>
+                <tr>
+                    <th>
+                        <select class="header-select">
+                            <option value="">No ▼</option>
+                            <option value="asc">1-15</option>
+                            <option value="desc">15-1</option>
                         </select>
-                        <select id="departmentFilterRequests">
-                            <option value="">All Departments</option>
-                            <option value="">CITE</option>
-                            <option value="">CMA</option>
-                            <option value="">CAHS</option>
-                            <option value="">CEA</option>
-                            <option value="">CCJE</option>
-                            <option value="">CAS</option>
-                            <option value="">SHS</option>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Department ▼</option>
+                            <option value="CITE">CITE</option>
+                            <option value="CMA">CMA</option>
+                            <option value="CAHS">CAHS</option>
+                            <option value="CEA">CEA</option>
+                            <option value="CCJE">CCJE</option>
+                            <option value="CAS">CAS</option>
+                            <option value="SHS">SHS</option>
                         </select>
-                        <select id="sortFilter">
-                            <option value="">Sort By</option>
-                            <option value="asc">Ascending</option>
-                            <option value="desc">Descending</option>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Name ▼</option>
+                            <option value="asc">A to Z</option>
+                            <option value="desc">Z to A</option>
                         </select>
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th>No</th>
-                <th>Department</th>
-                <th>Name</th>
-                <th>Size</th>
-                <th>Requests</th>
-                <th>Actions</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>CITE</td>
-                <td>RSO</td>
-                <td>2XL</td>
-                <td>5</td>
-                <td>
-                    <button class="action-btn approve">✓</button>
-                    <button class="action-btn deny">✕</button>
-                </td>
-            </tr>
-            <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>11</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>12</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>13</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>14</td><td></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td>15</td><td></td><td></td><td></td><td></td><td></td></tr>
-        </table>
-    </div>
-</div>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Gender ▼</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Size ▼</option>
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="2XL">2XL</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select class="header-select">
+                            <option value="">Requests ▼</option>
+                            <option value="asc">Low to High</option>
+                            <option value="desc">High to Low</option>
+                        </select>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>CITE</td>
+                    <td>RSO</td>
+                    <td>M</td>
+                    <td>2XL</td>
+                    <td>5</td>
+                    <td>
+                        <button class="action-btn approve">✓</button>
+                    </td>
+                </tr>
+                <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
     </main>
     <script src="dashboard.js"></script>
     <script src="details_dropdown.js"></script>
