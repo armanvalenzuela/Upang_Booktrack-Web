@@ -16,13 +16,27 @@ body {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: #8BC34A;
     padding: 10px 20px;
     height: 60px;
     width: 100%;
     z-index: 1;
 }
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 40px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+}
+
 
 /* TOP RIGHT ICONS */
 .icons {
@@ -102,24 +116,11 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 910px;
+    height: calc(100vh - 60px);  /* Adjusted height to account for top bar */
     position: fixed;
-    top: 0px;
+    top: 60px;  /* Changed from 0px to 60px (height of top bar) */
     left: 0;
     z-index: 1;
-}
-
-.sidebar-logo{
-    text-align: center;
-    margin-bottom: 20px;
-
-}
-
-.sidebar-logo img {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 nav a {

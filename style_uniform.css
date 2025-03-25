@@ -16,7 +16,7 @@ body {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: #8BC34A;
     padding: 10px 20px;
     height: 60px;
@@ -24,9 +24,16 @@ body {
     z-index: 1;
 }
 
-/* LOGO */
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* SEARCH BAR */
@@ -118,9 +125,9 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 910px; /* Adjusted for top bar */
+    height: calc(100vh - 60px);
     position: fixed;
-    top: 0px;
+    top: 60px;
     left: 0;
     z-index: 1;
 }
