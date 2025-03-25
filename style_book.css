@@ -21,9 +21,9 @@ body {
     padding: 10px 20px;
     height: 60px;
     width: 100%;
-    position: sticky;  /* Changed from default */
-    top: 0;            /* Stick to the top */
-    z-index: 1000;     /* Ensure it's above other content */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -131,7 +131,7 @@ body {
     position: fixed;
     top: 60px;
     left: 0;
-    z-index: 999;      /* Lower than top bar */
+    z-index: 999;
 }
 
 .sidebar-logo{
