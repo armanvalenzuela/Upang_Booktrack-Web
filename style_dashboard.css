@@ -16,13 +16,27 @@ body {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: #8BC34A;
     padding: 10px 20px;
     height: 60px;
     width: 100%;
     z-index: 1;
 }
+
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 40px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+}
+
 
 /* TOP RIGHT ICONS */
 .icons {
@@ -102,24 +116,11 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 910px;
+    height: calc(100vh - 60px);  /* Adjusted height to account for top bar */
     position: fixed;
-    top: 0px;
+    top: 60px;  /* Changed from 0px to 60px (height of top bar) */
     left: 0;
     z-index: 1;
-}
-
-.sidebar-logo{
-    text-align: center;
-    margin-bottom: 20px;
-
-}
-
-.sidebar-logo img {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
 nav a {
@@ -194,11 +195,11 @@ nav a.active i, nav a:hover i {
 }
 
 .outstock-container {
-    width: 800px;
-    min-width: 650px;
+    width: 650px;
+    min-width: 600px;
     margin: 0;
     position: absolute;
-    top: -50px;
+    top: 130px;
     left: 720px;
 }
 
@@ -213,8 +214,8 @@ nav a.active i, nav a:hover i {
 }
 
 #outstock {
-    width: 800px;
-    min-width: 650px;
+    width: 650px;
+    min-width: 600px;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -661,4 +662,45 @@ select {
     text-align: center;
 }
 
-  
+#lowstock th, #outstock th {
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 15px 12px;
+    line-height: 1.2;
+}
+
+#lowstock th[colspan="6"], #outstock th[colspan="6"] {
+    padding: 15px 12px;
+    line-height: 1.2;
+}
+
+.header-select {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: left;
+}
+
+.header-select option {
+    background-color: white;
+    color: #424242;
+    padding: 8px;
+}
+
+.header-select:focus {
+    outline: none;
+}
+
+#lowstock th, #outstock th {
+    padding: 0;  /* Remove padding to align dropdowns */
+}

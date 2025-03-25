@@ -6,18 +6,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="style_dashboard.css"> <!-- Use the same CSS file -->
+    <title>Request Admin Panel</title>
+    <link rel="stylesheet" href="manage_request.css"> <!-- Use the same CSS file -->
     <link rel="icon" type="x-icon" href="Images/bglogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style_dashboard.css"> <!-- Link to admin-specific CSS -->
+    <link rel="stylesheet" href="manage_request.css"> <!-- Link to admin-specific CSS -->
 </head>
 <body>
 
     <!-- Top Bar -->    
     <header class="top-bar">
         <div class="logo">
-            <img src="Images/bglogo.png" alt="UPang Logo">
+            <img src="Images/bglogo.png" alt="UPang Logo" style="height: 40px; width: auto;">
         </div>
         <div class="icons">
             <span class="user" id="user-icon">
@@ -38,169 +38,171 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        
         <nav>
-            <a href="dashboard.html" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a>
+            <a href="dashboard.html"><i class='bx bxs-dashboard'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book'></i> Books</a>
             <a href="uniform_admin.html"><i class='bx bxs-t-shirt'></i> Uniform</a>
             <a href="manage.html"><i class='bx bxs-user-pin' ></i>Manage Users</a>
-            <a href="manage_request.html"><i class='bx bxs-user-pin' ></i>Manage Request</a>
+            <a href="manage_request.html" class="active"><i class='bx bxs-user-pin' ></i>Manage Request</a>
         </nav>
     </aside>
 
     <!-- Main Content -->
     <main class="content">
-        <h2>Dashboard</h2>
-        <div class="stats-container">
-            <div class="bookavailability">
-                <p id="textbooksavail">Books Available</p>
-                <img class="bookicon" src="Images/bookicon.png"><br/><br/>
-                <h1>&nbsp; &nbsp;100</h1>
+        <div class="requests-container">
+            <div class="requests-book">
+                <table id="requests">
+                    <tr>
+                        <th colspan="5" bgcolor="white">Requests Book</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <select class="header-select">
+                                <option value="">No ▼</option>
+                                <option value="asc">1-15</option>
+                                <option value="desc">15-1</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Department ▼</option>
+                                <option value="CITE">CITE</option>
+                                <option value="CMA">CMA</option>
+                                <option value="CAHS">CAHS</option>
+                                <option value="CEA">CEA</option>
+                                <option value="CCJE">CCJE</option>
+                                <option value="CAS">CAS</option>
+                                <option value="SHS">SHS</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Name ▼</option>
+                                <option value="asc">A to Z</option>
+                                <option value="desc">Z to A</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Requests ▼</option>
+                                <option value="asc">Low to High</option>
+                                <option value="desc">High to Low</option>
+                            </select>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>CITE</td>
+                        <td>RSO</td>
+                        <td>5</td>
+                        <td>
+                            <button class="action-btn approve">✓</button>
+                        </td>
+                    </tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>11</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>12</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>13</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>14</td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>15</td><td></td><td></td><td></td><td></td></tr>
+                </table>
             </div>
-
-            <div class="uniformavailability">
-                Uniforms Available
-                <img class="uniformicon" src="Images/uniformlogo.png">
-            </div>
-
-            <div class="profile-user">
-                Total User
-                <img class="usericon" src="Images/profile-user.png">
+            <div class="requests-uniform">
+                <table id="requests">
+                    <tr>
+                        <th colspan="7" bgcolor="white">Requests Uniform</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <select class="header-select">
+                                <option value="">No ▼</option>
+                                <option value="asc">1-15</option>
+                                <option value="desc">15-1</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Department ▼</option>
+                                <option value="CITE">CITE</option>
+                                <option value="CMA">CMA</option>
+                                <option value="CAHS">CAHS</option>
+                                <option value="CEA">CEA</option>
+                                <option value="CCJE">CCJE</option>
+                                <option value="CAS">CAS</option>
+                                <option value="SHS">SHS</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Name ▼</option>
+                                <option value="asc">A to Z</option>
+                                <option value="desc">Z to A</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Gender ▼</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Size ▼</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="2XL">2XL</option>
+                            </select>
+                        </th>
+                        <th>
+                            <select class="header-select">
+                                <option value="">Requests ▼</option>
+                                <option value="asc">Low to High</option>
+                                <option value="desc">High to Low</option>
+                            </select>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>CITE</td>
+                        <td>RSO</td>
+                        <td>M</td>
+                        <td>2XL</td>
+                        <td>5</td>
+                        <td>
+                            <button class="action-btn approve">✓</button>
+                        </td>
+                    </tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
             </div>
         </div>
-
-        <div class="tables-container">
-            <div class="lowstock-container">
-                <table id="lowstock">
-                    <tr>
-                        <th colspan="6" bgcolor="white">Low Stock</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Type ▼</option>
-                                <option value="book">Book</option>
-                                <option value="uniform">Uniform</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Department ▼</option>
-                                <option value="CITE">CITE</option>
-                                <option value="CMA">CMA</option>
-                                <option value="CAHS">CAHS</option>
-                                <option value="CEA">CEA</option>
-                                <option value="CCJE">CCJE</option>
-                                <option value="CAS">CAS</option>
-                                <option value="SHS">SHS</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Name ▼</option>
-                                <option value="asc">A to Z</option>
-                                <option value="desc">Z to A</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Gender ▼</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Size ▼</option>
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="2XL">2XL</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Stock ▼</option>
-                                <option value="asc">Low to High</option>
-                                <option value="desc">High to Low</option>
-                            </select>
-                        </th>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="outstock-container">
-                <table id="outstock">
-                    <tr>
-                        <th colspan="6" bgcolor="white">Out of Stock</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Type ▼</option>
-                                <option value="book">Book</option>
-                                <option value="uniform">Uniform</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Department ▼</option>
-                                <option value="CITE">CITE</option>
-                                <option value="CMA">CMA</option>
-                                <option value="CAHS">CAHS</option>
-                                <option value="CEA">CEA</option>
-                                <option value="CCJE">CCJE</option>
-                                <option value="CAS">CAS</option>
-                                <option value="SHS">SHS</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Name ▼</option>
-                                <option value="asc">A to Z</option>
-                                <option value="desc">Z to A</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Gender ▼</option>
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Size ▼</option>
-                                <option value="XS">XS</option>
-                                <option value="S">S</option>
-                                <option value="M">M</option>
-                                <option value="L">L</option>
-                                <option value="XL">XL</option>
-                                <option value="2XL">2XL</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
-                                <option value="">Stock ▼</option>
-                                <option value="asc">Low to High</option>
-                                <option value="desc">High to Low</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td></tr>
-                </table>
-            </div>
     </main>
     <script src="dashboard.js"></script>
     <script src="details_dropdown.js"></script>

@@ -1,5 +1,5 @@
-<!-- TO DO: FIX THE SIDEBAR (DESIGN, SPACING ETC), ADJUST THE TOPBAR (SEARCH CONTAINER, PROFILE ICON ETC) -->
-<!-- TO DO: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) -->
+<!-- QA TESTED-->
+<!-- TO DO FOR FRONT END SIDE: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) BASED NIYO DON SA FIGMA PARA MAGANDANG TIGNAN -->
  
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +16,9 @@
 
     <!-- Top Bar -->
     <header class="top-bar">
+        <div class="logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
         <div class="search-container">
         </div>
         <div class="icons">
@@ -36,14 +39,12 @@
     </header>
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-logo">
-            <img src="Images/bglogo.png" alt="UPang Logo">
-        </div>
         <nav>
             <a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a>
             <a href="book_admin.html" class="active"><i class='bx bxs-book'></i> Books</a>
             <a href="uniform_admin.html"><i class='bx bxs-t-shirt' ></i>Uniform</a>
             <a href="manage.html"><i class='bx bxs-user-pin'></i>Manage Users</a>
+            <a href="manage_request.html"><i class='bx bxs-user-pin' ></i>Manage Request</a>
         </nav>
     </aside>
 
@@ -75,7 +76,6 @@
                             <option value="CEA"><strong>CEA</strong></option>
                             <option value="CCJE"><strong>CCJE</strong></option>
                             <option value="CAS"><strong>CAS</strong></option>
-                            <option value="SHS"><strong>SHS</strong></option>
                         </select>
                     </td>
                     <td><input id="bookname" name="bookname" class="itemsearch" type="text" placeholder="Book Name"></td>
@@ -133,6 +133,3 @@
 
 </body>
 </html>
-
-
-<!-- TO DO: FIX EDIT AND DELETE BUTTONS (ILAGAY SA HTML) AND MAKE IT WORK! -->

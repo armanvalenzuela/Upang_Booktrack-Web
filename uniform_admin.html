@@ -1,5 +1,7 @@
-<!-- TO DO: FIX THE SIDEBAR (DESIGN, SPACING ETC), ADJUST THE TOPBAR (SEARCH CONTAINER, PROFILE ICON ETC) -->
-<!-- TO DO: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) -->
+<!-- QA TESTED -->
+<!-- TO DO FOR BACK-END SIDE: MAY ERROR KAHIT COMPLETE UNG FIELDS KASI NATANGGAL NA UNG DESCRIPTION, IT'S ONLY FOR BOOKS NA MAY DESCRIPTION,
+ AND NABABASA YONG SA DROPDOWN MENU NG PROFILE DETAILS  -->
+<!-- TO DO FOR FRONT END SIDE: ADJUST THE MAIN CONTENTS (VISUAL APPEALING ETC) BASED NIYO DON SA FIGMA PARA MAGANDANG TIGNAN -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +17,12 @@
 
     <!-- Top Bar -->
     <header class="top-bar">
+        <div class="logo">
+            <img src="Images/bglogo.png" alt="UPang Logo">
+        </div>
         <div class="search-container">
-            
         </div>
         <div class="icons">
-            </span>
             <span class="user" id="user-icon">
                 <i class='bx bx-user-circle'></i>
             </span>        
@@ -38,14 +41,12 @@
 
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-logo">
-            <img src="Images/bglogo.png" alt="UPang Logo">
-        </div>
         <nav>
             <a href="dashboard.html"><i class='bx bxs-dashboard'></i> Dashboard</a>
             <a href="book_admin.html"><i class='bx bxs-book' ></i> Books</a>
             <a href="uniform_admin.html" class="active"><i class='bx bxs-t-shirt' ></i>Uniform</a>
             <a href="manage.html"><i class='bx bxs-user-pin'></i>Manage Users</a>
+            <a href="manage_request.html"><i class='bx bxs-user-pin' ></i>Manage Request</a>
         </nav>
     </aside>
 

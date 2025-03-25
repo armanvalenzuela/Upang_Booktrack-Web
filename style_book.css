@@ -16,17 +16,26 @@ body {
 .top-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     background-color: #8BC34A;
     padding: 10px 20px;
     height: 60px;
     width: 100%;
-    z-index: 1;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* LOGO */
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 /* SEARCH BAR */
@@ -118,11 +127,11 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    height: 910px; /* Adjusted for top bar */
+    height: calc(100vh - 60px);
     position: fixed;
-    top: 0px;
+    top: 60px;
     left: 0;
-    z-index: 1;
+    z-index: 999;
 }
 
 .sidebar-logo{
@@ -513,8 +522,6 @@ button.delete-button:hover {
     transition: opacity 0.5s ease-in-out;
     z-index: 1000;
 }
-
-
 
 .notification.success {
     background-color: #4CAF50; /* Green */
