@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>
                         <textarea class="edit-desc" disabled>${book.bookdesc}</textarea>
                     </td>
-                    <td><img src="${book.bookimage}" alt="Book Cover" style="width: 150px; height: auto;"></td>
+                    <td><img src="${book.bookimage}" alt="Book Cover" style="width: 150px; height: 225px;"></td>
                     <td>
                         <input type="number" class="edit-stock" value="${book.bookstock}" disabled>
                     </td>

@@ -184,7 +184,7 @@ nav a.active i, nav a:hover i {
     flex: 1;
     padding: 20px;
     margin-left: 270px; /* Adjusted for sidebar width */
-    margin-top: 20px;
+    margin-top: 75px;
 }
 
 h1 {
@@ -561,28 +561,41 @@ select {
     font-size: 16px;
     font-weight: 600;
     color: #333;
-    background-color: #eae9e9;
+    background-color: transparent;
     text-align: center;
-    padding: 5px 10px;
+    padding: 8px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.edit-desc{
+.edit-desc {
     width: 100%;
-    min-height: 200px;
+    min-height: 100px;
     max-height: 300px;
     overflow-y: auto;
-    resize: vertical; 
-    padding: 5px;
+    resize: none;
+    padding: 8px;
     font-size: 14px;
     line-height: 1.4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: transparent;
 }
 
 .edit-stock{
-    width: 50px;
+    width: 100px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 .edit-size{

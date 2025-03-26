@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </td>
                     <td><input type="text" class="edit-name" value="${uniform.uniformname}" disabled></td>
                     <td><textarea class="edit-desc" disabled>${uniform.uniformdesc}</textarea></td>
-                    <td><img src="${uniform.uniformimage}" alt="Uniform Image" style="width: 150px; height: auto;"></td>
+                    <td><img src="${uniform.uniformimage}" alt="Uniform Image" style="width: 200px; height: 200px;"></td>
                     
                     <td>
                         <select class="edit-size" disabled>
