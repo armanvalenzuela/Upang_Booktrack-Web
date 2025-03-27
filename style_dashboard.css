@@ -153,8 +153,9 @@ nav a.active i, nav a:hover i {
 /* MAIN CONTENT */
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 30px;
     margin-left: 270px;
+    margin-top: 60px;
     position: relative;
     height: calc(100vh - 80px);
     overflow-x: auto;
@@ -166,141 +167,58 @@ nav a.active i, nav a:hover i {
     margin-bottom: 100px; /* Add space below the Dashboard text */
 }
 
-/* Adjust stats container position */
+/* Adjust stats container */
 .stats-container {
     display: flex;
     gap: 20px;
-    position: absolute;
-    top: 80px; /* Keep this the same */
-    left: 20px;
-    width: auto;
+    margin-bottom: 30px; /* Add space below the stats */
 }
 
-/* Table Styles */
+/* Adjust tables container */
 .tables-container {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
     width: 100%;
-    position: absolute;
+    margin-top: 20px; /* Add space above the tables */
 }
 
-/* Adjust table containers position */
-.lowstock-container {
-    width: 650px;
-    min-width: 600px;
-    margin: 0;
-    position: absolute;
-    top: 130px;
-    left: 20px;
+/* Adjust table containers */
+.lowstock-container, .outstock-container {
+    width: calc(50% - 10px); /* Make each table take half the width minus gap */
+    background-color: transparent; /* Remove white background */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    padding: 0; /* Remove padding */
 }
 
-.outstock-container {
-    width: 650px;
-    min-width: 600px;
-    margin: 0;
-    position: absolute;
-    top: 130px;
-    left: 720px;
-}
-
-#lowstock {
-    width: 650px;
-    min-width: 600px;
+/* Adjust table styles */
+#lowstock, #outstock {
+    width: 100%;
     border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0;
-    table-layout: fixed;
+    background-color: white; /* Keep table background white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to table */
+    border-radius: 10px; /* Add border radius to table */
 }
 
-#outstock {
-    width: 650px;
-    min-width: 600px;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 0;
-    table-layout: fixed;
-}
-
-#outstock th, #outstock td {
-    border: none;
+#lowstock th, #outstock th,
+#lowstock td, #outstock td {
     padding: 12px;
     text-align: left;
     font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-#outstock th {
-    background-color: #8BC34A;
-    color: white;
-    font-weight: bold;
-    border: none;
-    padding: 12px;
-}
-
-#outstock td:nth-child(1) { width: 50px; }
-#outstock td:nth-child(2) { width: 120px; }
-#outstock td:nth-child(3) { width: 180px; }
-#outstock td:nth-child(4) { width: 100px; }
-#outstock td:nth-child(5) { width: 100px; }
-#outstock td:nth-child(6) { width: 100px; }
-
-#outstock th[colspan="6"] {
-    padding: 8px;
-}
-
-/*#requests {
-    
-}*/
-
-#lowstock th, #lowstock td,
-#requests th, #requests td {
-    border: none;
-    padding: 12px;
-    text-align: left;
-    font-size: 14px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-#lowstock th, #requests th {
+#lowstock th, #outstock th {
     background-color: #8BC34A;
     color: white;
     font-weight: bold;
 }
 
-#lowstock td:nth-child(1),
-#requests td:nth-child(1) {
-    width: 50px;
+#lowstock tr:nth-child(even), #outstock tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-#lowstock td:nth-child(2),
-#requests td:nth-child(2) {
-    width: 100px;
-}
-
-#lowstock td:nth-child(3),
-#requests td:nth-child(3) {
-    width: 150px;
-}
-
-#lowstock td:nth-child(4),
-#requests td:nth-child(4) {
-    width: 100px;
-}
-
-#lowstock td:nth-child(5),
-#requests td:nth-child(5) {
-    width: 100px;
-}
-
-#lowstock td:nth-child(6),
-#requests td:nth-child(6) {
-    width: 100px;
+#lowstock tr:hover, #outstock tr:hover {
+    background-color: #f5f5f5;
 }
 
 /* CSS FOR DIVS */
@@ -666,19 +584,24 @@ select {
     background-color: #8BC34A;
     color: white;
     font-weight: bold;
-    border: none;
-    padding: 15px 12px;
-    line-height: 1.2;
+    padding: 0 0 0 15px;  /* Added left padding */
+    position: relative;
+    padding-bottom: 0;
+    height: 36px;
 }
 
 #lowstock th[colspan="6"], #outstock th[colspan="6"] {
-    padding: 15px 12px;
-    line-height: 1.2;
+    padding: 8px 8px 8px 15px;  /* Added left padding */
+    background-color: #8BC34A;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+    height: auto;
 }
 
 .header-select {
     width: 100%;
-    padding: 8px;
+    padding: 8px 8px 8px 15px;  /* Maintain existing left padding */
     border: none;
     background-color: #8BC34A;
     color: white;
@@ -689,6 +612,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     text-align: left;
+    height: 36px;
 }
 
 .header-select option {
@@ -701,6 +625,16 @@ select {
     outline: none;
 }
 
-#lowstock th, #outstock th {
-    padding: 0;  /* Remove padding to align dropdowns */
+#lowstock th select, #outstock th select {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#lowstock th:hover, #outstock th:hover {
+    background-color: #7cb342;  /* Slightly darker green on hover */
 }
