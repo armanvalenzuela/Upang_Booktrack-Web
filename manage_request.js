@@ -17,7 +17,7 @@ fetch("http://localhost/UPBooktrack/admin_get_requests.php")
     })
     .catch(error => console.error("Error fetching requests:", error));
 
-// Function to render Book Requests table (UNCHANGED)
+// Function to render Book Requests table
 function renderBookTable(data) {
     const tableBody = document.querySelector("#book-requests-body");
     tableBody.innerHTML = "";
@@ -30,7 +30,7 @@ function renderBookTable(data) {
             <td>${request.bookname}</td>
             <td>${request.request_count}</td>
             <td>
-                <button class="action-btn approve" data-request-id="${request.book_req_id}">✓</button>
+                <button class="action-btn approve" data-request-id="${request.book_id}" data-type="book">✓</button>
             </td>
         `;
         tableBody.appendChild(newRow);
@@ -52,7 +52,7 @@ function renderUniformTable(data) {
             <td>${request.uniformsize}</td>
             <td>${request.request_count}</td>
             <td>
-                <button class="action-btn approve" data-request-id="${request.unif_req_id}">✓</button>
+                <button class="action-btn approve" data-request-id="${request.uniform_id}" data-type="uniform">✓</button>
             </td>
         `;
         tableBody.appendChild(newRow);
@@ -64,11 +64,7 @@ function sortTable(column, order, type) {
     let sortedData = type === "book" ? [...bookRequests] : [...uniformRequests];
 
     if (column === "request_count") {
-        sortedData.sort((a, b) => {
-            let countA = parseInt(a.request_count, 10);
-            let countB = parseInt(b.request_count, 10);
-            return order === "asc" ? countA - countB : countB - countA;
-        });
+        sortedData.sort((a, b) => order === "asc" ? a.request_count - b.request_count : b.request_count - a.request_count);
     } else if (column === "bookname" || column === "uniformname") {
         sortedData.sort((a, b) => order === "asc" ? a[column].localeCompare(b[column]) : b[column].localeCompare(a[column]));
     }
@@ -85,13 +81,11 @@ function filterUniformTable() {
     let size = selects[3].value;
     let requestSort = selects[4].value;
 
-    let filteredData = uniformRequests.filter(request => {
-        return (
-            (department === "" || request.uniformcollege === department) &&
-            (gender === "" || request.uniformgender === gender) &&
-            (size === "" || request.uniformsize === size)
-        );
-    });
+    let filteredData = uniformRequests.filter(request =>
+        (department === "" || request.uniformcollege === department) &&
+        (gender === "" || request.uniformgender === gender) &&
+        (size === "" || request.uniformsize === size)
+    );
 
     if (nameSort) {
         filteredData.sort((a, b) => nameSort === "asc" ? a.uniformname.localeCompare(b.uniformname) : b.uniformname.localeCompare(a.uniformname));
@@ -104,23 +98,47 @@ function filterUniformTable() {
     renderUniformTable(filteredData);
 }
 
-// Filtering function for Books (UNCHANGED)
+// Filtering function for Books
 function filterBookTable() {
     let department = document.querySelector("#book-filter").value;
     let filteredData = department ? bookRequests.filter(request => request.bookcollege === department) : bookRequests;
     renderBookTable(filteredData);
 }
 
-// Event Listeners for Books (UNCHANGED)
+// Event Listeners for Sorting & Filtering
 document.querySelector("#book-filter").addEventListener("change", filterBookTable);
-document.querySelector("#book-sort").addEventListener("change", (event) => {
+document.querySelector("#book-sort").addEventListener("change", event => {
     sortTable("bookname", event.target.value, "book");
 });
-document.querySelector("#book-sort-requests").addEventListener("change", (event) => {
+document.querySelector("#book-sort-requests").addEventListener("change", event => {
     sortTable("request_count", event.target.value, "book");
 });
-
-// Event Listeners for Uniforms (Using Selects Instead of IDs)
 document.querySelectorAll(".requests-uniform select.header-select").forEach(select => {
     select.addEventListener("change", filterUniformTable);
+});
+
+// Event Listener for Approving Requests
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("approve")) {
+        let requestId = event.target.getAttribute("data-request-id");
+        let type = event.target.getAttribute("data-type");
+
+        if (confirm("Are you sure you want to fulfill this request?")) {
+            fetch("http://localhost/UPBooktrack/admin_fulfill_request.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `request_id=${requestId}&type=${type}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Request fulfilled!");
+                    event.target.closest("tr").remove(); // Remove row from UI
+                } else {
+                    alert("Error: " + data.message);
+                }
+            })
+            .catch(error => console.error("Error fulfilling request:", error));
+        }
+    }
 });
