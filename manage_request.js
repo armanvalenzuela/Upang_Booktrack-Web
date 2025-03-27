@@ -5,7 +5,6 @@ let uniformRequests = [];
 fetch("http://localhost/UPBooktrack/admin_get_requests.php")
     .then(response => response.json())
     .then(data => {
-        // Store both books and uniforms data
         bookRequests = data.book_requests;
         uniformRequests = data.uniform_requests;
 
@@ -13,16 +12,15 @@ fetch("http://localhost/UPBooktrack/admin_get_requests.php")
         bookRequests.sort((a, b) => parseInt(b.request_count, 10) - parseInt(a.request_count, 10));
         uniformRequests.sort((a, b) => parseInt(b.request_count, 10) - parseInt(a.request_count, 10));
 
-        // Render both tables
         renderBookTable(bookRequests);
         renderUniformTable(uniformRequests);
     })
     .catch(error => console.error("Error fetching requests:", error));
 
-// Function to render Book Requests table
+// Function to render Book Requests table (UNCHANGED)
 function renderBookTable(data) {
     const tableBody = document.querySelector("#book-requests-body");
-    tableBody.innerHTML = ""; // Clear table
+    tableBody.innerHTML = "";
 
     data.forEach((request, index) => {
         const newRow = document.createElement("tr");
@@ -42,7 +40,7 @@ function renderBookTable(data) {
 // Function to render Uniform Requests table
 function renderUniformTable(data) {
     const tableBody = document.querySelector("#uniform-requests-body");
-    tableBody.innerHTML = ""; // Clear table
+    tableBody.innerHTML = "";
 
     data.forEach((request, index) => {
         const newRow = document.createElement("tr");
@@ -61,7 +59,7 @@ function renderUniformTable(data) {
     });
 }
 
-// Sorting function (separate for books and uniforms)
+// Sorting function (Books & Uniforms Separate)
 function sortTable(column, order, type) {
     let sortedData = type === "book" ? [...bookRequests] : [...uniformRequests];
 
@@ -78,39 +76,51 @@ function sortTable(column, order, type) {
     type === "book" ? renderBookTable(sortedData) : renderUniformTable(sortedData);
 }
 
-// Filtering functions (separate for books and uniforms)
-function filterBookTable(department) {
+// Filtering function for Uniform Table
+function filterUniformTable() {
+    let selects = document.querySelectorAll(".requests-uniform select.header-select");
+    let department = selects[0].value;
+    let nameSort = selects[1].value;
+    let gender = selects[2].value;
+    let size = selects[3].value;
+    let requestSort = selects[4].value;
+
+    let filteredData = uniformRequests.filter(request => {
+        return (
+            (department === "" || request.uniformcollege === department) &&
+            (gender === "" || request.uniformgender === gender) &&
+            (size === "" || request.uniformsize === size)
+        );
+    });
+
+    if (nameSort) {
+        filteredData.sort((a, b) => nameSort === "asc" ? a.uniformname.localeCompare(b.uniformname) : b.uniformname.localeCompare(a.uniformname));
+    }
+
+    if (requestSort) {
+        filteredData.sort((a, b) => requestSort === "asc" ? a.request_count - b.request_count : b.request_count - a.request_count);
+    }
+
+    renderUniformTable(filteredData);
+}
+
+// Filtering function for Books (UNCHANGED)
+function filterBookTable() {
+    let department = document.querySelector("#book-filter").value;
     let filteredData = department ? bookRequests.filter(request => request.bookcollege === department) : bookRequests;
     renderBookTable(filteredData);
 }
 
-function filterUniformTable(department) {
-    let filteredData = department ? uniformRequests.filter(request => request.uniformcollege === department) : uniformRequests;
-    renderUniformTable(filteredData);
-}
-
-// Event listeners for books
-document.querySelector("#book-filter").addEventListener("change", (event) => {
-    filterBookTable(event.target.value);
-});
-
+// Event Listeners for Books (UNCHANGED)
+document.querySelector("#book-filter").addEventListener("change", filterBookTable);
 document.querySelector("#book-sort").addEventListener("change", (event) => {
     sortTable("bookname", event.target.value, "book");
 });
-
 document.querySelector("#book-sort-requests").addEventListener("change", (event) => {
     sortTable("request_count", event.target.value, "book");
 });
 
-// Event listeners for uniforms
-document.querySelector("#uniform-filter").addEventListener("change", (event) => {
-    filterUniformTable(event.target.value);
-});
-
-document.querySelector("#uniform-sort").addEventListener("change", (event) => {
-    sortTable("uniformname", event.target.value, "uniform");
-});
-
-document.querySelector("#uniform-sort-requests").addEventListener("change", (event) => {
-    sortTable("request_count", event.target.value, "uniform");
+// Event Listeners for Uniforms (Using Selects Instead of IDs)
+document.querySelectorAll(".requests-uniform select.header-select").forEach(select => {
+    select.addEventListener("change", filterUniformTable);
 });
