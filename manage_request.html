@@ -56,15 +56,9 @@
                         <th colspan="5" bgcolor="white">Requests Book</th>
                     </tr>
                     <tr>
+                        <th>&nbsp;&nbsp;No</th>
                         <th>
-                            <select class="header-select">
-                                <option value="">No ▼</option>
-                                <option value="asc">1-15</option>
-                                <option value="desc">15-1</option>
-                            </select>
-                        </th>
-                        <th>
-                            <select class="header-select">
+                            <select id="book-filter">
                                 <option value="">Department ▼</option>
                                 <option value="CITE">CITE</option>
                                 <option value="CMA">CMA</option>
@@ -76,14 +70,14 @@
                             </select>
                         </th>
                         <th>
-                            <select class="header-select">
+                            <select id="book-sort">
                                 <option value="">Name ▼</option>
                                 <option value="asc">A to Z</option>
                                 <option value="desc">Z to A</option>
                             </select>
                         </th>
                         <th>
-                            <select class="header-select">
+                            <select id="book-sort-requests">
                                 <option value="">Requests ▼</option>
                                 <option value="asc">Low to High</option>
                                 <option value="desc">High to Low</option>
@@ -91,31 +85,12 @@
                         </th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>CITE</td>
-                        <td>RSO</td>
-                        <td>5</td>
-                        <td>
-                            <button class="action-btn approve">✓</button>
-                        </td>
-                    </tr>
-                    <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>6</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>7</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>8</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>9</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>10</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>11</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>12</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>13</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>14</td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>15</td><td></td><td></td><td></td><td></td></tr>
+                    <tbody id="book-requests-body">
+                        <!-- JavaScript will populate this -->
+                    </tbody>
                 </table>
             </div>
+            
             <div class="requests-uniform">
                 <table id="requests">
                     <tr>
@@ -123,11 +98,7 @@
                     </tr>
                     <tr>
                         <th>
-                            <select class="header-select">
-                                <option value="">No ▼</option>
-                                <option value="asc">1-15</option>
-                                <option value="desc">15-1</option>
-                            </select>
+                            &nbsp;&nbsp;No
                         </th>
                         <th>
                             <select class="header-select">
@@ -175,36 +146,15 @@
                         </th>
                         <th>Actions</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>CITE</td>
-                        <td>RSO</td>
-                        <td>M</td>
-                        <td>2XL</td>
-                        <td>5</td>
-                        <td>
-                            <button class="action-btn approve">✓</button>
-                        </td>
-                    </tr>
-                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-                    <tr><td>15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tbody id="uniform-requests-body">
+                        <!-- JavaScript will populate this -->
+                    </tbody>
                 </table>
             </div>
+            
         </div>
     </main>
-    <script src="dashboard.js"></script>
+    <script src="manage_request.js"></script>
     <script src="details_dropdown.js"></script>
 </body>
 </html>
