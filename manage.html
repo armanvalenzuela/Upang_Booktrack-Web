@@ -44,6 +44,7 @@
 
     <!-- Main Content -->
     <main class="content">
+        
         <div class="header-container">
             <h1>Manage Users</h1>
             <div class="search-container">
@@ -52,22 +53,24 @@
             </div>
         </div>
         
-        <table class="request-table">
-            <thead>
-                <tr>
-                    <th>ID No</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>College</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="request-list">
-                <!-- Request data will be dynamically added here -->
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table class="request-table">
+                <thead>
+                    <tr>
+                        <th>ID No</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>College</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="request-list">
+                    <!-- Request data will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
     </main>
 
     <script src="manage.js"></script>

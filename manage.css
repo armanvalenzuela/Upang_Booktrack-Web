@@ -314,3 +314,21 @@ h1 {
 .notification.error {
     background-color: #f44336; /* Red */
 }
+
+/* Add these styles to your CSS file */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.request-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.request-table th,
+.request-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
