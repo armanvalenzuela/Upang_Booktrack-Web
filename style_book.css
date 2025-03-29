@@ -191,6 +191,11 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
 .item-container {
     width: 95%;
     height: 50%;

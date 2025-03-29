@@ -154,15 +154,17 @@ nav a.active i, nav a:hover i {
 }
 
 /* MAIN CONTENT */
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 0;
+}
+
 .content {
     flex: 1;
     padding: 20px;
     margin-left: 270px;
-    position: relative;
-    height: calc(100vh - 80px);
-    overflow-x: auto;
-    overflow-y: auto;
-    min-width: 1350px;
+    margin-top: 20px;
 }
 
 /* Requests Table Container */
@@ -172,8 +174,14 @@ nav a.active i, nav a:hover i {
     margin: 20px;
 }
 
-.requests-book, .requests-uniform {
-    width: 50%;  /* Make each table take half the width */
+.requests-book {
+    width: 50%;
+    min-width: 500px;
+    padding: 20px;
+}
+
+.requests-uniform {
+    width: 60%;
     min-width: 500px;
     padding: 20px;
 }
