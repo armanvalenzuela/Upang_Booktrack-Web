@@ -93,10 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 newRow.innerHTML = `
                     <td>
                         <select class="edit-college" disabled>
-                            <option value="CITE" ${book.bookcollege === "CITE" ? "selected" : ""}>CITE</option>
                             <option value="CMA" ${book.bookcollege === "CMA" ? "selected" : ""}>CMA</option>
                             <option value="CAHS" ${book.bookcollege === "CAHS" ? "selected" : ""}>CAHS</option>
                             <option value="CEA" ${book.bookcollege === "CEA" ? "selected" : ""}>CEA</option>
+                            <option value="CCJE" ${book.bookcollege === "CCJE" ? "selected" : ""}>CCJE</option>
                         </select>
                     </td>
                     <td>
