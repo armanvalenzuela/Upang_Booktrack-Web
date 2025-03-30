@@ -72,7 +72,7 @@ function sortTable(column, order, type) {
     type === "book" ? renderBookTable(sortedData) : renderUniformTable(sortedData);
 }
 
-// Filtering function for Uniform Table
+// Updated filtering function for Uniform Table
 function filterUniformTable() {
     let selects = document.querySelectorAll(".requests-uniform select.header-select");
     let department = selects[0].value;
@@ -87,10 +87,10 @@ function filterUniformTable() {
         (size === "" || request.uniformsize === size)
     );
 
+    // Apply sorting
     if (nameSort) {
         filteredData.sort((a, b) => nameSort === "asc" ? a.uniformname.localeCompare(b.uniformname) : b.uniformname.localeCompare(a.uniformname));
     }
-
     if (requestSort) {
         filteredData.sort((a, b) => requestSort === "asc" ? a.request_count - b.request_count : b.request_count - a.request_count);
     }
@@ -98,21 +98,32 @@ function filterUniformTable() {
     renderUniformTable(filteredData);
 }
 
-// Filtering function for Books
+// Updated filtering function for Books
 function filterBookTable() {
     let department = document.querySelector("#book-filter").value;
-    let filteredData = department ? bookRequests.filter(request => request.bookcollege === department) : bookRequests;
+    let nameSort = document.querySelector("#book-sort").value;
+    let requestSort = document.querySelector("#book-sort-requests").value;
+
+    let filteredData = bookRequests.filter(request =>
+        (department === "" || request.bookcollege === department)
+    );
+
+    // Apply sorting
+    if (nameSort) {
+        filteredData.sort((a, b) => nameSort === "asc" ? a.bookname.localeCompare(b.bookname) : b.bookname.localeCompare(a.bookname));
+    }
+    if (requestSort) {
+        filteredData.sort((a, b) => requestSort === "asc" ? a.request_count - b.request_count : b.request_count - a.request_count);
+    }
+
     renderBookTable(filteredData);
 }
 
 // Event Listeners for Sorting & Filtering
 document.querySelector("#book-filter").addEventListener("change", filterBookTable);
-document.querySelector("#book-sort").addEventListener("change", event => {
-    sortTable("bookname", event.target.value, "book");
-});
-document.querySelector("#book-sort-requests").addEventListener("change", event => {
-    sortTable("request_count", event.target.value, "book");
-});
+document.querySelector("#book-sort").addEventListener("change", filterBookTable);
+document.querySelector("#book-sort-requests").addEventListener("change", filterBookTable);
+
 document.querySelectorAll(".requests-uniform select.header-select").forEach(select => {
     select.addEventListener("change", filterUniformTable);
 });

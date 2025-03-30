@@ -642,7 +642,7 @@ select#uniformgender {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: #fafafa;
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -681,4 +681,28 @@ select#uniformgender:focus {
     border: 1px solid #ccc; /* Added border for visibility */
     padding: 5px;
     margin-left: 10px; /* Space between input and icon */
+}
+
+.header-dropdown {
+    width: 100%;
+    padding: 5px;
+    border: none; /* Changed from 1px solid #ccc */
+    border-radius: 4px;
+    background-color: #8BC34A;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-appearance: none; /* Remove default arrow on some browsers */
+    -moz-appearance: none; /* Remove default arrow on some browsers */
+    appearance: none; /* Remove default arrow */
+}
+
+.header-dropdown option {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.header-dropdown:focus {
+    outline: none; /* Ensure no outline appears on focus */
+    box-shadow: none; /* Remove any potential box shadow */
 }
