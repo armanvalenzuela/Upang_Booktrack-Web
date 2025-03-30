@@ -124,6 +124,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Add this after the search functionality
+    const departmentFilter = document.getElementById("department-filter");
+
+    if (departmentFilter) {
+        departmentFilter.addEventListener("change", filterTableByDepartment);
+    }
+
+    function filterTableByDepartment() {
+        const selectedDepartment = departmentFilter.value.toLowerCase();
+
+        document.querySelectorAll("#uniforms-list tr").forEach(row => {
+            // Show all rows if "Department" is selected (empty value)
+            if (!selectedDepartment) {
+                row.style.display = "";
+                return;
+            }
+
+            const department = row.querySelector(".edit-college").value.toLowerCase();
+            row.style.display = department === selectedDepartment ? "" : "none";
+        });
+    }
+
     //FETCH ALL UNIFORM DATA FROM DB AND SORT THEM INTO TABLE
     async function loadUniforms() {
         try {

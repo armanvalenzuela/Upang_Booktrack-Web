@@ -34,12 +34,45 @@ fetch('http://localhost/UPBooktrack/admin_get_lowstock.php')
                 <th colspan="6" bgcolor="white">Low Stock</th>
             </tr>
             <tr>
-                <th>Type</th>
-                <th>Department</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Size</th>
-                <th>Stock</th>
+                <th><select class="header-select">
+                                <option value="">Type </option>
+                                <option value="book">Book</option>
+                                <option value="uniform">Uniform</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Department </option>
+                                <option value="CITE">CITE</option>
+                                <option value="CMA">CMA</option>
+                                <option value="CAHS">CAHS</option>
+                                <option value="CEA">CEA</option>
+                                <option value="CCJE">CCJE</option>
+                                <option value="CAS">CAS</option>
+                                <option value="SHS">SHS</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Name </option>
+                                <option value="asc">A to Z</option>
+                                <option value="desc">Z to A</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Gender </option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Size </option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="2XL">2XL</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Stock </option>
+                                <option value="asc">Low to High</option>
+                                <option value="desc">High to Low</option>
+                            </select></th>
             </tr>
         `;
 
@@ -73,12 +106,46 @@ fetch('http://localhost/UPBooktrack/admin_get_outOfstock.php')
                 <th colspan="6" bgcolor="white">Out of Stock</th>
             </tr>
             <tr>
-                <th>Type</th>
-                <th>Department</th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Size</th>
-                <th>Stock</th>
+                <th><select class="header-select">
+                                <option value="">Type </option>
+                                <option value="book">Book</option>
+                                <option value="uniform">Uniform</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Department </option>
+                                <option value="CITE">CITE</option>
+                                <option value="CMA">CMA</option>
+                                <option value="CAHS">CAHS</option>
+                                <option value="CEA">CEA</option>
+                                <option value="CCJE">CCJE</option>
+                                <option value="CAS">CAS</option>
+                                <option value="SHS">SHS</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Name </option>
+                                <option value="asc">A to Z</option>
+                                <option value="desc">Z to A</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Gender </option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Size </option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="2XL">2XL</option>
+                            </select></th>
+                <th><select class="header-select">
+                                <option value="">Stock </option>
+                                <option value="asc">Low to High</option>
+                                <option value="desc">High to Low</option>
+                            </select>
+                        </th></th>
             </tr>
         `;
 

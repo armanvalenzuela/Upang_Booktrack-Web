@@ -134,14 +134,31 @@
         <table class="added-uniforms-table">
             <thead>
                 <tr>
-                    <th>Department</th>
+                    <th>
+                        <select class="header-dropdown" id="department-filter">
+                            <option value="">Department</option>
+                            <option value="CITE">CITE</option>
+                            <option value="CMA">CMA</option>
+                            <option value="CAHS">CAHS</option>
+                            <option value="CEA">CEA</option>
+                            <option value="CCJE">CCJE</option>
+                            <option value="CAS">CAS</option>
+                            <option value="SHS">SHS</option>
+                        </select>
+                    </th>
                     <th>Uniform Name</th>
                     <th>Description</th>
                     <th>Image</th>
                     <th>Size</th>
                     <th>Gender</th>
                     <th>Stock Amount</th>
-                    <th>Status</th>
+                    <th>
+                        <select class="header-dropdown" id="status-filter">
+                            <option value="">Status</option>
+                            <option value="available">Available</option>
+                            <option value="not-available">Not Available</option>
+                        </select>
+                    </th>
                     <th>Actions</th>
                 </tr>
             </thead>

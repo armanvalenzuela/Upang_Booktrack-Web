@@ -80,6 +80,30 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     });
 
+    // Add this after the search functionality
+    const collegeFilter = document.getElementById("college-filter");
+
+    if (collegeFilter) {
+        collegeFilter.addEventListener("change", filterTableByCollege);
+    }
+
+    function filterTableByCollege() {
+        const selectedCollege = collegeFilter.value.toLowerCase();
+
+        document.querySelectorAll("#request-list tr").forEach(row => {
+            const college = row.querySelector(".edit-college").value.toLowerCase();
+            
+            // Show all rows if no college is selected
+            if (!selectedCollege) {
+                row.style.display = "";
+                return;
+            }
+
+            // Show only rows that match the selected college
+            row.style.display = college === selectedCollege ? "" : "none";
+        });
+    }
+
     await fetchUsers(); //FETCH ALL ON PAGE LOAD
 });
 
