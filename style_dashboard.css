@@ -51,13 +51,13 @@ body {
 }
 
 .icons i {
-    font-size: 35px;
-    color: black;
+    font-size: 24px;
+    color: white;
     position: relative;
     cursor: pointer;
 }
+
 /* User Dropdown */
-/* Default: Hidden */
 .dropdown-user {
     display: none;
     position: absolute;
@@ -72,45 +72,36 @@ body {
     z-index: 1000;
 }
 
-/* Show dropdown when 'show' class is added */
 .dropdown-user.show {
     display: block;
 }
+
 .dropdown-user p {
     margin: 5px 0;
     font-size: 14px;
     color: black;
 }
-#change-pw a {
-    text-decoration: none;
-    color: inherit;
-}
-.change-pw a:focus, 
-.change-pw a:active, 
-.change-pw a:hover {
-    outline: none;
-    color: inherit;
-}
-.change-pw a {
-    text-decoration: none;
-    color: white;
+
+#change-pw {
     background-color: #4CAF50;
+    color: white;
+    border: none;
     padding: 5px 10px;
-    display: inline-block;
     border-radius: 5px;
-}
-.notification {
-    position: relative;
     cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
 }
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    color: red;
-    font-size: 12px;
-    border-radius: 50%;
-    padding: 3px 6px;
+
+#login {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
 }
 
 /* SIDEBAR */
@@ -124,7 +115,7 @@ body {
     position: fixed;
     top: 60px;  /* Changed from 0px to 60px (height of top bar) */
     left: 0;
-    z-index: 5; /* Lower than content */
+    z-index: 1000; /* Lower than content */
     bottom: 0;
 }
 

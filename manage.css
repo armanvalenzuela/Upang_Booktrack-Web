@@ -72,6 +72,34 @@ body {
     display: block;
 }
 
+.dropdown-user p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: black;
+}
+
+#change-pw {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#login {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+}
+
 /* SIDEBAR */
 .sidebar {
     width: 270px;
