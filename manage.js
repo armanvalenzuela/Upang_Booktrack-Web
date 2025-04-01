@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const requestList = document.getElementById('request-list');
     const searchInput = document.getElementById('searchInput');
+    const collegeFilter = document.getElementById('college-filter');
 
-    //RETRIEVS ALL USERS FROM DB
+    // Fetch all users from database
     async function fetchUsers() {
         try {
-            const response = await fetch('http://localhost/UPBooktrack/fetch_users.php');
+            const response = await fetch('http://localhost/UPBooktrack/admin_fetch_users.php');
             const users = await response.json();
 
             if (!Array.isArray(users)) {
@@ -19,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // DYNAMIC USER INFO DISPLAY (YUNG TABLE)
+    // Display users in table
     function displayUsers(users) {
         requestList.innerHTML = '';
 
@@ -45,12 +46,17 @@ document.addEventListener('DOMContentLoaded', async function () {
                         <option value="CMA" ${user.college === "CMA" ? "selected" : ""}>CMA</option>
                         <option value="CAHS" ${user.college === "CAHS" ? "selected" : ""}>CAHS</option>
                         <option value="CEA" ${user.college === "CEA" ? "selected" : ""}>CEA</option>
+                        <option value="CCJE" ${user.college === "CCJE" ? "selected" : ""}>CCJE</option>
+                        <option value="CAS" ${user.college === "CAS" ? "selected" : ""}>CAS</option>
+                        <option value="SHS" ${user.college === "SHS" ? "selected" : ""}>SHS</option>
                     </select>
                 </td>
                 <td><input type="email" class="edit-email" value="${user.email}" disabled></td>
                 <td>
-                    <span class="password-text" style="display: none;">${user.password}</span>
-                    <button class="showpass-btn" onclick="togglePassword(this)">Show</button>
+                    <div class="password-container">
+                        <input type="password" class="edit-password" placeholder="Enter new password" disabled>
+                        <button type="button" class="toggle-password" onclick="togglePassword(this)">👁</button>
+                    </div>
                 </td>
                 <td class="action-buttons">
                     <button class="edit-btn" onclick="editUser(this, '${user.id}')">Edit</button>
@@ -62,27 +68,20 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // SEARCH FUNCTIONALITY
-    searchInput.addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-    
-        document.querySelectorAll('#request-list tr').forEach(row => {
-            const rowText = Array.from(row.querySelectorAll('td'))
-                .map(td => {
-                    // Get value from input/select or text from td
-                    const input = td.querySelector('input, select');
-                    return input ? (input.value || input.options?.[input.selectedIndex]?.text || '') : td.textContent;
-                })
-                .join(" ")
-                .toLowerCase();
-    
-            row.style.display = rowText.includes(searchTerm) ? '' : 'none';
-        });
-    });
+    // Toggle password visibility
+    window.togglePassword = function (button) {
+        const input = button.previousElementSibling;
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    };
 
-    // Add this after the search functionality
-    const collegeFilter = document.getElementById("college-filter");
+    // Initial fetch
+    await fetchUsers();
 
+    // College filter functionality
     if (collegeFilter) {
         collegeFilter.addEventListener("change", filterTableByCollege);
     }
@@ -91,63 +90,66 @@ document.addEventListener('DOMContentLoaded', async function () {
         const selectedCollege = collegeFilter.value.toLowerCase();
 
         document.querySelectorAll("#request-list tr").forEach(row => {
-            const college = row.querySelector(".edit-college").value.toLowerCase();
+            const collegeSelect = row.querySelector(".edit-college");
+            if (!collegeSelect) return;
             
-            // Show all rows if no college is selected
+            const college = collegeSelect.value.toLowerCase();
+            
             if (!selectedCollege) {
                 row.style.display = "";
                 return;
             }
 
-            // Show only rows that match the selected college
             row.style.display = college === selectedCollege ? "" : "none";
         });
     }
 
-    await fetchUsers(); //FETCH ALL ON PAGE LOAD
+    // Initial fetch
+    await fetchUsers();
 });
 
-// PASSWORD VISIBILITY TOGGLE
-function togglePassword(button) {
-    const passwordText = button.previousElementSibling;
-    if (passwordText.style.display === "none") {
-        passwordText.style.display = "inline";
-        button.textContent = "Hide";
-    } else {
-        passwordText.style.display = "none";
-        button.textContent = "Show";
-    }
-}
-
-// EDITING FUNCTION (BASED ON SET ID)
+// Enable editing for a user row
 function editUser(button, userId) {
     const row = button.closest('tr');
 
+    // Enable all editable fields
     row.querySelector('.edit-studentNo').disabled = false;
     row.querySelector('.edit-name').disabled = false;
     row.querySelector('.edit-gender').disabled = false;
     row.querySelector('.edit-college').disabled = false;
     row.querySelector('.edit-email').disabled = false;
+    row.querySelector('.edit-password').disabled = false;
 
+    // Toggle button visibility
     button.style.display = "none";
     row.querySelector('.save-btn').style.display = "inline-block";
 }
 
-// SAVE EDIT
+// Save user changes
 async function saveUser(button, userId) {
     const row = button.closest('tr');
 
+    // Get all field values
     const studentNo = row.querySelector('.edit-studentNo').value;
     const studentName = row.querySelector('.edit-name').value;
     const gender = row.querySelector('.edit-gender').value;
     const college = row.querySelector('.edit-college').value;
     const email = row.querySelector('.edit-email').value;
+    const newPassword = row.querySelector('.edit-password').value;
 
+    // Validate required fields
     if (!studentNo || !studentName || !gender || !college || !email) {
-        showNotification("All fields are required!", "error");
+        showNotification("All fields except password are required!", "error");
         return;
     }
 
+    // Validate password length if provided
+    if (newPassword && newPassword.length < 6) {
+        showNotification("Password must be at least 6 characters", "error");
+        return;
+    }
+
+    // Prepare form data
     const formData = new FormData();
     formData.append("id", userId);
     formData.append("studentNo", studentNo);
@@ -155,6 +157,11 @@ async function saveUser(button, userId) {
     formData.append("gender", gender);
     formData.append("college", college);
     formData.append("email", email);
+    
+    // Only include password if changed
+    if (newPassword) {
+        formData.append("newPassword", newPassword);
+    }
 
     try {
         const response = await fetch("http://localhost/UPBooktrack/update_user.php", {
@@ -176,9 +183,9 @@ async function saveUser(button, userId) {
     }
 }
 
-// DELETE FUNCTION
+// Delete a user
 async function deleteUser(userId) {
-    if (!confirm('Are you sure you want to delete this user?')) {
+    if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
         return;
     }
 
@@ -205,16 +212,16 @@ async function deleteUser(userId) {
     }
 }
 
-// NOTIFICATIONS
+// Show notification message
 function showNotification(message, type) {
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
-    notification.innerText = message;
+    notification.textContent = message;
 
     document.body.appendChild(notification);
 
     setTimeout(() => {
         notification.style.opacity = "0";
         setTimeout(() => notification.remove(), 500);
-    }, 3000);
+    }, 1000);
 }

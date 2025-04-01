@@ -22,7 +22,7 @@ fetch('http://localhost/UPBooktrack/admin_get_info.php')
     })
     .catch(error => console.error('Error fetching data:', error));
 
-// FOR FETCHING ALL OF THE LOWSTOCK ITEMS (<25)
+// FOR FETCHING ALL OF THE LOWSTOCK ITEMS (<50)
 fetch('http://localhost/UPBooktrack/admin_get_lowstock.php')
     .then(response => response.json())
     .then(data => {
