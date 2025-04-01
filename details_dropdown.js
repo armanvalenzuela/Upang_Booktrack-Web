@@ -36,8 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // LOGOUT FUNCTIONALITY
     logoutButton.addEventListener("click", function () {
+        // Clear both localStorage and sessionStorage
         localStorage.clear(); // REMOVE LAHAT NG LAMAN NG LOCAL STORAGE
         sessionStorage.clear(); // 2X DAW PRA SURE SABI NG TUTORIAL HAHAHAHA
+
+        // Redirect to login page
         window.location.href = "login.html"; // BALIK SA LOGIN
 
         // MAKES SURE NA DI MABABALIK BY CLICKING BACK BUTTON

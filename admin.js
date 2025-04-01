@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Add this after the search functionality
+    // DEPARTMENT FILTERING
     const departmentFilter = document.getElementById("department-filter");
 
     if (departmentFilter) {
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedDepartment = departmentFilter.value.toLowerCase();
 
         document.querySelectorAll("#books-list tr").forEach(row => {
-            // Show all rows if "Department" is selected (empty value)
+            // SHOW ALL IF DEPARTMENT IS SELECTED (DEFAULT)
             if (!selectedDepartment) {
                 row.style.display = "";
                 return;

@@ -1,11 +1,21 @@
-document.getElementById("loginForm").addEventListener("submit", async function(event) {
+document.addEventListener("DOMContentLoaded", function () {
+    // GET REMEMBER ME VALUES
+    const savedIdentifier = localStorage.getItem("rememberedEmployeeNo");
+    if (savedIdentifier) {
+        document.getElementById("employeeNo").value = savedIdentifier;
+        document.getElementById("rememberMe").checked = true;
+    }
+});
+
+document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const identifier = document.getElementById("employeeNo").value;
     const password = document.getElementById("loginPassword").value;
+    const rememberMe = document.getElementById("rememberMe");
     const errorMessage = document.getElementById("errorMessage");
 
-    //LOGGING FOR DEBUG
+    // Logging for Debug
     console.log("Identifier:", identifier);
     console.log("Password:", password);
 
@@ -15,7 +25,14 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         return;
     }
 
-    //SEND POST
+    // Store identifier if "Remember Me" is checked, otherwise remove it
+    if (rememberMe.checked) {
+        localStorage.setItem("rememberedEmployeeNo", identifier);
+    } else {
+        localStorage.removeItem("rememberedEmployeeNo");
+    }
+
+    // Send POST request
     try {
         const formData = new FormData();
         formData.append("identifier", identifier);
@@ -32,7 +49,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         if (data.status === "success") {
             console.log("Login successful! Storing user info...");
 
-            // STORES DETAILS ON LOCALSTORAGE
+            // Store user details in localStorage
             localStorage.setItem("userID", data.id);
             localStorage.setItem("employeeNo", data.employeeNo);
             localStorage.setItem("employeeName", data.employeeName);
@@ -41,10 +58,10 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
             console.log("Stored employeeName:", localStorage.getItem("employeeName"));
             console.log("Stored employeeNo:", localStorage.getItem("employeeNo"));
 
-            // GOES TO DASHBOARD AFTER
+            // Redirect to dashboard
             window.location.href = "dashboard.html";
         } else {
-            errorMessage.textContent = data.message; // ERROR MESSAGE
+            errorMessage.textContent = data.message; // Display error message
             console.error("Login failed:", data.message);
         }
     } catch (error) {
