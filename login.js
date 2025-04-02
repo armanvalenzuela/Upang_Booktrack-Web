@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     const rememberMe = document.getElementById("rememberMe");
     const errorMessage = document.getElementById("errorMessage");
 
-    // Logging for Debug
+    // LOGGING FOR DEBUG
     console.log("Identifier:", identifier);
     console.log("Password:", password);
 
@@ -25,14 +25,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         return;
     }
 
-    // Store identifier if "Remember Me" is checked, otherwise remove it
+    // STORE IDENTIFIER IF REMEMBER ME IS SELECTED? OR CHECKED
     if (rememberMe.checked) {
         localStorage.setItem("rememberedEmployeeNo", identifier);
     } else {
         localStorage.removeItem("rememberedEmployeeNo");
     }
 
-    // Send POST request
+    // SEND POST
     try {
         const formData = new FormData();
         formData.append("identifier", identifier);
@@ -49,7 +49,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
         if (data.status === "success") {
             console.log("Login successful! Storing user info...");
 
-            // Store user details in localStorage
+            // STORE USER DETAILS IN LOCAL STORAGE
             localStorage.setItem("userID", data.id);
             localStorage.setItem("employeeNo", data.employeeNo);
             localStorage.setItem("employeeName", data.employeeName);
@@ -58,10 +58,10 @@ document.getElementById("loginForm").addEventListener("submit", async function (
             console.log("Stored employeeName:", localStorage.getItem("employeeName"));
             console.log("Stored employeeNo:", localStorage.getItem("employeeNo"));
 
-            // Redirect to dashboard
+            // GOES TO DASHBOARD AFTER
             window.location.href = "dashboard.html";
         } else {
-            errorMessage.textContent = data.message; // Display error message
+            errorMessage.textContent = data.message;
             console.error("Login failed:", data.message);
         }
     } catch (error) {

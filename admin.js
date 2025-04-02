@@ -1,3 +1,17 @@
+function previewImage(event, previewId) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const preview = document.getElementById(previewId);
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("JS loaded!"); // Debugging
 
@@ -11,6 +25,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (bookStatSelect) {
         bookStatSelect.addEventListener("change", updateStatusColor);
+    }
+
+    // IMAGE PREVIEW FUNCTION
+    function previewImage(event, previewId) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const preview = document.getElementById(previewId);
+                preview.src = e.target.result;
+                preview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // VALIDATE IMAGE FILE
+    function validateImage(file) {
+        const allowedTypes = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
+        if (!allowedTypes.includes(file.type)) {
+            alert("Invalid file type. Please upload an image (JPG, PNG, GIF).");
+            return false;
+        }
+        return true;
     }
 
     //UPDATE STAT COLOR FOR UPLOADING

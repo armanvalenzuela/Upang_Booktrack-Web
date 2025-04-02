@@ -1,7 +1,7 @@
 let bookRequests = [];
 let uniformRequests = [];
 
-// Fetch requests from PHP
+// FETCH REQUESTS USING PHP
 fetch("http://localhost/UPBooktrack/admin_get_requests.php")
     .then(response => response.json())
     .then(data => {
@@ -17,7 +17,7 @@ fetch("http://localhost/UPBooktrack/admin_get_requests.php")
     })
     .catch(error => console.error("Error fetching requests:", error));
 
-// Function to render Book Requests table
+// SET REQUESTS FOR BOOKS
 function renderBookTable(data) {
     const tableBody = document.querySelector("#book-requests-body");
     tableBody.innerHTML = "";
@@ -25,11 +25,11 @@ function renderBookTable(data) {
     data.forEach((request, index) => {
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${request.bookcollege}</td>
-            <td>${request.bookname}</td>
-            <td>${request.request_count}</td>
-            <td>
+            <td class="short-column">${index + 1}</td>
+            <td class="short-column">${request.bookcollege}</td>
+            <td class="wide-column">${request.bookname}</td>
+            <td class="short-column">${request.request_count}</td>
+            <td class="short-column">
                 <button class="action-btn approve" data-request-id="${request.book_id}" data-type="book">✓</button>
             </td>
         `;
@@ -37,7 +37,7 @@ function renderBookTable(data) {
     });
 }
 
-// Function to render Uniform Requests table
+// SET REQUESTS FOR UNIFORMS
 function renderUniformTable(data) {
     const tableBody = document.querySelector("#uniform-requests-body");
     tableBody.innerHTML = "";
@@ -59,7 +59,7 @@ function renderUniformTable(data) {
     });
 }
 
-// Sorting function (Books & Uniforms Separate)
+// SORTING FUNCT
 function sortTable(column, order, type) {
     let sortedData = type === "book" ? [...bookRequests] : [...uniformRequests];
 
@@ -72,7 +72,7 @@ function sortTable(column, order, type) {
     type === "book" ? renderBookTable(sortedData) : renderUniformTable(sortedData);
 }
 
-// Updated filtering function for Uniform Table
+// SORTING FUNCT
 function filterUniformTable() {
     let selects = document.querySelectorAll(".requests-uniform select.header-select");
     let department = selects[0].value;
@@ -87,7 +87,7 @@ function filterUniformTable() {
         (size === "" || request.uniformsize === size)
     );
 
-    // Apply sorting
+    // APPLY SORTING
     if (nameSort) {
         filteredData.sort((a, b) => nameSort === "asc" ? a.uniformname.localeCompare(b.uniformname) : b.uniformname.localeCompare(a.uniformname));
     }
@@ -98,7 +98,7 @@ function filterUniformTable() {
     renderUniformTable(filteredData);
 }
 
-// Updated filtering function for Books
+// SORTING FUNCT FOR BOOKS
 function filterBookTable() {
     let department = document.querySelector("#book-filter").value;
     let nameSort = document.querySelector("#book-sort").value;
@@ -108,7 +108,7 @@ function filterBookTable() {
         (department === "" || request.bookcollege === department)
     );
 
-    // Apply sorting
+    // APPLY SORT
     if (nameSort) {
         filteredData.sort((a, b) => nameSort === "asc" ? a.bookname.localeCompare(b.bookname) : b.bookname.localeCompare(a.bookname));
     }
@@ -119,7 +119,7 @@ function filterBookTable() {
     renderBookTable(filteredData);
 }
 
-// Event Listeners for Sorting & Filtering
+// EVENT LISTENERS FOR SORTING
 document.querySelector("#book-filter").addEventListener("change", filterBookTable);
 document.querySelector("#book-sort").addEventListener("change", filterBookTable);
 document.querySelector("#book-sort-requests").addEventListener("change", filterBookTable);
@@ -128,7 +128,7 @@ document.querySelectorAll(".requests-uniform select.header-select").forEach(sele
     select.addEventListener("change", filterUniformTable);
 });
 
-// Event Listener for Approving Requests
+// REQUEST APPROVAL
 document.addEventListener("click", function (event) {
     if (event.target.classList.contains("approve")) {
         let requestId = event.target.getAttribute("data-request-id");
@@ -144,7 +144,7 @@ document.addEventListener("click", function (event) {
             .then(data => {
                 if (data.success) {
                     alert("Request fulfilled!");
-                    event.target.closest("tr").remove(); // Remove row from UI
+                    event.target.closest("tr").remove(); // REMOVE ROW AFTER APPROVED
                 } else {
                     alert("Error: " + data.message);
                 }

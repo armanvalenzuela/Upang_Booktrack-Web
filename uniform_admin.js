@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Add this after the search functionality
+    // DEPARTMENT FILTER
     const departmentFilter = document.getElementById("department-filter");
 
     if (departmentFilter) {
@@ -289,14 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
         //DELETE FUNCTION
         document.querySelectorAll(".delete-button").forEach(button => {
             button.addEventListener("click", async function () {
-                const uniform_id = this.getAttribute("data-id"); // Change 'id' to 'uniform_id'
+                const uniform_id = this.getAttribute("data-id");
         
                 if (!confirm("Are you sure you want to delete this uniform?")) {
                     return;
                 }
         
                 const formData = new FormData();
-                formData.append("uniform_id", uniform_id); // Change 'id' to 'uniform_id'
+                formData.append("uniform_id", uniform_id);
         
                 try {
                     const response = await fetch("http://localhost/UPBooktrack/delete_uniform.php", {
@@ -309,7 +309,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (result.status === "success") {
                 showNotification("Uniform deleted successfully!", "success");
                 
-                // Reload the page after a short delay to show notification
                 setTimeout(() => {
                     location.reload();
                 }, 1000); // Reload after 1 second

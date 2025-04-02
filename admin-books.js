@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const saveButton = document.getElementById("save-button");
     const previewImage = document.getElementById("book-preview");
 
-    // ✅ Change background color of dropdown based on selection
+    // BACKGROUND COLOR OF DROPDOWN BASED ON SELECTION
     function updateStatusColor() {
         if (bookStatSelect.value === "available") {
             bookStatSelect.style.backgroundColor = "lightgreen"; // Green for available
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bookStatSelect.addEventListener("change", updateStatusColor);
     updateStatusColor(); // Run initially
 
-    // ✅ Image preview before upload
+    // IMAGE PREVIEW
     function previewImageFile(event) {
         const file = event.target.files[0];
         if (file) {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     bookImageInput.addEventListener("change", previewImageFile);
 
-    // ✅ Form validation
+    // FORM VALIDATION
     function validateForm() {
         if (!bookNameInput.value.trim()) {
             alert("Please enter a book name.");
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
-    // ✅ Handle form submission via AJAX
+    // HANDLE FORM SUBMISSION USING AJAX
     bookForm.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent default form submission
 

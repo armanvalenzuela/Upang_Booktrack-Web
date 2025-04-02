@@ -233,7 +233,7 @@ fetch('http://localhost/UPBooktrack/admin_get_outOfstock.php')
 
         // CLEAR ROWS EXCEPT HEADERS
         table.innerHTML = `
-            <tr>
+             <tr>
                 <th colspan="6" bgcolor="white">Out of Stock</th>
             </tr>
             <tr>
@@ -271,12 +271,7 @@ fetch('http://localhost/UPBooktrack/admin_get_outOfstock.php')
                                 <option value="XL">XL</option>
                                 <option value="2XL">2XL</option>
                             </select></th>
-                <th><select class="header-select">
-                                <option value="">Stock </option>
-                                <option value="asc">Low to High</option>
-                                <option value="desc">High to Low</option>
-                            </select>
-                        </th></th>
+                <th>Stock&nbsp;&nbsp;</th> <!-- Removed filtering dropdown -->
             </tr>
         `;
 

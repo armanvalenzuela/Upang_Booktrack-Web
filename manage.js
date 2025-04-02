@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const searchInput = document.getElementById('searchInput');
     const collegeFilter = document.getElementById('college-filter');
 
-    // Fetch all users from database
+    // FETCH ALL USERS FROM DB
     async function fetchUsers() {
         try {
             const response = await fetch('http://localhost/UPBooktrack/admin_fetch_users.php');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
-    // Display users in table
+    // DISPLAY DATA TO TABLE
     function displayUsers(users) {
         requestList.innerHTML = '';
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Toggle password visibility
+    // PASSWORD VISIBILITY TOGGLE !!NOT USED!!!
     window.togglePassword = function (button) {
         const input = button.previousElementSibling;
         if (input.type === "password") {
@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     };
 
-    // Initial fetch
+    // FETCH WHEN LOADED
     await fetchUsers();
 
-    // College filter functionality
+    // FILTER BY COLLEGE
     if (collegeFilter) {
         collegeFilter.addEventListener("change", filterTableByCollege);
     }
@@ -104,15 +104,15 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
-    // Initial fetch
+    // FETCH WHEN LOADED
     await fetchUsers();
 });
 
-// Enable editing for a user row
+// EDITING FUNCT
 function editUser(button, userId) {
     const row = button.closest('tr');
 
-    // Enable all editable fields
+    // ENABLE ALL FIELDS FOR THAT ROW
     row.querySelector('.edit-studentNo').disabled = false;
     row.querySelector('.edit-name').disabled = false;
     row.querySelector('.edit-gender').disabled = false;
@@ -120,16 +120,16 @@ function editUser(button, userId) {
     row.querySelector('.edit-email').disabled = false;
     row.querySelector('.edit-password').disabled = false;
 
-    // Toggle button visibility
+    // BSAVE BUTTON VISI
     button.style.display = "none";
     row.querySelector('.save-btn').style.display = "inline-block";
 }
 
-// Save user changes
+// SAVE
 async function saveUser(button, userId) {
     const row = button.closest('tr');
 
-    // Get all field values
+    // GET ALL VALUES FOR THE FIELD
     const studentNo = row.querySelector('.edit-studentNo').value;
     const studentName = row.querySelector('.edit-name').value;
     const gender = row.querySelector('.edit-gender').value;
@@ -137,19 +137,19 @@ async function saveUser(button, userId) {
     const email = row.querySelector('.edit-email').value;
     const newPassword = row.querySelector('.edit-password').value;
 
-    // Validate required fields
+    // VALIDATION
     if (!studentNo || !studentName || !gender || !college || !email) {
         showNotification("All fields except password are required!", "error");
         return;
     }
 
-    // Validate password length if provided
+    // PASS LENGTH VALIDATION
     if (newPassword && newPassword.length < 6) {
         showNotification("Password must be at least 6 characters", "error");
         return;
     }
 
-    // Prepare form data
+    // PREPARE AS FORM
     const formData = new FormData();
     formData.append("id", userId);
     formData.append("studentNo", studentNo);
@@ -158,7 +158,7 @@ async function saveUser(button, userId) {
     formData.append("college", college);
     formData.append("email", email);
     
-    // Only include password if changed
+    // ONLY INCLUDE PASS IF IT IS CHANGED
     if (newPassword) {
         formData.append("newPassword", newPassword);
     }
@@ -183,7 +183,7 @@ async function saveUser(button, userId) {
     }
 }
 
-// Delete a user
+// USER DELETION
 async function deleteUser(userId) {
     if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
         return;
@@ -212,7 +212,7 @@ async function deleteUser(userId) {
     }
 }
 
-// Show notification message
+// NOTIF MESSAGE
 function showNotification(message, type) {
     const notification = document.createElement("div");
     notification.className = `notification ${type}`;
