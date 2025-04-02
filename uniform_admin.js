@@ -184,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <option value="M" ${uniform.uniformsize === "M" ? "selected" : ""}>M</option>
                             <option value="L" ${uniform.uniformsize === "L" ? "selected" : ""}>L</option>
                             <option value="XL" ${uniform.uniformsize === "XL" ? "selected" : ""}>XL</option>
+                            <option value="XXL" ${uniform.uniformsize === "XXL" ? "selected" : ""}>XXL</option>
                         </select>
                     </td>
                     
