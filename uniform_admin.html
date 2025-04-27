@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uniform Admin Panel</title>
+    <title>Uniform Panel</title>
     <link rel="stylesheet" href="style_uniform.css"> <!-- Use the same CSS file -->
     <link rel="icon" type="x-icon" href="Images/bglogo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -25,17 +25,17 @@
         <div class="icons">
             <span class="user" id="user-icon">
                 <i class='bx bx-user-circle'></i>
-            </span>
-            <div class="dropdown-user" id="dropdown-user">
-                <p><strong>Name:</strong> <span id="employeeName">Loading...</span></p>
-                <p><strong>Employee No:</strong> <span id="employeeNo">Loading...</span></p></br>
-                <a href="change-pw.html">
-                    <button id="change-pw"><strong>Change Password</strong></button>
-                </a></br></br>                    
-                <a href="login.html">
-                    <button id="login"><strong>Logout</strong></button>
-                </a>
-            </div>
+            </span>        
+        </div>
+        <div class="dropdown-user" id="dropdown-user">
+            <p><strong>Name:</strong> <span id="studentName">Loading...</span></p>
+            <p><strong>Employee No:</strong> <span id="studentNo">Loading...</span></p></br>
+            <a href="change-pw.html">
+                <button id="change-pw"><strong>Change Password</strong></button>
+            </a></br></br>                    
+            <a href="login.html">
+                <button id="login"><strong>Logout</strong></button>
+            </a>
         </div>
     </header>
 
@@ -134,31 +134,14 @@
         <table class="added-uniforms-table">
             <thead>
                 <tr>
-                    <th>
-                        <select class="header-dropdown" id="department-filter">
-                            <option value="">Department</option>
-                            <option value="CITE">CITE</option>
-                            <option value="CMA">CMA</option>
-                            <option value="CAHS">CAHS</option>
-                            <option value="CEA">CEA</option>
-                            <option value="CCJE">CCJE</option>
-                            <option value="CAS">CAS</option>
-                            <option value="SHS">SHS</option>
-                        </select>
-                    </th>
+                    <th>Department</th>
                     <th>Uniform Name</th>
                     <th>Description</th>
                     <th>Image</th>
                     <th>Size</th>
                     <th>Gender</th>
                     <th>Stock Amount</th>
-                    <th>
-                        <select class="header-dropdown" id="status-filter">
-                            <option value="">Status</option>
-                            <option value="available">Available</option>
-                            <option value="not-available">Not Available</option>
-                        </select>
-                    </th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>

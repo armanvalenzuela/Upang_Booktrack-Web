@@ -167,8 +167,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             <option value="CMA" ${uniform.uniformcollege === "CMA" ? "selected" : ""}>CMA</option>
                             <option value="CAHS" ${uniform.uniformcollege === "CAHS" ? "selected" : ""}>CAHS</option>
                             <option value="CEA" ${uniform.uniformcollege === "CEA" ? "selected" : ""}>CEA</option>
+                            <option value="CCJE" ${uniform.uniformcollege === "CCJE" ? "selected" : ""}>CCJE</option>
                             <option value="CAS" ${uniform.uniformcollege === "CAS" ? "selected" : ""}>CAS</option>
                             <option value="SHS" ${uniform.uniformcollege === "SHS" ? "selected" : ""}>SHS</option>
+                            
                         </select>
                     </td>
                     <td><input type="text" class="edit-name" value="${uniform.uniformname}" disabled></td>
@@ -182,6 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <option value="M" ${uniform.uniformsize === "M" ? "selected" : ""}>M</option>
                             <option value="L" ${uniform.uniformsize === "L" ? "selected" : ""}>L</option>
                             <option value="XL" ${uniform.uniformsize === "XL" ? "selected" : ""}>XL</option>
+                            <option value="XXL" ${uniform.uniformsize === "XXL" ? "selected" : ""}>XXL</option>
                         </select>
                     </td>
                     
